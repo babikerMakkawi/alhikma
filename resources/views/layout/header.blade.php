@@ -4,7 +4,7 @@
 
         <h1 class="logo me-auto">
             <a href="/">
-                <img src="{{ asset('images/logo.png') }}" alt="" srcset="">
+                <img src="{{ asset('public/images/logo.png') }}" alt="" srcset="">
                 مجلة الحكمة
             </a>
         </h1>

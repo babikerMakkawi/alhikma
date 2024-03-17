@@ -9,7 +9,8 @@
             <div class="carousel-inner" role="listbox">
 
                 <!-- Slide 1 -->
-                <div class="carousel-item active" style="background-image: url({{ asset('images/slide/slider-1.avif') }})">
+                <div class="carousel-item active"
+                    style="background-image: url({{ asset('public/images/slide/slider-1.avif') }})">
                     <div class="carousel-container">
                         <div class="container">
                             <div class="row">
@@ -41,7 +42,7 @@
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="carousel-item" style="background-image: url({{ asset('images/slide/slider-1.avif') }})">
+                <div class="carousel-item" style="background-image: url({{ asset('public/images/slide/slider-1.avif') }})">
 
                     <div class="carousel-container">
                         <div class="container">
@@ -76,7 +77,7 @@
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="carousel-item" style="background-image: url({{ asset('images/slide/slider-1.avif') }})">
+                <div class="carousel-item" style="background-image: url({{ asset('public/images/slide/slider-1.avif') }})">
                     <div class="carousel-container">
                         <div class="container">
                             <div class="row">
@@ -143,7 +144,7 @@
                         </h2>
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3">
-                                <img src="{{ asset('images/hikma-magala.gif') }}"
+                                <img src="{{ asset('public/images/hikma-magala.gif') }}"
                                     class="shadow-lg bg-white rounded w-100 wow animate__animated animate__fadeInRight animated">
                             </div>
                             <div class="col-12 col-md-8 col-lg-9">

@@ -23,7 +23,7 @@
                         </h2>
                         <div class="row">
                             <div class="col-12 col-md-4 col-lg-3">
-                                <img src="{{ asset('images/hikma-magala.gif') }}"
+                                <img src="{{ asset('public/images/hikma-magala.gif') }}"
                                     class="w-100  wow animate__animated animate__fadeInRight" alt="" srcset="">
                             </div>
                             <div class="col-12 col-md-8 col-lg-9">
