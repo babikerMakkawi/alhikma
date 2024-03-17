@@ -7,7 +7,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('public/images/logo.png') }}" rel="icon">
+    <link href="{{ asset('/images/logo.png') }}" rel="icon">
 
     <!-- Google Fonts -->
     <link
@@ -21,20 +21,20 @@
 
     <!-- Vendor CSS Files -->
     <!-- <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"> -->
-    <link href="{{ asset('public/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/vendor/swiper/swiper-bundle.min.js') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/swiper/swiper-bundle.min.js') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('public/css/style.css?version=2') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css?version=2') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <script src="{{ asset('public/js/wow.js') }}"></script>
+    <script src="{{ asset('/js/wow.js') }}"></script>
 
     <script>
         new WOW().init();
