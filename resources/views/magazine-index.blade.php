@@ -50,7 +50,11 @@
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="6"><small>لا يوجد بحوث في الوقت الحالي</small></td>
+                                                        <td colspan="6">
+                                                            <small class="text-center w-100 d-block">
+                                                                لا يوجد بحوث في الوقت الحالي
+                                                            </small>
+                                                        </td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>
