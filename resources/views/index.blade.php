@@ -134,6 +134,38 @@
                         <strong class="wow animate__animated animate__fadeInDown">
                             " أكثر مجلات البحوث الإسلامية انتشاراً في العالم "
                         </strong>
+                        <strong class="wow animate__animated animate__fadeInDown">
+                            الرقم الدولي لمجلة الحكمة في بريطانيا (ISSN 2754-7906)
+                        </strong>
+                    </div>
+                    <div class="col-lg-12 pt-4 pt-lg-0">
+                        <p class="wow animate__animated animate__fadeInDown">
+                            لجنة التحكيم :
+                        </p>
+                        <ul>
+                            <li style="padding: 10px 28px 0 0px !important;">
+                                <i class="ri-check-double-line wow animate__animated animate__fadeInDown">
+                                </i>
+                                - أ.د: حكمت بشير ياسين - جامعة الملك عبدالعزيز - السعودية - جدة.
+                            </li>
+                            <li style="padding: 10px 28px 0 0px !important;"><i
+                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                - ⁠أ.د: ناصر بن عبدالله القفاري - جامعة القصيم - السعودية - القصيم.
+                            </li>
+                            <li style="padding: 10px 28px 0 0px !important;"><i
+                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                - ⁠أ.د: محمد اسحاق محمد آل ابراهيم - جامعة الامام محمد بن سعود الاسلامية - السعودية -
+                                الرياض.
+                            </li>
+                            <li style="padding: 10px 28px 0 0px !important;"><i
+                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                - ⁠أ.د: احمد خالد شكري - الجامعة الاردنيه- الاردن - عمَّان.
+                            </li>
+                        </ul>php artisan vendor:publish --tag=laravel-pagination
+
+                        {{-- <p class="fst-italic wow animate__animated animate__fadeInDown">
+                            نحن نضمن رضا عملائنا من خلال تقديم خدمة عملاء ممتازة وتلبية احتياجاتهم بتوفير جميع احتياجاتهم.
+                        </p> --}}
                     </div>
                 </div>
                 <div class="row content">

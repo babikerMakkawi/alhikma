@@ -30,7 +30,7 @@
     <link href="{{ asset('/vendor/swiper/swiper-bundle.min.js') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('/css/style.css?version=2') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css?version=3') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 

@@ -102,7 +102,7 @@
                                                     'search' => request()->input('search'),
                                                     'sort_by' => request()->input('sort_by'),
                                                     'sort_order' => request()->input('sort_order'),
-                                                ])->links() }}
+                                                ])->onEachSide(2)->links() }}
                                         </div>
 
                                     </div>
