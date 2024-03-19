@@ -5,10 +5,10 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2 class=" wow animate__animated animate__fadeInRight">فهرس كشاف المجلة</h2>
+                    <h2 class=" wow animate__animated animate__fadeInRight">النشر الإلكتروني</h2>
                     <ol class=" wow animate__animated animate__fadeInLeft">
                         <li><a href="/">الرئيسية</a></li>
-                        <li>فهرس كشاف المجلة</li>
+                        <li>النشر الإلكتروني</li>
                     </ol>
                 </div>
             </div>
@@ -24,34 +24,26 @@
                             <div class="col-12">
                                 <div class="card bg-light  wow animate__animated animate__fadeInLeft">
                                     <div class="card-header">
-                                        <form action="{{ route('magazine-index') }}" method="GET" class="form-inline">
+                                        <form action="{{ route('electronic-publishing') }}" method="GET"
+                                            class="form-inline">
                                             <div class="input-group">
-
-                                                {{-- Search --}}
                                                 <input type="text" name="search"
                                                     class="form-control rounded-0 rounded-end-3" placeholder="بحث"
                                                     value="{{ app('request')->input('search') }}">
-
-                                                {{-- Sort By --}}
                                                 <select name="sort_by" class="form-control">
-                                                    <option value="subject"
-                                                        {{ app('request')->input('sort_by') == 'subject' ? 'selected' : '' }}>
-                                                        الموضوع
-                                                    </option>
                                                     <option value="title"
                                                         {{ app('request')->input('sort_by') == 'title' ? 'selected' : '' }}>
-                                                        عنوان البحث
-                                                    </option>
+                                                        عنوان البحث</option>
                                                     <option value="researcher"
                                                         {{ app('request')->input('sort_by') == 'researcher' ? 'selected' : '' }}>
                                                         إسم الباحث</option>
-                                                    <option value="number"
-                                                        {{ app('request')->input('sort_by') == 'number' ? 'selected' : '' }}>
-                                                        العدد
-                                                    </option>
+                                                    <option value="number_of_pages"
+                                                        {{ app('request')->input('sort_by') == 'number_of_pages' ? 'selected' : '' }}>
+                                                        عدد الصفحات</option>
+                                                    <option value="date"
+                                                        {{ app('request')->input('sort_by') == 'date' ? 'selected' : '' }}>
+                                                        التاريخ</option>
                                                 </select>
-
-                                                {{-- Sort Order --}}
                                                 <select name="sort_order" class="form-control">
                                                     <option value="asc"
                                                         {{ app('request')->input('sort_order') == 'asc' ? 'selected' : '' }}>
@@ -71,19 +63,26 @@
                                         <table class="table">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th scope="col">الموضوع</th>
-                                                    <th scope="col">إسم البحث</th>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">عنوان البحث</th>
                                                     <th scope="col">إسم الباحث</th>
-                                                    <th scope="col">العدد</th>
+                                                    <th scope="col">عدد الصفحات</th>
+                                                    <th scope="col">تاريخ النشر</th>
+                                                    <th scope="col">عرض الملف</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse  ($research_index as $index)
+                                                @forelse  ($researches as $research)
                                                     <tr>
-                                                        <td>{{ $index->subject }}</td>
-                                                        <td>{{ $index->title }}</td>
-                                                        <td>{{ $index->researcher }}</td>
-                                                        <td>{{ $index->number }}</td>
+                                                        <th scope="row">{{ $research->id }}</th>
+                                                        <td>{{ $research->title }}</td>
+                                                        <td>{{ $research->researcher }}</td>
+                                                        <td>{{ $research->number_of_pages }}</td>
+                                                        <td>{{ $research->date }}</td>
+                                                        <td>
+                                                            <a href="storage/app/public/uploads/{{ $research->file }}"
+                                                                target="_blank" class="btn btn-primary btn-sm">عرض</a>
+                                                        </td>
                                                     </tr>
                                                 @empty
                                                     <tr>
@@ -98,7 +97,7 @@
                                         </table>
 
                                         <div dir="ltr">
-                                            {{ $research_index->appends([
+                                            {{ $researches->appends([
                                                     'search' => request()->input('search'),
                                                     'sort_by' => request()->input('sort_by'),
                                                     'sort_order' => request()->input('sort_order'),

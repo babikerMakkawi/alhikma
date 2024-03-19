@@ -13,7 +13,7 @@
         <nav id="navbar" class="navbar">
             <ul dir="rtl">
 
-                <li><a href="/" class="active">الرئيسية</a></li>
+                <li><a href="/" class="">الرئيسية</a></li>
 
                 <li class="dropdown"><a href="#">
                         <span>التعريف</span>
@@ -26,11 +26,20 @@
 
                 <li><a href="series-version">التعريف بسلسلة الاصدارات</a></li>
                 <li><a href="magazine-index">فهرس كشاف المجلة</a></li>
-                <li><a href="xxxxxxxxxxxxxxxxxxxx">النشر الالكتروني</a></li>
+                <li><a href="electronic-publishing">النشر الالكتروني</a></li>
                 <li><a href="sending-researches">إرسال البحوث</a></li>
 
                 @auth
-                    <li><a href="{{ route('researches.index') }}">التحكم</a></li>
+                    {{-- <li><a href="{{ route('researches.index') }}">التحكم</a></li> --}}
+                    <li class="dropdown"><a href="#">
+                            <span>التحكم</span>
+                            <i class="bi bi-chevron-down pe-2 pb-1"></i></a>
+                        <ul>
+                            <li><a href="{{ route('researchesIndex.index') }}">تحكم فهرس كشاف المجلة</a></li>
+                            <li><a href="{{ route('researches.index') }}">تحكم النشر الإلكتروني</a></li>
+                        </ul>
+                    </li>
+
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

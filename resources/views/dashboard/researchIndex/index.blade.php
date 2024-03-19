@@ -5,10 +5,10 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2 class=" wow animate__animated animate__fadeInRight">إدارة البحوث</h2>
+                    <h2 class=" wow animate__animated animate__fadeInRight">إدارة فهرس كشاف المجلة</h2>
                     <ol class=" wow animate__animated animate__fadeInLeft">
                         <li><a href="/">الرئيسية</a></li>
-                        <li>إدارة البحوث</li>
+                        <li>إدارة فهرس كشاف المجلة</li>
                     </ol>
                 </div>
             </div>
@@ -43,25 +43,35 @@
                                 <div class="card bg-light  wow animate__animated animate__fadeInLeft">
                                     <div class="card-header d-flex justify-content-between">
 
-                                        <form action="{{ route('researches.index') }}" method="GET" class="form-inline">
+                                        <form action="{{ route('researchesIndex.index') }}" method="GET"
+                                            class="form-inline">
                                             <div class="input-group">
+
+                                                {{-- Search --}}
                                                 <input type="text" name="search"
                                                     class="form-control rounded-0 rounded-end-3" placeholder="بحث"
                                                     value="{{ app('request')->input('search') }}">
+
+                                                {{-- Sort By --}}
                                                 <select name="sort_by" class="form-control">
+                                                    <option value="subject"
+                                                        {{ app('request')->input('sort_by') == 'subject' ? 'selected' : '' }}>
+                                                        الموضوع
+                                                    </option>
                                                     <option value="title"
                                                         {{ app('request')->input('sort_by') == 'title' ? 'selected' : '' }}>
-                                                        عنوان البحث</option>
+                                                        عنوان البحث
+                                                    </option>
                                                     <option value="researcher"
                                                         {{ app('request')->input('sort_by') == 'researcher' ? 'selected' : '' }}>
                                                         إسم الباحث</option>
-                                                    <option value="number_of_pages"
-                                                        {{ app('request')->input('sort_by') == 'number_of_pages' ? 'selected' : '' }}>
-                                                        عدد الصفحات</option>
-                                                    <option value="date"
-                                                        {{ app('request')->input('sort_by') == 'date' ? 'selected' : '' }}>
-                                                        التاريخ</option>
+                                                    <option value="number"
+                                                        {{ app('request')->input('sort_by') == 'number' ? 'selected' : '' }}>
+                                                        العدد
+                                                    </option>
                                                 </select>
+
+                                                {{-- Sort Order --}}
                                                 <select name="sort_order" class="form-control">
                                                     <option value="asc"
                                                         {{ app('request')->input('sort_order') == 'asc' ? 'selected' : '' }}>
@@ -89,32 +99,28 @@
                                         <table class="table">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">عنوان البحث</th>
+                                                    <th scope="col">الموضوع</th>
+                                                    <th scope="col">إسم البحث</th>
                                                     <th scope="col">إسم الباحث</th>
-                                                    <th scope="col">عدد الصفحات</th>
-                                                    <th scope="col">تاريخ النشر</th>
-                                                    <th scope="col">البحث</th>
+                                                    <th scope="col">العدد</th>
+                                                    <th scope="col">التحكم</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse  ($researches as $research)
+                                                @forelse  ($research_index as $index)
                                                     <tr>
-                                                        <th scope="row">{{ $research->id }}</th>
-                                                        <td>{{ $research->title }}</td>
-                                                        <td>{{ $research->researcher }}</td>
-                                                        <td>{{ $research->number_of_pages }}</td>
-                                                        <td>{{ $research->date }}</td>
+                                                        <td>{{ $index->subject }}</td>
+                                                        <td>{{ $index->title }}</td>
+                                                        <td>{{ $index->researcher }}</td>
+                                                        <td>{{ $index->number }}</td>
                                                         <td>
                                                             <form method="post"
-                                                                action="{{ route('researches.destroy', $research->id) }}"
+                                                                action="{{ route('researchesIndex.destroy', $index->id) }}"
                                                                 onSubmit='return confirm("هل أنت متأكد؟")'
                                                                 class="btn-group">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <a href="storage/app/public/uploads/{{ $research->file }}"
-                                                                    target="_blank" class="btn btn-primary btn-sm">عرض</a>
 
                                                                 <button type="submit"
                                                                     class="btn btn-danger btn-sm rounded-0">
@@ -128,7 +134,7 @@
                                                     <tr>
                                                         <td colspan="6">
                                                             <small class="text-center w-100 d-block">
-                                                                لا يوجد بحوث في الوقت الحالي
+                                                                لا يوجد بحوث مفهرسة في الوقت الحالي
                                                             </small>
                                                         </td>
                                                     </tr>
@@ -136,11 +142,12 @@
                                             </tbody>
                                         </table>
                                         <div dir="ltr">
-                                            {{ $researches->appends([
+                                            {{ $research_index->appends([
                                                     'search' => request()->input('search'),
                                                     'sort_by' => request()->input('sort_by'),
                                                     'sort_order' => request()->input('sort_order'),
                                                 ])->links() }}
+
                                         </div>
 
                                     </div>
@@ -166,11 +173,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="{{ route('researches.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('researchesIndex.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
 
-                            {{-- Title --}}
+                            {{-- subject --}}
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-label-form">الموضوع</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="subject" value="{{ old('subject') }}"
+                                        class="form-control" />
+                                </div>
+                            </div>
+
+                            {{-- title --}}
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-label-form">عنوان البحث</label>
                                 <div class="col-sm-10">
@@ -179,7 +195,7 @@
                                 </div>
                             </div>
 
-                            {{-- Researcher Name --}}
+                            {{-- researcher --}}
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-label-form">إسم الباحث</label>
                                 <div class="col-sm-10">
@@ -188,35 +204,15 @@
                                 </div>
                             </div>
 
-                            {{-- Number OF Pages --}}
+                            {{-- number --}}
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-label-form">عدد الصفحات</label>
+                                <label class="col-sm-2 col-label-form">العدد</label>
                                 <div class="col-sm-10">
-                                    <input type="number" name="number_of_pages" value="{{ old('number_of_pages') }}"
+                                    <input type="text" name="number" value="{{ old('number') }}"
                                         class="form-control" />
                                 </div>
                             </div>
 
-                            {{-- Date --}}
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-label-form">تاريخ النشر</label>
-                                <div class="col-sm-10">
-                                    <input type="date" name="date" value="{{ old('date') }}"
-                                        class="form-control" />
-                                </div>
-                            </div>
-
-                            {{-- File --}}
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-label-form">
-                                    ملف البحث
-                                    <span class="text-danger">(Pdf ملف)</span>
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="file" name="file" value="{{ old('file') }}"
-                                        class="form-control" />
-                                </div>
-                            </div>
 
                         </div>
                         <div class="modal-footer">

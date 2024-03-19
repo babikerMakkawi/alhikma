@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ResearchesController;
+use App\Http\Controllers\ResearchIndexController;
 use App\Models\Researches\Research;
+use App\Models\Researches\ResearchIndex;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -40,23 +42,34 @@ Route::get('editor-in-chief', function () {
     return view('editor-in-chief');
 });
 
-Route::get('magazine-index', function () {
-    $researches = Research::paginate();
-    return view('magazine-index', compact('researches'));
-});
+Route::get('electronic-publishing', function (Request $request) {
+    $query = Research::query();
+
+    if ($request->search) {
+        $query = $query->where($request->sort_by, 'like', '%' . $request->search . '%');
+    }
+
+    $researches = $query->paginate(10);
+
+    return view('electronic-publishing', compact('researches'));
+})->name('electronic-publishing');
+
+Route::get('magazine-index', function (Request $request) {
+    $query = ResearchIndex::query();
+
+    if ($request->search) {
+        $query = $query->where($request->sort_by, 'like', '%' . $request->search . '%');
+    }
+
+    $research_index = $query->paginate(10);
+    return view('magazine-index', compact('research_index'));
+})->name('magazine-index');
+
+/***************************************************************************/
 
 // Dashboard
-Route::get('admin-researches', function (Request $request) {
-    $researches = Research::all();
-    return view('dashboard.researches.index', compact('researches'));
-});
-
 Route::resource('researches', ResearchesController::class)->middleware(['auth']);
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+Route::resource('researchesIndex', ResearchIndexController::class)->middleware(['auth']);
 
 require __DIR__ . '/auth.php';

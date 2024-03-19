@@ -35,8 +35,4 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <script src="{{ asset('/js/wow.js') }}"></script>
-
-    <script>
-        new WOW().init();
-    </script>
 </head>

@@ -11,15 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ResearchesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $researches = Research::paginate(10);
-        return view('dashboard.researches.index', compact('researches'));
-    }
+        $query = Research::query();
 
-    public function create()
-    {
-        return view('researches.create');
+        if ($request->search) {
+            $query = $query->where($request->sort_by, 'like', '%' . $request->search . '%');
+        }
+
+        $researches = $query->paginate(10);
+
+        return view('dashboard.researches.index', compact('researches'));
     }
 
     public function store(StoreResearchRequest $request)
@@ -46,23 +48,14 @@ class ResearchesController extends Controller
         return redirect()->route('researches.index')->with('success', 'تم إنشاء البحث بنجاح');
     }
 
-    public function show(Research $research)
-    {
-        return view('researches.show', compact('Research'));
-    }
 
-    public function edit(Research $research)
-    {
-        return view('researches.edit', compact('Research'));
-    }
-
-    public function update(UpdateResearchRequest $request, Research $research)
-    {
-        $research->update([
-            'field' => $request->field,
-        ]);
-        return redirect()->route('researches.index')->with('success', 'Research Updated Successfully.');
-    }
+    // public function update(UpdateResearchRequest $request, Research $research)
+    // {
+    //     $research->update([
+    //         'field' => $request->field,
+    //     ]);
+    //     return redirect()->route('researches.index')->with('success', 'Research Updated Successfully.');
+    // }
 
     public function destroy(Research $research)
     {
