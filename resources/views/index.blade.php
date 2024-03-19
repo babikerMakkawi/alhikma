@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div
                                     class="col-12 col-lg-4 d-flex align-items-center justify-content-center  animate__animated animate__fadeInDown">
-                                    <img src="{{ 'images/mockups/1.png' }}" class="book-mockup" alt=""
+                                    <img src="{{ asset('images/mockups/1.png') }}" class="book-mockup" alt=""
                                         srcset="">
                                 </div>
                                 <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center flex-column">
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div
                                     class="col-12 col-lg-4 d-flex align-items-center justify-content-center  animate__animated animate__fadeInDown">
-                                    <img src="{{ 'images/mockups/5.png' }}" class="book-mockup" alt=""
+                                    <img src="{{ asset('images/mockups/5.png') }}" class="book-mockup" alt=""
                                         srcset="">
                                 </div>
                                 <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center flex-column">
@@ -82,7 +82,7 @@
                             <div class="row">
                                 <div
                                     class="col-12 col-lg-4 d-flex align-items-center justify-content-center  animate__animated animate__fadeInDown">
-                                    <img src="{{ 'images/mockups/20.png' }}" class="book-mockup" alt=""
+                                    <img src="{{ asset('images/mockups/20.png') }}" class="book-mockup" alt=""
                                         srcset="">
                                 </div>
                                 <div class="col-12 col-lg-8 d-flex justify-content-center align-items-center flex-column">
@@ -161,8 +161,7 @@
                                     class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
                                 - ⁠أ.د: احمد خالد شكري - الجامعة الاردنيه- الاردن - عمَّان.
                             </li>
-                        </ul>php artisan vendor:publish --tag=laravel-pagination
-
+                        </ul>
                         {{-- <p class="fst-italic wow animate__animated animate__fadeInDown">
                             نحن نضمن رضا عملائنا من خلال تقديم خدمة عملاء ممتازة وتلبية احتياجاتهم بتوفير جميع احتياجاتهم.
                         </p> --}}
