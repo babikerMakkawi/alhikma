@@ -126,7 +126,7 @@
         <section id="about" class="about" dir="rtl">
             <div class="container">
 
-                <div class="row content">
+                <div class="row content mb-5">
                     <div class="col-12 d-flex flex-column gap-2 mb-5 m-auto text-center w-50">
                         <p class="wow animate__animated animate__fadeInDown">
                             مجلة بحثية علمية شرعية ثقافية محكّمة سنوية
@@ -139,32 +139,35 @@
                         </strong>
                     </div>
                     <div class="col-lg-12 pt-4 pt-lg-0">
-                        <p class="wow animate__animated animate__fadeInDown">
-                            لجنة التحكيم :
-                        </p>
-                        <ul>
-                            <li style="padding: 10px 28px 0 0px !important;">
-                                <i class="ri-check-double-line wow animate__animated animate__fadeInDown">
-                                </i>
-                                - أ.د: حكمت بشير ياسين - جامعة الملك عبدالعزيز - السعودية - جدة.
-                            </li>
-                            <li style="padding: 10px 28px 0 0px !important;"><i
-                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
-                                - ⁠أ.د: ناصر بن عبدالله القفاري - جامعة القصيم - السعودية - القصيم.
-                            </li>
-                            <li style="padding: 10px 28px 0 0px !important;"><i
-                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
-                                - ⁠أ.د: محمد اسحاق محمد آل ابراهيم - جامعة الامام محمد بن سعود الاسلامية - السعودية -
-                                الرياض.
-                            </li>
-                            <li style="padding: 10px 28px 0 0px !important;"><i
-                                    class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
-                                - ⁠أ.د: احمد خالد شكري - الجامعة الاردنيه- الاردن - عمَّان.
-                            </li>
-                        </ul>
-                        {{-- <p class="fst-italic wow animate__animated animate__fadeInDown">
-                            نحن نضمن رضا عملائنا من خلال تقديم خدمة عملاء ممتازة وتلبية احتياجاتهم بتوفير جميع احتياجاتهم.
-                        </p> --}}
+                        <div class="card">
+                            <div class="card-body">
+
+                                <p class="wow animate__animated animate__fadeInDown">
+                                    لجنة التحكيم :
+                                </p>
+                                <ul>
+                                    <li style="padding: 10px 28px 0 0px !important;">
+                                        <i class="ri-check-double-line wow animate__animated animate__fadeInDown">
+                                        </i>
+                                        - أ.د: حكمت بشير ياسين - جامعة الملك عبدالعزيز - السعودية - جدة.
+                                    </li>
+                                    <li style="padding: 10px 28px 0 0px !important;"><i
+                                            class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                        - ⁠أ.د: ناصر بن عبدالله القفاري - جامعة القصيم - السعودية - القصيم.
+                                    </li>
+                                    <li style="padding: 10px 28px 0 0px !important;"><i
+                                            class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                        - ⁠أ.د: محمد اسحاق محمد آل ابراهيم - جامعة الامام محمد بن سعود الاسلامية - السعودية
+                                        -
+                                        الرياض.
+                                    </li>
+                                    <li style="padding: 10px 28px 0 0px !important;"><i
+                                            class="ri-check-double-line wow animate__animated animate__fadeInDown"></i>
+                                        - ⁠أ.د: احمد خالد شكري - الجامعة الاردنيه- الاردن - عمَّان.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row content">
