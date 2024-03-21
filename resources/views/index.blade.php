@@ -193,8 +193,9 @@
                                     أصول الفقه ـ 102 بيت ) خص بها المجلة ولم تطبع من قبل وكانت في أدراج مكتبته سنوات
                                     طويلة وهي من أجمل ما
                                     نظم في أصول الفقه.
-                                    <a href="magazine-Introduction.html" class="btn-get-started scrollto">قرائة
-                                        المزيد</a>
+                                    <a href="/magazine-Introduction" class="btn-get-started scrollto">
+                                        قرائة
+                                    </a>
                                 </p>
                             </div>
                         </div>
