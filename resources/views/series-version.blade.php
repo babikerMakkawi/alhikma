@@ -56,7 +56,7 @@
         </section><!-- End About Section -->
 
         <!-- ======= Portfolio Gallery Section ======= -->
-        <section id="portfolio" class="portfolio">
+        <section id="portfolio" class="portfolio" dir="rtl">
             <div class="container">
 
                 <div class="row">
@@ -66,8 +66,8 @@
                             <li data-filter=".filter-1-5">1-5</li>
                             <li data-filter=".filter-6-10">6-10</li>
                             <li data-filter=".filter-11-15">11-15</li>
-                            <li data-filter=".filter-15-20">15-20</li>
-                            <li data-filter=".filter-20-23">20-23</li>
+                            <li data-filter=".filter-16-20">16-20</li>
+                            <li data-filter=".filter-21-23">20-23</li>
                         </ul>
                     </div>
                 </div>
@@ -79,8 +79,8 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/1.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>إصدار رقم 1</h4>
-                                <p>منهج ابي عبيدة في تفسير غريب الحديث</p>
+                                {{-- <h4>إصدار رقم 1</h4>
+                                <p>منهج ابي عبيدة في تفسير غريب الحديث</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/1.png') }}" data-gallery="portfolioGallery"
                                         class="portfolio-lightbox" title="منهج ابي عبيدة في تفسير غريب الحديث">
@@ -95,11 +95,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/2.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/2.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -111,11 +111,43 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/3.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/3.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-1-5">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/4.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/4.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-1-5">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/5.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/5.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -128,11 +160,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/6.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('images/version/6.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -144,11 +176,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/7.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/7.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -160,11 +192,43 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/8.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/8.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-6-10">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/9.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/9.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-6-10">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/10.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/10.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -178,11 +242,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/11.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/11.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -194,11 +258,11 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/12.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/12.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -210,11 +274,43 @@
                         <div class="portfolio-wrap">
                             <img src="{{ asset('/images/version/13.png') }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
-                                <h4>العنوان</h4>
-                                <p>العنوان</p>
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/13.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="العنوان">
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-11-15">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/14.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/14.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-11-15">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/15.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/15.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>
@@ -223,9 +319,137 @@
                     </div>
 
 
+                    <!-- Filter-16-20 -->
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-16-20">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/16.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/16.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-16-20">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/17.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/17.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-16-20">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/18.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/18.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-16-20">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/19.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/19.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-16-20">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/20.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/20.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter-21-23 -->
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-21-23">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/21.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/21.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-21-23">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/22.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/22.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-4 portfolio-item filter-21-23">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('/images/version/23.png') }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                {{-- <h4>العنوان</h4>
+                                <p>العنوان</p> --}}
+                                <div class="portfolio-links">
+                                    <a href="{{ asset('/images/version/23.png') }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="">
+                                        <i class="bx bx-show"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-
             </div>
         </section><!-- End Portfolio Section -->
 
