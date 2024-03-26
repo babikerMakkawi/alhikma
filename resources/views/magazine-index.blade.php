@@ -30,7 +30,7 @@
                                             عام ١٤٠١٤ الى ماوصلت اليه العدد (٦٦) الصادر في عام ١٤٤٥هـ . وهو
                                             عبارة عن عنوان البحث واسم الباحث وعدد الصفحات ورقم العدد المنشور فيه
                                             البحث. اما مايتعلق بمادة البحث فيمكن للباحث الحصول عليها في موقع
-                                            "دار المنظومة" <a href="https://www.mandumah.com">https://www.mandumah.com</a>
+                                            "دار المنظومة" <a href="https://www.mandumah.com">www.mandumah.com</a>
                                         </p>
                                         <hr>
                                         <form action="{{ route('magazine-index') }}" method="GET" class="form-inline">
