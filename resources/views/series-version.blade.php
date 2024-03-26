@@ -83,7 +83,7 @@
                                 <p>منهج ابي عبيدة في تفسير غريب الحديث</p> --}}
                                 <div class="portfolio-links">
                                     <a href="{{ asset('/images/version/1.png') }}" data-gallery="portfolioGallery"
-                                        class="portfolio-lightbox" title="منهج ابي عبيدة في تفسير غريب الحديث">
+                                        class="portfolio-lightbox" title="">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 </div>

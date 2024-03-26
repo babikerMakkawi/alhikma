@@ -19,11 +19,20 @@
         <section id="about" class="about" dir="rtl">
             <div class="container">
                 <div class="row content">
+
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card bg-light  wow animate__animated animate__fadeInLeft">
                                     <div class="card-header">
+                                        <p>
+                                            نقدم بين يدي الباحثين فهرس كشاف مجلة الحكمة من العدد الاول الصادر في
+                                            عام ١٤٠١٤ الى ماوصلت اليه العدد (٦٦) الصادر في عام ١٤٤٥هـ . وهو
+                                            عبارة عن عنوان البحث واسم الباحث وعدد الصفحات ورقم العدد المنشور فيه
+                                            البحث. اما مايتعلق بمادة البحث فيمكن للباحث الحصول عليها في موقع
+                                            "دار المنظومة" <a href="https://www.mandumah.com">https://www.mandumah.com</a>
+                                        </p>
+                                        <hr>
                                         <form action="{{ route('magazine-index') }}" method="GET" class="form-inline">
                                             <div class="input-group">
 
