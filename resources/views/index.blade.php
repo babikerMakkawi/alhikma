@@ -194,7 +194,7 @@
                                     طويلة وهي من أجمل ما
                                     نظم في أصول الفقه.
                                     <a href="/magazine-Introduction" class="btn-get-started scrollto">
-                                        قرائة
+                                        قراءة المزيد
                                     </a>
                                 </p>
                             </div>
