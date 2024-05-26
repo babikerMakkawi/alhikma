@@ -170,6 +170,15 @@
                         @csrf
                         <div class="modal-body">
 
+                            {{-- ID --}}
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-label-form">الرقم</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="id" value="{{ old('id') }}"
+                                        class="form-control" />
+                                </div>
+                            </div>
+
                             {{-- Title --}}
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-label-form">عنوان البحث</label>

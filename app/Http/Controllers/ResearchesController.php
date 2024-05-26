@@ -27,6 +27,7 @@ class ResearchesController extends Controller
     public function store(StoreResearchRequest $request)
     {
         $research = Research::create([
+            "id" => $request->id,
             "title" => $request->title,
             "researcher" => $request->researcher,
             "number_of_pages" => $request->number_of_pages,
