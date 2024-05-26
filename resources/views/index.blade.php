@@ -9,7 +9,7 @@
             <div class="carousel-inner" role="listbox">
 
                 <!-- Slide 1 -->
-                <div class="carousel-item active" style="background-image: url({{ asset('/images/slide/slider-1.avif') }})">
+                <div class="carousel-item active" style="background-image: url({{ asset('/images/slide/background-2.jpeg') }})">
                     <div class="carousel-container">
                         <div class="container">
                             <div class="row">
@@ -41,7 +41,7 @@
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="carousel-item" style="background-image: url({{ asset('/images/slide/slider-1.avif') }})">
+                <div class="carousel-item" style="background-image: url({{ asset('/images/slide/background-2.jpeg') }})">
 
                     <div class="carousel-container">
                         <div class="container">
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="carousel-item" style="background-image: url({{ asset('/images/slide/slider-1.avif') }})">
+                <div class="carousel-item" style="background-image: url({{ asset('/images/slide/background-2.jpeg') }})">
                     <div class="carousel-container">
                         <div class="container">
                             <div class="row">
@@ -127,21 +127,24 @@
             <div class="container">
 
                 <div class="row content mb-5">
-                    <div class="col-12 d-flex flex-column gap-2 mb-5 m-auto text-center w-50">
-                        <p class="wow animate__animated animate__fadeInDown">
-                            مجلة بحثية علمية شرعية ثقافية محكّمة سنوية
-                        </p>
-                        <strong class="wow animate__animated animate__fadeInDown">
-                            " أكثر مجلات البحوث الإسلامية انتشاراً في العالم "
-                        </strong>
-                        <strong class="wow animate__animated animate__fadeInDown">
-                            الرقم الدولي لمجلة الحكمة في بريطانيا (ISSN 2754-7906)
-                        </strong>
-                    </div>
                     <div class="col-lg-12 pt-4 pt-lg-0">
                         <div class="card">
                             <div class="card-body">
 
+                                <div class="text-center">
+                                    <p class="wow animate__animated animate__fadeInDown">
+                                        مجلة بحثية علمية شرعية ثقافية محكّمة سنوية
+                                    </p>
+                                    <br>
+                                    <strong class="text-bold wow animate__animated animate__fadeInDown">
+                                        " أكثر مجلات البحوث الإسلامية انتشاراً في العالم "
+                                    </strong>
+                                    <br>
+                                    <strong class="text-bold wow animate__animated animate__fadeInDown">
+                                        الرقم الدولي لمجلة الحكمة في بريطانيا (ISSN 2754-7906)
+                                    </strong>
+                                </div>
+                                <hr>
                                 <p class="wow animate__animated animate__fadeInDown">
                                     لجنة التحكيم :
                                 </p>
@@ -181,22 +184,30 @@
                                     class="shadow-lg bg-white rounded w-100 wow animate__animated animate__fadeInRight animated">
                             </div>
                             <div class="col-12 col-md-8 col-lg-9">
-                                <p class="pt-5 wow animate__animated animate__fadeInDown" style="text-align: justify;">
-                                    منذ سنوات طويلة قريب من العشرين سنة خالجتني فكرة إنشاء مجلة بحوث علمية شرعية عربية
-                                    ذات طابع علمي
-                                    أكاديمي ولعل ذلك كان بتاريخ 1405 هـ وكنت أستشير شيخي العلامة محمد بن صالح العثيمين
-                                    رحمه الله وأطرح
-                                    عليه مثل هذه الفكرة ويشجعني عليها ، وأبدى استعداده في دعمه لهذه الفكرة ماليا وعلميا
-                                    ومعنويا وقد أوفى
-                                    بوعده رحمه الله فكانت له مشاركة في أول عدد من صدورها وذلك بتاريخ 1/5/1414 هـ وكانت
-                                    بعنوان ( منظومة في
-                                    أصول الفقه ـ 102 بيت ) خص بها المجلة ولم تطبع من قبل وكانت في أدراج مكتبته سنوات
-                                    طويلة وهي من أجمل ما
-                                    نظم في أصول الفقه.
-                                    <a href="/magazine-Introduction" class="btn-get-started scrollto">
-                                        قراءة المزيد
-                                    </a>
-                                </p>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="wow animate__animated animate__fadeInDown" style="text-align: justify;">
+                                            منذ سنوات طويلة قريب من العشرين سنة خالجتني فكرة إنشاء مجلة بحوث علمية شرعية
+                                            عربية
+                                            ذات طابع علمي
+                                            أكاديمي ولعل ذلك كان بتاريخ 1405 هـ وكنت أستشير شيخي العلامة محمد بن صالح
+                                            العثيمين
+                                            رحمه الله وأطرح
+                                            عليه مثل هذه الفكرة ويشجعني عليها ، وأبدى استعداده في دعمه لهذه الفكرة ماليا
+                                            وعلميا
+                                            ومعنويا وقد أوفى
+                                            بوعده رحمه الله فكانت له مشاركة في أول عدد من صدورها وذلك بتاريخ 1/5/1414 هـ
+                                            وكانت
+                                            بعنوان ( منظومة في
+                                            أصول الفقه ـ 102 بيت ) خص بها المجلة ولم تطبع من قبل وكانت في أدراج مكتبته سنوات
+                                            طويلة وهي من أجمل ما
+                                            نظم في أصول الفقه.
+                                            <a href="/magazine-Introduction" class="btn-get-started scrollto">
+                                                قراءة المزيد
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

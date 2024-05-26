@@ -41,7 +41,7 @@
                             </strong>
 
                             <strong class=" wow animate__animated animate__fadeInDown animate__delay-3s">
-                                جوال : 00966505751684
+                                جوال : 966505751684+
                                 <br>
                                 العنوان : السعودية ــ المدينة المنورة
                                 <br>
