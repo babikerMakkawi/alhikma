@@ -1,6 +1,33 @@
 @extends('layout.master')
 
 @section('content')
+    <style>
+        .card-header{
+            position: relative;
+            background: #8e394b;
+            color: white;
+            background-blend-mode: color-burn;
+            background-image: linear-gradient(67.5deg, #ffffff 10%, transparent 10%), linear-gradient(157.5deg, #ffffff 10%, transparent 10%), linear-gradient(67.5deg, transparent 90%, #ffffff 90%), linear-gradient(157.5deg, transparent 90%, #ffffff 90%), linear-gradient(22.5deg, #ffffff 10%, transparent 10%), linear-gradient(112.5deg, #ffffff 10%, transparent 10%), linear-gradient(22.5deg, transparent 90%, #ffffff 90%), linear-gradient(112.5deg, transparent 90%, #ffffff 90%), linear-gradient(22.5deg, transparent 33%, #d5d8dc 33%, #d5d8dc 36%, transparent 36%, transparent 64%, #d5d8dc 64%, #d5d8dc 67%, transparent 67%), linear-gradient(-22.5deg, transparent 33%, #d5d8dc 33%, #d5d8dc 36%, transparent 36%, transparent 64%, #d5d8dc 64%, #d5d8dc 67%, transparent 67%), linear-gradient(112.5deg, transparent 33%, #d5d8dc 33%, #d5d8dc 36%, transparent 36%, transparent 64%, #d5d8dc 64%, #d5d8dc 67%, transparent 67%), linear-gradient(-112.5deg, transparent 33%, #d5d8dc 33%, #d5d8dc 36%, transparent 36%, transparent 64%, #d5d8dc 64%, #d5d8dc 67%, transparent 67%);
+            background-size: 50px 50px;
+            background-position: -100px 150px, -150px 150px, -150px 100px, -100px 100px, -150px 100px, -100px 100px, -100px 150px, -150px 150px, 0 0, 0 0, 0 0, 0 0;
+        }
+        
+        .card-header .overlay {
+            background: black;
+            opacity: .25;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            top: 0;   
+        }
+
+
+        .card-header h2{
+            text-shadow: 0px 0px 0px #000000, 0 0 .1em #000000, 0 0 0.1em #000000;
+        }
+    </style>
     <main id="main" dir="rtl">
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
@@ -24,6 +51,10 @@
                             <div class="col-12">
                                 <div class="card bg-light  wow animate__animated animate__fadeInLeft">
                                     <div class="card-header">
+                                        <div class="overlay"></div>
+                                        <h2 class="position-relative text-2xl m-5 text-center">
+                                            يُنشر البحث لمدة عام ابتداءً من تاريخ نشره، وبعد ذلك يُحذف ما لم يقم الباحث بتجديد النشر مقابل رسوم.
+                                        </h2>
                                         <form action="{{ route('electronic-publishing') }}" method="GET"
                                             class="form-inline">
                                             <div class="input-group">

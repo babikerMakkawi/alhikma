@@ -33,7 +33,7 @@
                                     <div class="card-body ">
                                         <p>
                                             يتم ارسال البحث بنسختين، الاولى عبر الايميل ( <a
-                                                href="mailto:alhikma59@hotmail.com">alhikma59@hotmail.com</a> ) والثانية
+                                                href="mailto:Alhikma1964@hotmail.com">Alhikma1964@hotmail.com</a> ) والثانية
                                             عبر الواتس اب (<a href="http://wa.me/966505751684"
                                                 target="_blank">966505751684+</a>) وعند استلامنا
                                             البحث نشعر الباحث باستلام البحث وإن لم

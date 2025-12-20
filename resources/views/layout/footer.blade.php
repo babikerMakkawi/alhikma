@@ -9,10 +9,10 @@
                             <h3>مجلة الحكمة</h3>
                             <p>
                                 <strong>إيميل:</strong>
-                                <a href="mailto:alhikma59@hotmail.com" target="_blank">alhikma59@hotmail.com</a><br>
+                                <a href="mailto:Alhikma1964@hotmail.com" target="_blank">Alhikma1964@hotmail.com</a><br>
 
                                 <strong>هاتف:</strong>
-                                <a href="tel:+966505751684">0505751684</a><br>
+                                <a href="tel:+966505751684">966505751684+</a><br>
                             </p>
                         </div>
                     </div>
@@ -20,20 +20,20 @@
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>روابط مفيدة</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">الرئيسية</a></li>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">فهرس كشاف المجلة</a></li>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">النشر الالكتروني</a></li>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">إرسال البحوث</a></li>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/">الرئيسية</a></li>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/magazine-index">فهرس كشاف المجلة</a></li>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/electronic-publishing">النشر الالكتروني</a></li>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/sending-researches">إرسال البحوث</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>التعريف</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">التعريف بالمجلة</a></li>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">التعريف برئيس التحرير</a>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/magazine-Introduction">التعريف بالمجلة</a></li>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/editor-in-chief">التعريف برئيس التحرير</a>
                             </li>
-                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="#">التعريف بسلسلة الاصدارات</a>
+                            <li><i class="bx bx-chevron-left pb-1"></i> <a href="/series-version">التعريف بسلسلة الاصدارات</a>
                             </li>
                         </ul>
                     </div>

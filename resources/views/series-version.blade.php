@@ -45,7 +45,7 @@
                                 <br>
                                 العنوان : السعودية ــ المدينة المنورة
                                 <br>
-                                البريد الإلكتروني : alhikma59@hotmail.com
+                                البريد الإلكتروني : Alhikma1964@hotmail.com
                             </strong>
                         </div>
 

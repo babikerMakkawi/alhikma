@@ -24,6 +24,11 @@ Route::get('/login', function () {
 
 Route::get('/', function () {
     return view('index');
+})->name("homepage");
+
+
+Route::get('/R1.htm', function () {
+    return redirect()->route("homepage");
 });
 
 Route::get('sending-researches', function () {
