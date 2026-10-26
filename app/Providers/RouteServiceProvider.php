@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Researches\ResearchIndex;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -26,6 +27,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        // Explicit route model binding for researchesIndex
+        Route::bind('researchesIndex', function ($value) {
+            return ResearchIndex::findOrFail($value);
         });
 
         $this->routes(function () {

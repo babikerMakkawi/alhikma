@@ -39,9 +39,21 @@
                                     </div>
                                 @endif
 
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @endif
+
+                                @if ($message = Session::get('warning'))
+                                    <div class="alert alert-warning">
+                                        {{ $message }}
+                                    </div>
+                                @endif
+
                                 {{-- Card --}}
                                 <div class="card bg-light  wow animate__animated animate__fadeInLeft">
-                                    <div class="card-header d-flex justify-content-between">
+                                    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
 
                                         <form action="{{ route('researchesIndex.index') }}" method="GET"
                                             class="form-inline">
@@ -88,11 +100,32 @@
                                         </form>
 
 
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            إصافة بحث
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                        </button>
+                                        <div class="d-flex gap-2 flex-wrap">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                إصافة بحث
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#importExcelModal">
+                                                استيراد Excel
+                                                <i class="fa fa-file-excel" aria-hidden="true"></i>
+                                            </button>
+
+                                            @if ($research_index->total() > 0)
+                                                <form method="POST" action="{{ route('researchesIndex.deleteAll') }}"
+                                                    class="d-inline"
+                                                    onSubmit='return confirm("هل أنت متأكد من حذف جميع فهارس البحوث ({{ $research_index->total() }} عنصر)؟ هذا الإجراء لا يمكن التراجع عنه.")'>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        حذف الكل
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
 
                                     </div>
                                     <div class="card-body">
@@ -115,19 +148,28 @@
                                                         <td>{{ $index->researcher }}</td>
                                                         <td>{{ $index->number }}</td>
                                                         <td>
-                                                            <form method="post"
-                                                                action="{{ route('researchesIndex.destroy', $index->id) }}"
-                                                                onSubmit='return confirm("هل أنت متأكد؟")'
-                                                                class="btn-group">
-                                                                @csrf
-                                                                @method('DELETE')
-
-                                                                <button type="submit"
-                                                                    class="btn btn-danger btn-sm rounded-0">
-                                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                            <div class="d-flex gap-1">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editModal{{ $index->id }}"
+                                                                    title="تعديل">
+                                                                    <i class="fa fa-edit" aria-hidden="true"></i>
                                                                 </button>
-                                                            </form>
 
+                                                                <form method="post"
+                                                                    action="{{ route('researchesIndex.destroy', $index->id) }}"
+                                                                    onSubmit='return confirm("هل أنت متأكد؟")'
+                                                                    class="d-inline">
+                                                                    @csrf
+                                                                    @method('DELETE')
+
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger btn-sm"
+                                                                        title="حذف">
+                                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @empty
@@ -223,6 +265,107 @@
                 </div>
             </div>
         </div>
+
+        {{-- Import Excel Modal --}}
+        <div class="modal fade" id="importExcelModal" tabindex="-1" role="dialog"
+            aria-labelledby="importExcelModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="importExcelModalLabel">استيراد بيانات من ملف Excel</h5>
+                        <button type="button" class="btn btn-secondary pb-0 pt-1 px-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" action="{{ route('researchesIndex.importExcel') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="excel_file" class="form-label">اختر ملف Excel</label>
+                                <input type="file" class="form-control" id="excel_file" name="excel_file"
+                                    accept=".xlsx,.xls,.csv" required>
+                                <small class="form-text text-muted">
+                                    يجب أن يحتوي الملف على الأعمدة التالية بالترتيب:<br>
+                                    <strong>الموضوع, إسم البحث, إسم الباحث, العدد</strong><br>
+                                    الصف الأول يجب أن يحتوي على أسماء الأعمدة (Header)
+                                </small>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                            <button type="submit" class="btn btn-success">استيراد</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- Edit Modals --}}
+        @foreach ($research_index as $index)
+            <div class="modal fade" id="editModal{{ $index->id }}" tabindex="-1" role="dialog"
+                aria-labelledby="editModalLabel{{ $index->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel{{ $index->id }}">تعديل فهرس البحث</h5>
+                            <button type="button" class="btn btn-secondary pb-0 pt-1 px-2" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="post" action="{{ route('researchesIndex.update', $index->id) }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+
+                                {{-- subject --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-label-form">الموضوع</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="subject" value="{{ old('subject', $index->subject) }}"
+                                            class="form-control" />
+                                    </div>
+                                </div>
+
+                                {{-- title --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-label-form">عنوان البحث</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="title" value="{{ old('title', $index->title) }}"
+                                            class="form-control" />
+                                    </div>
+                                </div>
+
+                                {{-- researcher --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-label-form">إسم الباحث</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="researcher"
+                                            value="{{ old('researcher', $index->researcher) }}" class="form-control" />
+                                    </div>
+                                </div>
+
+                                {{-- number --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-label-form">العدد</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="number" value="{{ old('number', $index->number) }}"
+                                            class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                                <button type="submit" class="btn btn-primary">تحديث</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
 
     </main><!-- End #main -->
 @endsection

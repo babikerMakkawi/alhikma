@@ -29,6 +29,12 @@
                                     </div>
                                 @endif
 
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @endif
+
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -166,9 +172,24 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="{{ route('researches.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('researches.store') }}" enctype="multipart/form-data"
+                        id="createResearchForm">
                         @csrf
                         <div class="modal-body">
+
+                            @if ($errors->any() || Session::has('error'))
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @if (Session::has('error'))
+                                            <li>{{ Session::get('error') }}</li>
+                                        @endif
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <small>يرجى إعادة اختيار ملف البحث قبل الحفظ.</small>
+                                </div>
+                            @endif
 
                             {{-- ID --}}
                             <div class="row mb-3">
@@ -222,20 +243,41 @@
                                     <span class="text-danger">(Pdf ملف)</span>
                                 </label>
                                 <div class="col-sm-10">
-                                    <input type="file" name="file" value="{{ old('file') }}"
+                                    <input type="file" name="file" accept=".pdf,application/pdf"
                                         class="form-control" />
+                                    <small class="text-muted">الحد الأقصى 100 ميجابايت</small>
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
+                            <span class="text-muted me-auto d-none" id="uploadingNote">
+                                جاري حفظ البحث ورفع الملف، يرجى عدم إغلاق الصفحة...
+                            </span>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="submit" class="btn btn-primary" id="createResearchSubmit">حفظ</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Reopen the create modal when the last save failed, so the errors are seen next to the form
+                @if ($errors->any() || Session::has('error'))
+                    bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal')).show();
+                @endif
+
+                // Show progress while the (possibly large) file uploads and block double submits
+                document.getElementById('createResearchForm').addEventListener('submit', function() {
+                    var button = document.getElementById('createResearchSubmit');
+                    button.disabled = true;
+                    button.textContent = 'جاري الحفظ...';
+                    document.getElementById('uploadingNote').classList.remove('d-none');
+                });
+            });
+        </script>
 
     </main><!-- End #main -->
 @endsection
