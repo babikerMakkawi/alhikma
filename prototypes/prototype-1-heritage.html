@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مجلة الحكمة — نموذج «المخطوط التراثي»</title>
+<meta name="description" content="مجلة الحكمة: مجلة بحثية علمية شرعية ثقافية محكّمة — نموذج تصميم أولي">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        maroon: { 50:'#fff4f4',100:'#ffe6e6',200:'#ffcaca',300:'#ffa4a6',400:'#fb7079',500:'#e2495a',600:'#c03144',700:'#9f2235',800:'#73091f',900:'#5e111c',950:'#3f060f', DEFAULT:'#73091f' },
+        gold:   { 100:'#f4e8cc',200:'#e8d3a2',300:'#d6b673',400:'#c19a52',500:'#a8843f',600:'#8a6a2c',700:'#6e5322',800:'#523d18' },
+        parchment: { 50:'#fdfaf3',100:'#f8f2e5',200:'#f1e7d2',300:'#e6d6b5',400:'#d9c49c' },
+        ink: { DEFAULT:'#211a16', 800:'#2c231e', 700:'#3a2f28', 600:'#54473d', 500:'#6b5d51' },
+        ok: { DEFAULT:'#1f6b45', soft:'#e3f1e8' },
+        bad:{ DEFAULT:'#a3231f', soft:'#fbe6e4' }
+      },
+      fontFamily: {
+        display: ['Amiri','"Noto Naskh Arabic"','serif'],
+        sans: ['"IBM Plex Sans Arabic"','system-ui','sans-serif'],
+        ruqaa: ['"Aref Ruqaa"','Amiri','serif']
+      },
+      fontSize: {
+        'xs': ['0.8125rem',{lineHeight:'1.6'}],
+        'sm': ['0.9375rem',{lineHeight:'1.7'}],
+        'base': ['1.0625rem',{lineHeight:'1.85'}],
+        'lg': ['1.25rem',{lineHeight:'1.8'}],
+        'xl': ['1.5rem',{lineHeight:'1.6'}],
+        '2xl': ['1.875rem',{lineHeight:'1.5'}],
+        '3xl': ['2.375rem',{lineHeight:'1.4'}],
+        '4xl': ['3rem',{lineHeight:'1.3'}],
+        '5xl': ['4rem',{lineHeight:'1.2'}]
+      },
+      maxWidth: { 'prose-ar':'68ch' },
+      boxShadow: { 'leaf':'0 1px 0 rgba(110,83,34,.08), 0 10px 30px -12px rgba(63,6,15,.18)' }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{ --gold:#a8843f; --maroon:#73091f; --paper:#f8f2e5; }
+  html{ background:var(--paper); }
+  body{ overflow-x:clip; background-color:var(--paper);
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgba(214,182,115,.18), transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, rgba(115,9,31,.06), transparent 60%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .43  0 0 0 0 .33  0 0 0 0 .13  0 0 0 .05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  /* Lenis */
+  html.lenis, html.lenis body{ height:auto; }
+  .lenis.lenis-smooth{ scroll-behavior:auto !important; }
+  .lenis.lenis-stopped{ overflow:hidden; }
+
+  /* Girih lattice (8-point star) */
+  .girih, .page-head{ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='none' stroke='%23a8843f' stroke-width='.7' stroke-opacity='.32'><path d='M40 12 68 40 40 68 12 40Z'/><path d='M20 20H60V60H20Z'/><path d='M0 0 20 20M80 0 60 20M0 80 20 60M80 80 60 60M40 0V12M40 68V80M0 40H12M68 40H80'/><circle cx='40' cy='40' r='6'/></svg>"); background-size:80px 80px; }
+  .girih-light{ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='none' stroke='%23d6b673' stroke-width='.7' stroke-opacity='.22'><path d='M40 12 68 40 40 68 12 40Z'/><path d='M20 20H60V60H20Z'/><path d='M0 0 20 20M80 0 60 20M0 80 20 60M80 80 60 60M40 0V12M40 68V80M0 40H12M68 40H80'/><circle cx='40' cy='40' r='6'/></svg>"); background-size:80px 80px; }
+
+  /* Manuscript rule with central star */
+  .ms-rule{ display:flex; align-items:center; gap:.75rem; color:var(--gold); }
+  .ms-rule::before,.ms-rule::after{ content:""; flex:1; height:5px; border-top:1px solid currentColor; border-bottom:1px solid currentColor; opacity:.55; }
+
+  /* Gold double-ruled frame */
+  .gold-frame{ position:relative; border:1px solid rgba(168,132,63,.7); }
+  .gold-frame::before{ content:""; position:absolute; inset:6px; border:1px solid rgba(168,132,63,.45); pointer-events:none; }
+  .corner{ position:absolute; width:22px; height:22px; color:var(--gold); background:var(--paper); }
+  .corner.tl{ top:-11px; left:-11px } .corner.tr{ top:-11px; right:-11px } .corner.bl{ bottom:-11px; left:-11px } .corner.br{ bottom:-11px; right:-11px }
+
+  /* Focus */
+  :focus-visible{ outline:2px solid var(--maroon); outline-offset:3px; border-radius:4px; box-shadow:0 0 0 5px rgba(214,182,115,.55); }
+  .on-dark :focus-visible{ outline-color:#e8d3a2; box-shadow:0 0 0 5px rgba(232,211,162,.25); }
+
+  /* Pages */
+  [data-page]{ display:none; }
+  [data-page].is-active{ display:block; }
+  body[data-route="dashboard"] #site-header, body[data-route="dashboard"] #site-footer{ display:none; }
+
+  /* Responsive table → cards */
+  @media (max-width: 767px){
+    .rtable thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .rtable, .rtable tbody, .rtable tr, .rtable td{ display:block; width:100%; }
+    .rtable tr{ border:1px solid #e6d6b5; border-radius:10px; background:#fdfaf3; margin-bottom:.75rem; padding:.5rem .875rem; }
+    .rtable td{ border:0 !important; padding:.375rem 0 !important; display:grid; grid-template-columns: 6.5rem 1fr; gap:.5rem; align-items:start; }
+    .rtable td::before{ content:attr(data-label); font-size:.8125rem; color:#6b5d51; font-weight:600; }
+    .rtable td.td-empty{ display:block; } .rtable td.td-empty::before{ content:none; }
+  }
+  .no-scrollbar{ scrollbar-width:none; } .no-scrollbar::-webkit-scrollbar{ display:none; }
+
+  dialog::backdrop{ background:rgba(33,26,22,.55); backdrop-filter:blur(2px); }
+  dialog[open]{ animation:dlg .22s ease-out; }
+  @keyframes dlg{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  details > summary{ list-style:none; } details > summary::-webkit-details-marker{ display:none; }
+  details[open] .chev{ transform:rotate(180deg); }
+  .num{ font-variant-numeric:tabular-nums; }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body class="font-sans text-ink text-base antialiased" data-route="home">
+
+<!-- SVG symbols -->
+<svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
+  <symbol id="star8" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2.5 19.5 12 12 21.5 4.5 12Z" transform="rotate(45 12 12)"/><path d="M12 2.5 19.5 12 12 21.5 4.5 12Z"/><circle cx="12" cy="12" r="2.4"/></g></symbol>
+  <symbol id="star8-solid" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l2.9 4.1 4.9-1-1 4.9 4.1 2.5-4.1 2.5 1 4.9-4.9-1L12 22.5l-2.9-4.1-4.9 1 1-4.9L1.1 12l4.1-2.5-1-4.9 4.9 1z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></g></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m6-6-6 6 6 6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></g></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m8 9 4-4 4 4M8 15l4 4 4-4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></g></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m-5 5 5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 6.5C10 5 7 4.5 3.5 5v13.5C7 18 10 18.5 12 20c2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5V20"/></g></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M9 8l-4 4 4 4M5 12h10"/></symbol>
+</svg>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:right-3 focus:z-[100] focus:bg-maroon-800 focus:text-parchment-50 focus:px-4 focus:py-3 focus:rounded-md">تخطَّ إلى المحتوى</a>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="sticky top-0 z-40 bg-parchment-100/90 backdrop-blur supports-[backdrop-filter]:bg-parchment-100/80 border-b border-gold-500/40">
+  <div class="h-1 bg-maroon-800"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 h-[72px]">
+    <a href="#home" class="flex items-center gap-3 shrink-0 min-h-[44px]" aria-label="مجلة الحكمة — الصفحة الرئيسية">
+      <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="w-11 h-11 rounded-full ring-1 ring-gold-500/60 bg-parchment-50 object-contain">
+      <span class="leading-tight">
+        <span class="block font-ruqaa text-2xl text-maroon-800">الحكمة</span>
+        <span class="block text-[11px] text-ink-500 tracking-normal">مجلة علمية محكّمة · <span dir="ltr">ISSN 2754-7906</span></span>
+      </span>
+    </a>
+    <nav aria-label="التنقل الرئيسي" class="hidden xl:block">
+      <ul class="flex items-center gap-1 text-sm font-medium" id="nav-desktop">
+        <li><a data-nav href="#home" class="nav-link">الرئيسية</a></li>
+        <li><a data-nav href="#about" class="nav-link">التعريف بالمجلة</a></li>
+        <li><a data-nav href="#editor" class="nav-link">رئيس التحرير</a></li>
+        <li><a data-nav href="#series" class="nav-link">سلسلة الإصدارات</a></li>
+        <li><a data-nav href="#index" class="nav-link">فهرس الكشاف</a></li>
+        <li><a data-nav href="#epub" class="nav-link">النشر الإلكتروني</a></li>
+        <li><a data-nav href="#submit" class="nav-link">إرسال البحوث</a></li>
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#login" class="hidden sm:inline-flex items-center min-h-[44px] px-4 rounded-md border border-maroon-800/30 text-maroon-800 text-sm font-semibold hover:bg-maroon-800 hover:text-parchment-50 transition-colors">دخول الإدارة</a>
+      <button id="menu-btn" class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-gold-500/50 text-maroon-800" aria-expanded="false" aria-controls="mobile-menu" aria-label="فتح القائمة">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="xl:hidden hidden border-t border-gold-500/30 bg-parchment-50 girih">
+    <nav aria-label="القائمة المصغرة" class="mx-auto max-w-7xl px-4 py-4">
+      <ul class="grid gap-1 text-base font-medium">
+        <li><a data-nav href="#home" class="m-link">الرئيسية</a></li>
+        <li><a data-nav href="#about" class="m-link">التعريف بالمجلة</a></li>
+        <li><a data-nav href="#editor" class="m-link">التعريف برئيس التحرير</a></li>
+        <li><a data-nav href="#series" class="m-link">سلسلة الإصدارات</a></li>
+        <li><a data-nav href="#index" class="m-link">فهرس كشاف المجلة</a></li>
+        <li><a data-nav href="#epub" class="m-link">النشر الإلكتروني</a></li>
+        <li><a data-nav href="#submit" class="m-link">إرسال البحوث</a></li>
+        <li><a data-nav href="#login" class="m-link">تسجيل الدخول</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="outline-none">
+
+<!-- ======================= HOME ======================= -->
+<section data-page="home" aria-labelledby="h-home">
+  <!-- Hero -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+    <div class="gold-frame bg-parchment-50/70 rounded-[2px]">
+      <svg class="corner tl" aria-hidden="true"><use href="#star8"/></svg><svg class="corner tr" aria-hidden="true"><use href="#star8"/></svg>
+      <svg class="corner bl" aria-hidden="true"><use href="#star8"/></svg><svg class="corner br" aria-hidden="true"><use href="#star8"/></svg>
+      <div class="relative overflow-hidden grid lg:grid-cols-12 gap-8 items-center px-5 sm:px-10 lg:px-14 py-10 sm:py-14">
+        <div class="lg:col-span-7 relative z-10">
+          <p class="inline-flex items-center gap-2 text-sm text-gold-700 font-semibold">
+            <svg class="w-4 h-4" aria-hidden="true"><use href="#star8-solid"/></svg>
+            مجلة بحثية علمية شرعية ثقافية محكّمة
+          </p>
+          <h1 id="h-home" tabindex="-1" class="mt-3 font-display font-bold text-maroon-800 text-[3.25rem] sm:text-5xl lg:text-[4.75rem] leading-[1.15] outline-none">مجلة الحكمة</h1>
+          <p class="mt-4 font-display text-xl sm:text-2xl text-ink-700 leading-relaxed">«أكثر مجلات البحوث الإسلامية انتشاراً في العالم»</p>
+          <div class="ms-rule my-6 max-w-md" aria-hidden="true"><svg class="w-5 h-5"><use href="#star8"/></svg></div>
+          <dl class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-600">
+            <div class="flex gap-1.5"><dt>الرقم المعياري:</dt><dd class="font-semibold text-ink num" dir="ltr">ISSN 2754-7906</dd></div>
+            <div class="flex gap-1.5"><dt>آخر عدد:</dt><dd class="font-semibold text-ink">العدد 69 — 1447هـ</dd></div>
+            <div class="flex gap-1.5"><dt>المقر:</dt><dd class="font-semibold text-ink">المدينة المنورة</dd></div>
+          </dl>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#submit" class="btn-primary">أرسل بحثك <svg class="w-5 h-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#index" class="btn-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-search"/></svg> تصفّح الفهرس</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 relative">
+          <div id="hero-3d" class="absolute inset-[-10%] pointer-events-none" aria-hidden="true"><canvas class="w-full h-full block opacity-70"></canvas></div>
+          <img id="hero-img" src="../public/images/mock-up.png" alt="مجلد من إصدارات الحكمة بغلاف أخضر مذهّب: منهج أبي عبيد في تفسير غريب الحديث" class="relative mx-auto w-[78%] sm:w-[62%] lg:w-full max-w-[460px] mix-blend-multiply" width="1500" height="1125">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+    <h2 class="sr-only">المجلة بالأرقام</h2>
+    <ul class="grid grid-cols-2 lg:grid-cols-4 border-y border-gold-500/50 divide-gold-500/30 lg:divide-x lg:divide-x-reverse" id="stats">
+      <li class="reveal py-6 px-4 text-center border-b lg:border-b-0 border-gold-500/30 odd:border-l lg:odd:border-l-0 border-l-gold-500/30"><span class="block font-display font-bold text-4xl sm:text-5xl text-maroon-800 num" data-count="69">69</span><span class="block mt-1 text-sm text-ink-600">عدداً صادراً</span></li>
+      <li class="reveal py-6 px-4 text-center border-b lg:border-b-0 border-gold-500/30"><span class="block font-display font-bold text-4xl sm:text-5xl text-maroon-800 num" data-count="673">673</span><span class="block mt-1 text-sm text-ink-600">بحثاً مفهرساً</span></li>
+      <li class="reveal py-6 px-4 text-center odd:border-l lg:odd:border-l-0 border-l-gold-500/30"><span class="block font-display font-bold text-4xl sm:text-5xl text-maroon-800 num" data-count="70">70</span><span class="block mt-1 text-sm text-ink-600">دولة وصلتها المجلة</span></li>
+      <li class="reveal py-6 px-4 text-center"><span class="block font-display font-bold text-4xl sm:text-5xl text-maroon-800 num"><span class="text-xl align-middle text-ink-600 font-sans font-normal">منذ </span><span data-count="1414">1414</span><span class="text-2xl">هـ</span></span><span class="block mt-1 text-sm text-ink-600">سنة التأسيس</span></li>
+    </ul>
+  </div>
+
+  <!-- About teaser -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28 grid lg:grid-cols-12 gap-10 items-start">
+    <div class="lg:col-span-7 reveal">
+      <p class="eyebrow">عن المجلة</p>
+      <h2 class="h2">ثلاثون عاماً في خدمة البحث الشرعي والعربي</h2>
+      <p class="mt-5 text-ink-700 max-w-prose-ar">صدرت مجلة الحكمة في <strong class="text-ink">1/5/1414هـ (16/10/1993م)</strong> بإشراف مؤسسها الشيخ د. وليد بن أحمد الحسين، وبتشجيع من العلامة محمد بن صالح العثيمين رحمه الله. وهي مجلة محكّمة منذ عددها العشرين (شوال 1420هـ)، يتجاوز العدد منها 300 إلى 500 صفحة، وتُطبع حتى 6,000 نسخة تصل إلى نحو 70 دولة.</p>
+      <p class="mt-4 text-ink-700 max-w-prose-ar">تُتاح النصوص الكاملة لبحوث الأعداد المطبوعة عبر قاعدة <span class="font-semibold">«دار المنظومة»</span>.</p>
+      <a href="#about" class="link-more mt-6">اقرأ التعريف الكامل بالمجلة <svg class="w-4 h-4" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <figure class="lg:col-span-5 reveal relative bg-maroon-800 text-parchment-100 rounded-sm p-8 sm:p-10 girih-light on-dark">
+      <svg class="w-10 h-10 text-gold-300" aria-hidden="true"><use href="#star8"/></svg>
+      <blockquote class="mt-4 font-display text-2xl leading-relaxed text-parchment-50">افتُتح العدد الأول بـ«منظومة في أصول الفقه» للعلامة ابن عثيمين في 102 بيت.</blockquote>
+      <figcaption class="mt-6 text-sm text-gold-200 border-t border-gold-300/30 pt-4">العدد الأول — جمادى الأولى 1414هـ</figcaption>
+    </figure>
+  </div>
+
+  <!-- Committee -->
+  <div class="mt-20 sm:mt-28 bg-parchment-200/60 border-y border-gold-500/30">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="reveal max-w-2xl">
+        <p class="eyebrow">لجنة التحكيم</p>
+        <h2 class="h2">محكّمون من كبرى الجامعات</h2>
+        <p class="mt-3 text-ink-600">تخضع البحوث للتحكيم العلمي منذ العدد العشرين، ويحصل الباحث على خطاب تحكيم رسمي يُعتمد في الترقيات العلمية.</p>
+      </div>
+      <ul class="mt-10 grid sm:grid-cols-2 gap-x-10">
+        <li class="reveal committee"><span class="cnum">١</span><div><p class="cname">أ.د. حكمت بشير ياسين</p><p class="cuni">جامعة الملك عبدالعزيز — جدة</p></div></li>
+        <li class="reveal committee"><span class="cnum">٢</span><div><p class="cname">أ.د. ناصر بن عبدالله القفاري</p><p class="cuni">جامعة القصيم</p></div></li>
+        <li class="reveal committee"><span class="cnum">٣</span><div><p class="cname">أ.د. محمد إسحاق محمد آل إبراهيم</p><p class="cuni">جامعة الإمام محمد بن سعود الإسلامية — الرياض</p></div></li>
+        <li class="reveal committee"><span class="cnum">٤</span><div><p class="cname">أ.د. أحمد خالد شكري</p><p class="cuni">الجامعة الأردنية — عمّان</p></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Latest e-published -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
+    <div class="flex flex-wrap items-end justify-between gap-4 reveal">
+      <div><p class="eyebrow">النشر الإلكتروني</p><h2 class="h2">أحدث البحوث المنشورة</h2></div>
+      <a href="#epub" class="link-more">جميع البحوث المنشورة <svg class="w-4 h-4" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ol id="latest-list" class="mt-8 border-t border-gold-500/40"></ol>
+  </div>
+
+  <!-- Series carousel -->
+  <div class="mt-20 sm:mt-28 bg-ink text-parchment-100 girih-light on-dark">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="flex flex-wrap items-end justify-between gap-4 reveal">
+        <div>
+          <p class="text-sm font-semibold text-gold-300">سلسلة إصدارات الحكمة</p>
+          <h2 class="mt-2 font-display font-bold text-3xl sm:text-4xl text-parchment-50">مؤلفات وتحقيقات منذ 1420هـ</h2>
+          <p class="mt-3 text-parchment-200/90 max-w-xl">سلسلة علمية مستقلة عن المجلة، تضم 23 إصداراً في التفسير والحديث واللغة والتراجم.</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="car-btn" data-car="prev" aria-label="الإصدار السابق"><svg class="w-5 h-5 rotate-180" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button class="car-btn" data-car="next" aria-label="الإصدار التالي"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+      <div id="car-track" class="mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2" tabindex="0" role="region" aria-label="أغلفة سلسلة الإصدارات، مرّر أفقياً"></div>
+      <a href="#series" class="mt-8 inline-flex items-center gap-2 min-h-[44px] text-gold-200 font-semibold hover:text-parchment-50 underline-offset-4 hover:underline">عرض السلسلة كاملة <svg class="w-4 h-4" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+
+  <!-- How to submit -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
+    <div class="reveal max-w-2xl"><p class="eyebrow">إرسال البحوث</p><h2 class="h2">من الإرسال إلى خطاب التحكيم</h2></div>
+    <ol class="mt-10 grid md:grid-cols-4 gap-6">
+      <li class="reveal step"><span class="snum">1</span><h3 class="sh">أرسل نسختين</h3><p class="sp">عبر البريد الإلكتروني والواتساب، بصيغتي Word وPDF.</p></li>
+      <li class="reveal step"><span class="snum">2</span><h3 class="sh">تأكيد الاستلام</h3><p class="sp">يصلك إشعار بالاستلام، وإن لم يصلك فأعد الإرسال.</p></li>
+      <li class="reveal step"><span class="snum">3</span><h3 class="sh">رسوم التحكيم</h3><p class="sp">750 ريالاً (≈ 200 دولار) بتحويل بنكي أو ويسترن يونيون.</p></li>
+      <li class="reveal step"><span class="snum">4</span><h3 class="sh">خطاب التحكيم</h3><p class="sp">خلال شهر إلى شهرين، مع إمكانية النشر الإلكتروني فوراً.</p></li>
+    </ol>
+    <div class="reveal mt-10 flex flex-wrap items-center gap-4 p-6 sm:p-8 border border-gold-500/50 bg-parchment-50 rounded-sm">
+      <p class="flex-1 min-w-[16rem] text-ink-700"><span class="font-display text-xl font-bold text-maroon-800">رسوم التحكيم 750 ر.س</span> · رسوم النشر الإلكتروني 800 ر.س لمدة عام قابلة للتجديد.</p>
+      <a href="#submit" class="btn-primary">تفاصيل الإرسال والضوابط <svg class="w-5 h-5" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+  <div class="h-20 sm:h-28"></div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section data-page="about" aria-labelledby="h-about">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">التعريف بالمجلة</p>
+      <h1 id="h-about" tabindex="-1" class="h1">مجلة الحكمة: النشأة والرسالة</h1>
+      <p class="lead">مجلة بحثية علمية شرعية ثقافية محكّمة، تصدر من المدينة المنورة، وتعنى بالبحوث الشرعية والعربية والتربوية والإنسانية.</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-12 gap-12">
+    <article class="lg:col-span-7">
+      <h2 class="h3 reveal">مسيرة المجلة</h2>
+      <ol class="mt-6 relative border-s-2 border-gold-500/40 ps-6 space-y-8">
+        <li class="reveal tl-item"><p class="tl-date">1/5/1414هـ — 16/10/1993م</p><h3 class="tl-title">صدور العدد الأول</h3><p class="tl-text">أسسها الشيخ د. وليد بن أحمد الحسين بتشجيع من العلامة محمد بن صالح العثيمين رحمه الله، الذي أسهم في العدد الأول بـ«منظومة في أصول الفقه» في 102 بيت.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">شوال 1420هـ</p><h3 class="tl-title">التحكيم العلمي منذ العدد 20</h3><p class="tl-text">أصبحت المجلة محكّمة، وصار الباحث يحصل على خطاب تحكيم رسمي يُعتمد في الترقيات الأكاديمية.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">1420هـ</p><h3 class="tl-title">انطلاق سلسلة الإصدارات</h3><p class="tl-text">سلسلة مؤلفات وتحقيقات مستقلة عن المجلة بلغت 23 إصداراً.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">1447هـ</p><h3 class="tl-title">صدور العدد 69</h3><p class="tl-text">بلغ عدد البحوث المفهرسة نحو 673 بحثاً، وتصل المجلة إلى نحو 70 دولة.</p></li>
+      </ol>
+    </article>
+    <aside class="lg:col-span-5 space-y-6">
+      <div class="reveal card">
+        <h2 class="h3">حقائق موجزة</h2>
+        <dl class="mt-4 divide-y divide-gold-500/25 text-sm">
+          <div class="fact"><dt>الرقم المعياري (بريطانيا)</dt><dd dir="ltr" class="num">2754-7906</dd></div>
+          <div class="fact"><dt>المقر</dt><dd>المدينة المنورة</dd></div>
+          <div class="fact"><dt>عدد الصفحات للعدد</dt><dd>300 – 500+ صفحة</dd></div>
+          <div class="fact"><dt>النسخ المطبوعة</dt><dd>حتى 6,000 نسخة</dd></div>
+          <div class="fact"><dt>الانتشار</dt><dd>نحو 70 دولة</dd></div>
+          <div class="fact"><dt>النص الكامل</dt><dd>دار المنظومة <span dir="ltr">mandumah.com</span></dd></div>
+        </dl>
+      </div>
+      <div class="reveal card">
+        <h2 class="h3">مجالات النشر</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          <li class="chip">العلوم الشرعية</li><li class="chip">اللغة العربية</li><li class="chip">الدراسات التربوية</li><li class="chip">الدراسات الإنسانية</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <div class="bg-parchment-200/60 border-y border-gold-500/30">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="h3 reveal">لجنة التحكيم</h2>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-x-10" id="about-committee"></ul>
+    </div>
+  </div>
+  <div class="h-16"></div>
+</section>
+
+<!-- ======================= EDITOR ======================= -->
+<section data-page="editor" aria-labelledby="h-editor">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">التعريف برئيس التحرير</p>
+      <h1 id="h-editor" tabindex="-1" class="h1">د. وليد بن أحمد بن صالح الحسين</h1>
+      <p class="lead">أبو عبدالله التميمي — مؤسس مجلة الحكمة ورئيس تحريرها.</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-12 gap-12">
+    <aside class="lg:col-span-4 reveal">
+      <div class="gold-frame bg-parchment-50 p-8 text-center">
+        <div class="mx-auto w-32 h-32 rounded-full bg-maroon-800 text-gold-200 grid place-items-center girih-light" aria-hidden="true"><span class="font-ruqaa text-5xl">و</span></div>
+        <p class="mt-5 font-display text-xl font-bold text-maroon-800">وليد بن أحمد الحسين</p>
+        <p class="text-sm text-ink-600">المدينة المنورة منذ 1415هـ</p>
+        <dl class="mt-6 text-sm text-start divide-y divide-gold-500/25">
+          <div class="fact"><dt>المولد</dt><dd>الزبير، العراق — 1384هـ / 1964م</dd></div>
+          <div class="fact"><dt>الطلب</dt><dd>13 عاماً على ابن عثيمين بعنيزة</dd></div>
+        </dl>
+      </div>
+    </aside>
+    <article class="lg:col-span-8">
+      <h2 class="h3 reveal">المسيرة العلمية</h2>
+      <ol class="mt-6 relative border-s-2 border-gold-500/40 ps-6 space-y-8">
+        <li class="reveal tl-item"><p class="tl-date">عنيزة</p><h3 class="tl-title">الطلب على العلامة ابن عثيمين</h3><p class="tl-text">لازم الشيخ محمد بن صالح العثيمين ثلاث عشرة سنة.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">1414هـ</p><h3 class="tl-title">البكالوريوس</h3><p class="tl-text">كلية اللغة العربية — جامعة الإمام محمد بن سعود الإسلامية.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">الماجستير</p><h3 class="tl-title">تحقيق «درج الدرر في تفسير الآي والسور» للجرجاني</h3><p class="tl-text">في أربعة مجلدات.</p></li>
+        <li class="reveal tl-item"><p class="tl-date">الدكتوراه</p><h3 class="tl-title">تحقيق «الدرر السنية على شرح الألفية» لزكريا الأنصاري</h3></li>
+      </ol>
+      <h2 class="h3 mt-14 reveal">من مؤلفاته وتحقيقاته</h2>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-4">
+        <li class="reveal work">منهج أبي عبيد في تفسير غريب الحديث</li>
+        <li class="reveal work">الكشف والتنبيه على الوصف والتشبيه للصفدي</li>
+        <li class="reveal work">موسوعة الحافظ ابن حجر الحديثية <span>6 مجلدات</span></li>
+        <li class="reveal work">الموسوعة الميسرة في تراجم أئمة التفسير والنحو واللغة <span>3 مجلدات</span></li>
+        <li class="reveal work">الجامع لحياة العلامة ابن عثيمين</li>
+        <li class="reveal work">الجامع للرسائل والأطاريح في الجامعات العراقية <span>17,499 رسالة</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ======================= SERIES ======================= -->
+<section data-page="series" aria-labelledby="h-series">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">سلسلة الإصدارات</p>
+      <h1 id="h-series" tabindex="-1" class="h1">سلسلة إصدارات الحكمة</h1>
+      <p class="lead">سلسلة علمية مستقلة عن المجلة منذ 1420هـ. للحصول على أيٍّ من الإصدارات يُرجى التواصل مع إدارة المجلة.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn-primary" href="https://wa.me/966505751684" target="_blank" rel="noopener"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-wa"/></svg> اطلب عبر واتساب</a>
+        <a class="btn-secondary" href="mailto:Alhikma1964@hotmail.com"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-mail"/></svg> راسلنا بالبريد</a>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <ul id="series-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10"></ul>
+  </div>
+</section>
+
+<!-- ======================= INDEX ======================= -->
+<section data-page="index" aria-labelledby="h-index">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">فهرس كشاف المجلة</p>
+      <h1 id="h-index" tabindex="-1" class="h1">كشّاف البحوث المنشورة في الأعداد المطبوعة</h1>
+      <p class="lead">ابحث في عناوين البحوث وأسماء الباحثين والموضوعات عبر 69 عدداً. النصوص الكاملة متاحة عبر «دار المنظومة».</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <div id="dt-index"></div>
+    <p class="mt-4 text-xs text-ink-500">نموذج أولي: يعرض عيّنة من الفهرس (البيانات الكاملة 673 بحثاً).</p>
+  </div>
+</section>
+
+<!-- ======================= EPUB ======================= -->
+<section data-page="epub" aria-labelledby="h-epub">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">النشر الإلكتروني</p>
+      <h1 id="h-epub" tabindex="-1" class="h1">البحوث المنشورة إلكترونياً</h1>
+      <p class="lead">بحوث مُحكّمة نُشرت فور تحكيمها، متاحة للقراءة والتنزيل بصيغة PDF.</p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <div role="note" class="mb-8 flex gap-4 items-start p-5 border-s-4 border-gold-500 bg-gold-100/60 rounded-sm">
+      <svg class="w-6 h-6 shrink-0 text-gold-700 mt-1" aria-hidden="true"><use href="#star8"/></svg>
+      <p class="text-ink-700"><strong class="text-ink">مدة النشر:</strong> يُنشر البحث لمدة عام ابتداءً من تاريخ نشره، وبعد ذلك يُحذف ما لم يقم الباحث بتجديد النشر مقابل رسوم.</p>
+    </div>
+    <div id="dt-epub"></div>
+  </div>
+</section>
+
+<!-- ======================= SUBMIT ======================= -->
+<section data-page="submit" aria-labelledby="h-submit">
+  <div class="page-head">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="eyebrow">إرسال البحوث</p>
+      <h1 id="h-submit" tabindex="-1" class="h1">طريقة إرسال البحوث للتحكيم والنشر</h1>
+      <p class="lead">تستقبل المجلة البحوث في المجالات الشرعية والعربية والتربوية والإنسانية، ويستغرق التحكيم من شهر إلى شهرين.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn-primary" href="mailto:Alhikma1964@hotmail.com"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-mail"/></svg> أرسل بالبريد الإلكتروني</a>
+        <a class="btn-secondary" href="https://wa.me/966505751684" target="_blank" rel="noopener"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-wa"/></svg> أرسل عبر واتساب</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <h2 class="h3 reveal">خطوات الإرسال</h2>
+    <ol class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <li class="reveal step"><span class="snum">1</span><h3 class="sh">جهّز البحث وفق الضوابط</h3><p class="sp">نسخة Word ونسخة PDF مع سيرة ذاتية مختصرة.</p></li>
+      <li class="reveal step"><span class="snum">2</span><h3 class="sh">أرسل نسختين</h3><p class="sp">إلى البريد <span dir="ltr" class="font-semibold">Alhikma1964@hotmail.com</span> وإلى واتساب <span dir="ltr" class="font-semibold num">+966 50 575 1684</span>.</p></li>
+      <li class="reveal step"><span class="snum">3</span><h3 class="sh">انتظر تأكيد الاستلام</h3><p class="sp">إن لم يصلك تأكيد فأعد إرسال البحث.</p></li>
+      <li class="reveal step"><span class="snum">4</span><h3 class="sh">سدّد رسوم التحكيم</h3><p class="sp">بالتحويل إلى حساب مصرف الراجحي، أو ويسترن يونيون من خارج المملكة.</p></li>
+      <li class="reveal step"><span class="snum">5</span><h3 class="sh">التحكيم العلمي</h3><p class="sp">يستغرق من شهر إلى شهرين.</p></li>
+      <li class="reveal step"><span class="snum">6</span><h3 class="sh">خطاب التحكيم والنشر</h3><p class="sp">خطاب رسمي يُعتمد في الترقيات، مع خيار النشر الإلكتروني فوراً.</p></li>
+    </ol>
+
+    <h2 class="h3 mt-16 reveal">الرسوم</h2>
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="reveal fee">
+        <p class="text-sm font-semibold text-gold-700">رسوم التحكيم</p>
+        <p class="mt-2 font-display font-bold text-maroon-800"><span class="text-5xl num">750</span> <span class="text-xl">ريالاً سعودياً</span></p>
+        <p class="text-sm text-ink-600">ما يعادل نحو 200 دولار أمريكي</p>
+        <ul class="mt-5 space-y-2 text-sm text-ink-700">
+          <li class="flex gap-2"><svg class="w-5 h-5 text-ok shrink-0" aria-hidden="true"><use href="#i-check"/></svg>تحكيم علمي من شهر إلى شهرين</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-ok shrink-0" aria-hidden="true"><use href="#i-check"/></svg>خطاب تحكيم رسمي للترقية</li>
+        </ul>
+      </div>
+      <div class="reveal fee bg-maroon-800 text-parchment-100 border-maroon-900 on-dark">
+        <p class="text-sm font-semibold text-gold-200">رسوم النشر الإلكتروني</p>
+        <p class="mt-2 font-display font-bold text-parchment-50"><span class="text-5xl num">800</span> <span class="text-xl">ريال سعودي</span></p>
+        <p class="text-sm text-parchment-200">تُضاف بعد التحكيم، والنشر فوري</p>
+        <ul class="mt-5 space-y-2 text-sm">
+          <li class="flex gap-2"><svg class="w-5 h-5 text-gold-300 shrink-0" aria-hidden="true"><use href="#i-check"/></svg>نشر على موقع المجلة لمدة عام</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 text-gold-300 shrink-0" aria-hidden="true"><use href="#i-check"/></svg>قابل للتجديد مقابل رسوم</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7">
+        <h2 class="h3 reveal">ضوابط النشر <span class="text-base font-sans font-normal text-ink-500">(15 ضابطاً)</span></h2>
+        <div class="mt-6 border-t border-gold-500/40" id="criteria"></div>
+      </div>
+      <aside class="lg:col-span-5 space-y-6">
+        <div class="reveal gold-frame bg-parchment-50 p-6 sm:p-8">
+          <h2 class="h3">بيانات التحويل البنكي</h2>
+          <dl class="mt-5 space-y-4 text-sm">
+            <div><dt class="text-ink-500">المصرف</dt><dd class="font-semibold text-base">مصرف الراجحي</dd></div>
+            <div><dt class="text-ink-500">اسم صاحب الحساب</dt><dd class="font-semibold text-base">وليد بن أحمد بن صالح الحسين</dd></div>
+            <div>
+              <dt class="text-ink-500">رقم الحساب</dt>
+              <dd class="mt-1 flex items-center gap-2 flex-wrap">
+                <code id="acct" dir="ltr" class="num font-semibold text-lg tracking-wide bg-parchment-200 px-3 py-2 rounded">198608010097451</code>
+                <button class="btn-ghost" data-copy="198608010097451" aria-label="نسخ رقم الحساب"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-copy"/></svg><span>نسخ</span></button>
+              </dd>
+            </div>
+            <div class="pt-4 border-t border-gold-500/30">
+              <dt class="text-ink-500">من خارج المملكة — ويسترن يونيون</dt>
+              <dd class="mt-1 flex items-center gap-2 flex-wrap"><span dir="ltr" class="font-semibold">waleed ahmed al Husain</span><span class="text-ink-600">— المدينة المنورة</span>
+                <button class="btn-ghost" data-copy="waleed ahmed al Husain" aria-label="نسخ اسم المستلم"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-copy"/></svg><span>نسخ</span></button></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="reveal card">
+          <h2 class="h3">التواصل</h2>
+          <div class="mt-4 grid gap-3">
+            <a class="contact-btn" href="mailto:Alhikma1964@hotmail.com"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-mail"/></svg><span dir="ltr">Alhikma1964@hotmail.com</span></a>
+            <a class="contact-btn" href="https://wa.me/966505751684" target="_blank" rel="noopener"><svg class="w-5 h-5 text-ok" aria-hidden="true"><use href="#i-wa"/></svg><span dir="ltr" class="num">+966 50 575 1684</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= LOGIN ======================= -->
+<section data-page="login" aria-labelledby="h-login">
+  <div class="girih min-h-[calc(100vh-76px)] py-16 px-4 grid place-items-center">
+    <div class="w-full max-w-md gold-frame bg-parchment-50 shadow-leaf">
+      <svg class="corner tl" aria-hidden="true"><use href="#star8"/></svg><svg class="corner tr" aria-hidden="true"><use href="#star8"/></svg>
+      <svg class="corner bl" aria-hidden="true"><use href="#star8"/></svg><svg class="corner br" aria-hidden="true"><use href="#star8"/></svg>
+      <div class="p-8 sm:p-10">
+        <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="w-16 h-16 mx-auto rounded-full ring-1 ring-gold-500/60">
+        <h1 id="h-login" tabindex="-1" class="mt-4 text-center font-display font-bold text-3xl text-maroon-800 outline-none">تسجيل الدخول</h1>
+        <p class="text-center text-sm text-ink-600">لوحة إدارة مجلة الحكمة</p>
+        <form id="login-form" class="mt-8 space-y-5" novalidate>
+          <div>
+            <label for="lg-email" class="label">البريد الإلكتروني</label>
+            <input id="lg-email" type="email" autocomplete="username" dir="ltr" class="input text-start" placeholder="name@example.com">
+            <p class="field-err hidden" id="lg-email-err">يُرجى إدخال بريد إلكتروني صحيح.</p>
+          </div>
+          <div>
+            <label for="lg-pass" class="label">كلمة المرور</label>
+            <input id="lg-pass" type="password" autocomplete="current-password" class="input">
+          </div>
+          <label class="flex items-center gap-3 min-h-[44px] text-sm text-ink-700"><input type="checkbox" class="w-5 h-5 accent-maroon-800"> تذكّرني</label>
+          <button type="submit" class="btn-primary w-full justify-center">دخول</button>
+          <p class="text-xs text-center text-ink-500">نموذج عرض: اضغط «دخول» للانتقال إلى لوحة التحكم دون أي تحقق.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DASHBOARD ======================= -->
+<section data-page="dashboard" aria-labelledby="h-dash" class="min-h-screen">
+  <div class="lg:grid lg:grid-cols-[17rem_1fr] min-h-screen">
+    <aside class="bg-ink text-parchment-100 girih-light on-dark lg:sticky lg:top-0 lg:h-screen flex flex-col">
+      <div class="flex items-center gap-3 px-5 h-[72px] border-b border-gold-300/20">
+        <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="w-10 h-10 rounded-full ring-1 ring-gold-300/50">
+        <div><p class="font-ruqaa text-xl text-gold-200">الحكمة</p><p class="text-[11px] text-parchment-300">لوحة التحكم</p></div>
+      </div>
+      <nav aria-label="أقسام لوحة التحكم" class="p-3 lg:p-4 lg:flex-1">
+        <ul class="flex lg:flex-col gap-1 overflow-x-auto no-scrollbar">
+          <li><button class="dash-tab" data-tab="d-epub" aria-current="page"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-book"/></svg>النشر الإلكتروني</button></li>
+          <li><button class="dash-tab" data-tab="d-index"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-list"/></svg>فهرس الكشاف</button></li>
+          <li><button class="dash-tab" data-tab="d-backup"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-db"/></svg>النسخ الاحتياطية</button></li>
+        </ul>
+      </nav>
+      <div class="hidden lg:block p-4 border-t border-gold-300/20 space-y-1">
+        <a href="#home" class="dash-tab">عرض الموقع</a>
+        <a href="#login" class="dash-tab"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-out"/></svg>تسجيل الخروج</a>
+      </div>
+    </aside>
+
+    <div class="min-w-0 bg-parchment-100">
+      <div class="flex items-center justify-between gap-3 px-4 sm:px-8 h-[72px] border-b border-gold-500/30 bg-parchment-50">
+        <h1 id="h-dash" tabindex="-1" class="font-display font-bold text-2xl text-maroon-800 outline-none">لوحة التحكم</h1>
+        <div class="flex items-center gap-2">
+          <a href="#home" class="lg:hidden btn-ghost">الموقع</a>
+          <span class="hidden sm:inline text-sm text-ink-600">مرحباً، مدير التحرير</span>
+          <span class="w-10 h-10 rounded-full bg-maroon-800 text-gold-200 grid place-items-center font-display font-bold" aria-hidden="true">م</span>
+        </div>
+      </div>
+
+      <div class="p-4 sm:p-8">
+        <!-- d-epub -->
+        <div data-dpanel="d-epub">
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div><h2 class="font-display font-bold text-2xl">إدارة النشر الإلكتروني</h2><p class="text-sm text-ink-600">إضافة البحوث المنشورة وتعديلها وحذفها.</p></div>
+            <button class="btn-primary" id="open-add"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-plus"/></svg> إضافة بحث</button>
+          </div>
+          <div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="kpi"><p class="kpi-l">البحوث المنشورة</p><p class="kpi-v num" id="kpi-epub">—</p></div>
+            <div class="kpi"><p class="kpi-l">نُشر هذا الشهر</p><p class="kpi-v num">5</p></div>
+            <div class="kpi"><p class="kpi-l">تنتهي خلال 30 يوماً</p><p class="kpi-v num text-bad">3</p></div>
+            <div class="kpi"><p class="kpi-l">بحوث الفهرس</p><p class="kpi-v num">673</p></div>
+          </div>
+          <div class="mt-6 bg-parchment-50 border border-gold-500/30 rounded-md p-4 sm:p-6" id="dt-admin-epub"></div>
+        </div>
+        <!-- d-index -->
+        <div data-dpanel="d-index" hidden>
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div><h2 class="font-display font-bold text-2xl">إدارة فهرس الكشاف</h2><p class="text-sm text-ink-600">إضافة بحوث الأعداد المطبوعة أو استيرادها من ملف Excel.</p></div>
+            <div class="flex flex-wrap gap-2">
+              <button class="btn-primary" id="idx-add"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-plus"/></svg> إضافة</button>
+              <label class="btn-secondary cursor-pointer"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-upload"/></svg> استيراد Excel<input type="file" id="xls" accept=".xlsx,.xls,.csv" class="sr-only"></label>
+              <button class="btn-danger" id="idx-clear"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-trash"/></svg> حذف الكل</button>
+            </div>
+          </div>
+          <div class="mt-6 bg-parchment-50 border border-gold-500/30 rounded-md p-4 sm:p-6" id="dt-admin-index"></div>
+        </div>
+        <!-- d-backup -->
+        <div data-dpanel="d-backup" hidden>
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div><h2 class="font-display font-bold text-2xl">النسخ الاحتياطية</h2><p class="text-sm text-ink-600">لقطات من قاعدة البيانات يمكن استعادتها في أي وقت.</p></div>
+            <button class="btn-primary" id="bk-create"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-db"/></svg> إنشاء نسخة احتياطية</button>
+          </div>
+          <ul id="bk-list" class="mt-6 grid gap-3"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="site-footer" class="bg-maroon-950 text-parchment-200 girih-light on-dark">
+  <div class="h-1 bg-gold-500/70"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-3">
+        <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="w-14 h-14 rounded-full ring-1 ring-gold-300/50 bg-parchment-50">
+        <div><p class="font-ruqaa text-3xl text-gold-200">الحكمة</p><p class="text-sm">مجلة بحثية علمية شرعية ثقافية محكّمة</p></div>
+      </div>
+      <p class="mt-5 text-sm leading-7 max-w-sm">تصدر من المدينة المنورة منذ 1414هـ. الرقم المعياري الدولي <span dir="ltr" class="num whitespace-nowrap">ISSN 2754-7906</span>.</p>
+    </div>
+    <nav aria-label="روابط التذييل" class="md:col-span-3">
+      <h2 class="text-gold-200 font-semibold">روابط</h2>
+      <ul class="mt-3 grid gap-1 text-sm">
+        <li><a class="f-link" href="#about">التعريف بالمجلة</a></li>
+        <li><a class="f-link" href="#index">فهرس كشاف المجلة</a></li>
+        <li><a class="f-link" href="#epub">النشر الإلكتروني</a></li>
+        <li><a class="f-link" href="#submit">إرسال البحوث</a></li>
+      </ul>
+    </nav>
+    <address class="md:col-span-4 not-italic">
+      <h2 class="text-gold-200 font-semibold">التواصل</h2>
+      <ul class="mt-3 grid gap-1 text-sm">
+        <li class="min-h-[44px] flex items-center">المدينة المنورة، المملكة العربية السعودية</li>
+        <li><a class="f-link" href="tel:+966505751684"><span dir="ltr" class="num">+966 50 575 1684</span></a></li>
+        <li><a class="f-link" href="mailto:Alhikma1964@hotmail.com" dir="ltr">Alhikma1964@hotmail.com</a></li>
+      </ul>
+    </address>
+  </div>
+  <div class="border-t border-gold-300/20">
+    <p class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 text-xs text-parchment-300">© 1414–1447هـ مجلة الحكمة. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
+<!-- Add research dialog -->
+<dialog id="dlg-add" data-lenis-prevent aria-labelledby="dlg-add-title" class="w-[min(40rem,calc(100vw-2rem))] p-0 rounded-md bg-parchment-50 text-ink border border-gold-500/50 shadow-leaf">
+  <form id="add-form" method="dialog" novalidate>
+    <div class="flex items-center justify-between px-6 py-4 border-b border-gold-500/30">
+      <h2 id="dlg-add-title" class="font-display font-bold text-2xl text-maroon-800">إضافة بحث</h2>
+      <button type="button" class="w-11 h-11 grid place-items-center rounded-md hover:bg-parchment-200" data-close aria-label="إغلاق"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="px-6 py-5 grid sm:grid-cols-2 gap-4">
+      <div><label class="label" for="f-no">الرقم</label><input id="f-no" type="number" inputmode="numeric" class="input num"></div>
+      <div><label class="label" for="f-pages">عدد الصفحات</label><input id="f-pages" type="number" inputmode="numeric" class="input num"></div>
+      <div class="sm:col-span-2"><label class="label" for="f-title">عنوان البحث <span class="text-bad">*</span></label><input id="f-title" class="input" aria-describedby="f-title-err"><p id="f-title-err" class="field-err hidden">عنوان البحث مطلوب.</p></div>
+      <div class="sm:col-span-2"><label class="label" for="f-author">اسم الباحث <span class="text-bad">*</span></label><input id="f-author" class="input" aria-describedby="f-author-err"><p id="f-author-err" class="field-err hidden">اسم الباحث مطلوب.</p></div>
+      <div><label class="label" for="f-date">تاريخ النشر</label><input id="f-date" type="date" class="input num"></div>
+      <div><label class="label" for="f-pdf">ملف PDF</label>
+        <label for="f-pdf" class="flex items-center gap-2 min-h-[48px] px-3 border border-dashed border-gold-500 rounded-md bg-parchment-100 cursor-pointer text-sm text-ink-600 hover:bg-parchment-200"><svg class="w-5 h-5 text-gold-700" aria-hidden="true"><use href="#i-upload"/></svg><span id="f-pdf-name">اختر ملفاً…</span></label>
+        <input id="f-pdf" type="file" accept="application/pdf" class="sr-only"></div>
+    </div>
+    <div class="flex flex-wrap justify-end gap-2 px-6 py-4 border-t border-gold-500/30 bg-parchment-100">
+      <button type="button" class="btn-secondary" data-close>إلغاء</button>
+      <button type="submit" class="btn-primary" value="save">حفظ البحث</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Confirm dialog -->
+<dialog id="dlg-confirm" data-lenis-prevent aria-labelledby="cf-title" aria-describedby="cf-body" class="w-[min(28rem,calc(100vw-2rem))] p-0 rounded-md bg-parchment-50 text-ink border border-gold-500/50 shadow-leaf">
+  <div class="p-6">
+    <div class="w-12 h-12 rounded-full bg-bad-soft text-bad grid place-items-center"><svg class="w-6 h-6" aria-hidden="true"><use href="#i-trash"/></svg></div>
+    <h2 id="cf-title" class="mt-4 font-display font-bold text-2xl">تأكيد</h2>
+    <p id="cf-body" class="mt-2 text-ink-700"></p>
+  </div>
+  <div class="flex flex-wrap justify-end gap-2 px-6 py-4 border-t border-gold-500/30 bg-parchment-100">
+    <button class="btn-secondary" id="cf-no">إلغاء</button>
+    <button class="btn-danger" id="cf-yes">تأكيد الحذف</button>
+  </div>
+</dialog>
+
+<!-- Toasts -->
+<div id="toasts" class="fixed z-[60] bottom-4 left-4 right-4 sm:right-auto sm:w-96 grid gap-2" role="status" aria-live="polite"></div>
+
+<style type="text/tailwindcss">
+  @layer components{
+    .nav-link{ @apply inline-flex items-center min-h-[44px] px-3 rounded-md text-ink-700 hover:text-maroon-800 hover:bg-parchment-200/70 transition-colors; }
+    .nav-link[aria-current="page"]{ @apply text-maroon-800 font-semibold bg-parchment-200/80 shadow-[inset_0_-2px_0_#a8843f]; }
+    .m-link{ @apply flex items-center min-h-[48px] px-4 rounded-md hover:bg-parchment-200; }
+    .m-link[aria-current="page"]{ @apply bg-maroon-800 text-parchment-50; }
+    .btn-primary{ @apply inline-flex items-center gap-2 min-h-[48px] px-6 rounded-md bg-maroon-800 text-parchment-50 font-semibold shadow-[0_1px_0_#3f060f,inset_0_1px_0_rgba(255,255,255,.12)] hover:bg-maroon-900 active:translate-y-px transition disabled:opacity-50 disabled:cursor-not-allowed; }
+    .btn-secondary{ @apply inline-flex items-center gap-2 min-h-[48px] px-6 rounded-md border border-gold-500 text-maroon-900 bg-parchment-50/60 font-semibold hover:bg-gold-100 active:translate-y-px transition; }
+    .btn-danger{ @apply inline-flex items-center gap-2 min-h-[48px] px-5 rounded-md bg-bad text-white font-semibold hover:bg-[#861c19] active:translate-y-px transition; }
+    .btn-ghost{ @apply inline-flex items-center gap-1.5 min-h-[44px] px-3 rounded-md text-maroon-800 font-semibold text-sm hover:bg-parchment-200 transition; }
+    .eyebrow{ @apply inline-flex items-center gap-2 text-sm font-semibold text-gold-700; }
+    .eyebrow::before{ content:""; @apply w-6 h-px bg-gold-500; }
+    .h1{ @apply mt-2 font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-maroon-800 outline-none; }
+    .h2{ @apply mt-2 font-display font-bold text-2xl sm:text-3xl lg:text-[2.5rem] lg:leading-[1.35] text-ink; }
+    .h3{ @apply font-display font-bold text-xl sm:text-2xl text-ink; }
+    .lead{ @apply mt-4 text-lg text-ink-600 max-w-prose-ar; }
+    .page-head{ @apply py-12 sm:py-16 border-b border-gold-500/40 bg-parchment-200/50; }
+    .link-more{ @apply inline-flex items-center gap-2 min-h-[44px] font-semibold text-maroon-800 underline decoration-gold-500/60 underline-offset-[6px] hover:decoration-maroon-800; }
+    .committee{ @apply flex items-center gap-4 py-5 border-b border-gold-500/30; }
+    .cnum{ @apply shrink-0 w-12 h-12 grid place-items-center font-display text-xl text-maroon-800 border border-gold-500 rotate-45; }
+    .cnum > *{ @apply inline-block -rotate-45; }
+    .cname{ @apply font-display font-bold text-xl text-ink; }
+    .cuni{ @apply text-sm text-ink-600; }
+    .step{ @apply relative p-6 bg-parchment-50 border border-gold-500/40 rounded-sm; }
+    .snum{ @apply inline-grid place-items-center w-10 h-10 rounded-full bg-maroon-800 text-gold-200 font-display font-bold text-lg; }
+    .sh{ @apply mt-4 font-display font-bold text-xl text-ink; }
+    .sp{ @apply mt-1 text-sm text-ink-600; }
+    .card{ @apply p-6 sm:p-8 bg-parchment-50 border border-gold-500/40 rounded-sm; }
+    .fact{ @apply flex justify-between gap-4 py-3; }
+    .fact dt{ @apply text-ink-600; } .fact dd{ @apply font-semibold text-ink text-end; }
+    .chip{ @apply inline-flex items-center min-h-[36px] px-3 rounded-full border border-gold-500/60 text-sm text-ink-700 bg-parchment-100; }
+    .tl-item{ @apply relative; }
+    .tl-item::before{ content:""; @apply absolute -start-[33px] top-2 w-4 h-4 bg-parchment-100 border-2 border-maroon-800 rotate-45; }
+    .tl-date{ @apply text-sm font-semibold text-gold-700; }
+    .tl-title{ @apply font-display font-bold text-xl text-ink; }
+    .tl-text{ @apply mt-1 text-ink-700; }
+    .work{ @apply p-5 bg-parchment-50 border-s-4 border-maroon-800 font-display text-lg leading-relaxed; }
+    .work span{ @apply block font-sans text-sm text-ink-500; }
+    .fee{ @apply p-8 border border-gold-500/50 rounded-sm bg-parchment-50; }
+    .contact-btn{ @apply flex items-center gap-3 min-h-[52px] px-4 rounded-md border border-gold-500/50 bg-parchment-100 font-semibold hover:bg-gold-100 transition; }
+    .car-btn{ @apply w-12 h-12 grid place-items-center rounded-full border border-gold-300/60 text-gold-200 hover:bg-gold-300 hover:text-ink transition; }
+    .f-link{ @apply inline-flex items-center min-h-[44px] hover:text-gold-200 underline-offset-4 hover:underline; }
+    .label{ @apply block mb-1.5 text-sm font-semibold text-ink-700; }
+    .input{ @apply w-full min-h-[48px] px-3 rounded-md border border-parchment-400 bg-white/70 text-ink placeholder:text-ink-500/70 focus:border-maroon-800 transition; }
+    .input[aria-invalid="true"]{ @apply border-bad bg-bad-soft/40; }
+    .field-err{ @apply mt-1 text-sm text-bad font-medium; }
+    .dash-tab{ @apply w-full whitespace-nowrap flex items-center gap-3 min-h-[44px] px-4 rounded-md text-parchment-200 hover:bg-white/5 hover:text-parchment-50 transition text-sm font-medium; }
+    .dash-tab[aria-current="page"]{ @apply bg-maroon-800 text-parchment-50 shadow-[inset_-3px_0_0_#d6b673]; }
+    .kpi{ @apply p-4 sm:p-5 bg-parchment-50 border border-gold-500/30 rounded-md; }
+    .kpi-l{ @apply text-sm text-ink-600; } .kpi-v{ @apply mt-1 font-display font-bold text-3xl text-ink; }
+    .pg{ @apply min-w-[44px] min-h-[44px] px-3 grid place-items-center rounded-md text-sm font-semibold text-ink-700 hover:bg-parchment-200 tabular-nums disabled:opacity-40 disabled:hover:bg-transparent; }
+    .pg[aria-current="page"]{ @apply bg-maroon-800 text-parchment-50; }
+    .th-btn{ @apply inline-flex items-center gap-1 min-h-[44px] font-semibold text-ink-700 hover:text-maroon-800; }
+    .icon-btn{ @apply w-11 h-11 inline-grid place-items-center rounded-md text-ink-600 hover:bg-parchment-200 hover:text-maroon-800; }
+  }
+</style>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+/* ========================= DATA ========================= */
+const EPUB = [
+ [50,'قانون الامتثال الضريبي (فاتكا) وأثره على سيادة الدول','روان عبد الرحمن محمد بافقيه',24,'2026-10-26'],
+ [49,'أثر اللغة الإنجليزية في ترويج السلع عبر وسائل التواصل الاجتماعي (دراسة تحليلية للتواصل العالمي)','رحاب طارق الرفاعي',20,'2026-10-26'],
+ [48,'العدالة التنبؤية وأثرها على القضاء التجاري السعودي (دراسة استشرافية في ضوء رؤية 2030)','نجوى عايض ساير الجعيد',33,'2026-10-20'],
+ [47,'بساطة التصرف في القروض الحكومية وأولوية استيفائها (دراسة فقهية مقارنة في النظام السعودي)','جويرية عبدالكريم الغضية',31,'2026-10-20'],
+ [46,'القانون البيئي لمكة المكرمة (دراسة قانونية مقارنة بأحكام الشريعة الإسلامية)','عبدالله باسم عمر قاضي',39,'2026-10-18'],
+ [45,'أسباب النزول الواردة في سورة الأعلى (دراسة وتحليل وترجيح)','د. بسمة بنت علي حسن حلواني',39,'2026-07-19'],
+ [44,'أثر تعريف البيان على مراتبه عند الأصوليين','أم هاني المرضي الشيخ علي',31,'2026-06-25'],
+ [42,'التعويض عن تفويت الفرصة في القضاء السعودي بعد صدور نظام المعاملات المدنية (دراسة تحليلية)','أحمد حايف نمش الظفيري',86,'2026-05-24'],
+ [41,'الفروق النفسية للمترادفات القرآنية وتطبيقاتها السلوكية في الخطاب النبوي','ماجد بن غزاي بن جمل الحريص',59,'2026-05-18'],
+ [40,'سرقات أبي تمام بين الانحياز والموضوعية','د. نهاية بنت محمد العطوي',29,'2026-05-13'],
+ /* sample rows (generated for prototype) */
+ [39,'الحماية الجنائية للبيانات الشخصية في النظام السعودي (دراسة مقارنة)','سارة بنت فهد العتيبي',41,'2026-04-28'],
+ [38,'منهج ابن عاشور في توجيه المتشابه اللفظي (سورة البقرة أنموذجاً)','د. عبدالعزيز بن ناصر المطيري',47,'2026-04-15'],
+ [37,'أحكام العقود الذكية في الفقه الإسلامي','هند بنت سعد القحطاني',36,'2026-04-02'],
+ [36,'الاستدلال بالسياق القرآني عند المفسرين (دراسة تأصيلية)','د. محمد بن علي الشهري',52,'2026-03-21'],
+ [35,'التحكيم التجاري الإلكتروني وضماناته في الأنظمة الخليجية','خالد بن سالم الدوسري',44,'2026-03-10'],
+ [34,'الألفاظ الدالة على الزمن في القرآن الكريم (دراسة دلالية)','د. أمل بنت عبدالله الزهراني',38,'2026-02-26'],
+ [33,'مقاصد الشريعة في تشريعات الأحوال الشخصية السعودية','نورة بنت محمد السبيعي',33,'2026-02-11'],
+ [32,'الأحاديث الواردة في فضل المدينة المنورة (جمعاً ودراسة)','د. صالح بن حمد الجهني',61,'2026-01-30'],
+ [31,'المسؤولية المدنية عن أضرار الذكاء الاصطناعي','عبدالرحمن بن يوسف الحربي',29,'2026-01-18'],
+ [30,'أثر الوقف في التنمية الاقتصادية المعاصرة','د. ريم بنت خالد الشمري',35,'2026-01-05'],
+ [29,'التعليل بالحكمة عند الأصوليين وأثره الفقهي','عمر بن عبدالله البلوي',42,'2025-12-22'],
+ [28,'الصورة الفنية في شعر الزهد في العصر العباسي','د. هيفاء بنت سعود الرشيد',27,'2025-12-08'],
+ [27,'حماية المستهلك في التجارة الإلكترونية بين الفقه والنظام','ماجد بن ناصر الغامدي',39,'2025-11-24'],
+ [26,'القيم التربوية في قصص سورة الكهف','د. لطيفة بنت عبدالرحمن العمري',30,'2025-11-10'],
+ [25,'نظرية الظروف الطارئة في نظام المعاملات المدنية السعودي','فيصل بن محمد المالكي',48,'2025-10-28'],
+ [24,'الإعجاز البياني في فواصل الآيات (سورة الرحمن أنموذجاً)','د. عائشة بنت حسن الأحمدي',34,'2025-10-14'],
+ [23,'أحكام الشركات العائلية في الفقه والنظام','بدر بن عبدالعزيز الشهراني',37,'2025-10-01'],
+ [22,'زوائد الأدب المفرد على الكتب الستة (دراسة حديثية)','د. يوسف بن سعيد القرني',58,'2025-09-17'],
+ [21,'الضوابط الشرعية للإعلان التجاري الرقمي','منيرة بنت فهد الدخيل',26,'2025-09-03'],
+ [20,'أثر الخلاف النحوي في تفسير آيات الأحكام','د. حمد بن عيسى الكبيسي',45,'2025-08-20']
+].map(r=>({no:r[0],title:r[1],author:r[2],pages:r[3],date:r[4]}));
+
+const INDEX = [
+ ['أصول فقه','سكوت النبي ﷺ ودلالته على الحكم الشرعي','يونس يزدان پرست',44],
+ ['فقه','التأمين التكافلي من خلال الوقف','د. يوسف بن عبدالله الشبيلي',38],
+ ['مخطوطات','رفع السنّة في نصب الزنة للإمام السيوطي','تحقيق: د. يوسف بن خلف العيساوي',35],
+ ['حديث','أجوبة على مسائل سألها النووي في ألفاظ من الحديث لابن مالك','تحقيق: د. يوسف بن خلف العيساوي',30],
+ ['تربية إسلامية','الدلالات التربوية للبكاء والحزن من منظور إسلامي','د. يوسف أحمد حسن المشعري عسيري',62],
+ ['أدب إسلامي','التوبة ـ قصيدة لأبي إسحاق الإلبيري','-',1],
+ ['فقه','أحكام المرأة الحامل','يحيى بن عبدالرحمن الخطيب',11],
+ ['اقتصاد إسلامي','بيع المرابحة في البنوك الإسلامية بين الحل والتحريم','يحيى إسماعيل عيد',6],
+ ['أصول فقه','التأويل الفاسد: مفهومه، أسبابه، مراتبه، تطبيقاته','د. ياسر بن محمد هوساوي',49],
+ ['رسائل جامعية','دليل الرسائل الجامعية في الجامعات السودانية','د. ياسر بن إسماعيل راضي',30],
+ /* sample rows (generated for prototype) */
+ ['تفسير','منهج الطبري في الترجيح بين أقوال المفسرين','د. عبدالرحمن بن صالح الفهيد',52],
+ ['تفسير','أسباب النزول وأثرها في فهم آيات الأحكام','د. خالد بن عثمان الراشد',41],
+ ['عقيدة','مسائل الإيمان عند الإمام أحمد: جمعاً ودراسة','د. سعود بن عبدالعزيز الحمد',27],
+ ['عقيدة','الإيمان بالقدر وأثره في سلوك المسلم','د. ناصر بن عبدالكريم السالم',12],
+ ['حديث','زوائد سنن الدارقطني على الكتب الستة: دراسة وتخريج','د. محمد بن عبدالله الحسني',46],
+ ['حديث','منهج الإمام البخاري في التعاليق في صحيحه','د. أحمد بن عبدالرحمن القاسم',24],
+ ['لغة ونحو','الاستشهاد بالحديث النبوي في كتب النحو','د. محمود بن فجال الراوي',18],
+ ['لغة ونحو','أثر القراءات القرآنية في توجيه الإعراب','د. عبدالعزيز بن علي الحارثي',57],
+ ['تاريخ وتراجم','علماء المدينة المنورة في القرن الثاني عشر الهجري','د. عبدالرحمن بن سليمان المدني',39],
+ ['تاريخ وتراجم','رحلة ابن رشيد السبتي إلى الحرمين: قراءة في المصادر','د. سليمان بن صالح العمر',22],
+ ['فقه','أحكام النوازل في الصيام عند المعاصرين','د. خالد بن علي المشعل',60],
+ ['فقه','زكاة الأسهم والصناديق الاستثمارية','د. صالح بن محمد الصالح',34],
+ ['أصول فقه','القواعد الأصولية المتعلقة بالنسخ وتطبيقاتها','د. عياض بن نامي الرشيدي',29],
+ ['أصول فقه','دلالة الاقتران عند الأصوليين','د. عبدالكريم بن علي الناصر',15],
+ ['مخطوطات','رسالة في الفرق بين الحمد والشكر لابن رجب: تحقيق ودراسة','تحقيق: د. عبدالله بن سليمان العتيبي',43],
+ ['مخطوطات','جزء فيه أحاديث منتقاة من سماعات الحافظ الذهبي','تحقيق: د. نايف بن صلاح المنصوري',54],
+ ['تربية إسلامية','أساليب التربية بالقدوة في السنة النبوية','د. عبدالرحمن بن عبدالله الشمري',48],
+ ['تربية إسلامية','القيم الأخلاقية في سورة لقمان وتطبيقاتها التربوية','د. منى بنت عبدالله الدايل',63],
+ ['اقتصاد إسلامي','الصكوك الإسلامية: أنواعها وأحكامها','د. حامد بن حسن الميري',50],
+ ['اقتصاد إسلامي','ضوابط المضاربة في المصارف الإسلامية','د. عبدالله بن محمد العمري',37],
+ ['أدب إسلامي','المديح النبوي في شعر البوصيري: دراسة فنية','د. حسن بن فهد الهلال',21],
+ ['أدب إسلامي','قصيدة في الحث على طلب العلم','-',47],
+ ['رسائل جامعية','دليل الرسائل الجامعية في الدراسات القرآنية بالجامعات السعودية','د. فهد بن عبدالرحمن الرومان',26],
+ ['رسائل جامعية','الجامع للرسائل والأطاريح في الجامعات العراقية','وليد بن أحمد الحسين',58],
+ ['حديث','الأحاديث الواردة في فضائل المدينة المنورة: جمعاً ودراسة','د. صالح بن حامد الرفيعي',9],
+ ['تفسير','التفسير الموضوعي لسورة الحجرات','د. مساعد بن سليمان الطيب',31],
+ ['لغة ونحو','المشترك اللفظي في القرآن الكريم','د. عبدالعال سالم الكرمي',3],
+ ['فقه','أحكام المسجد النبوي الشريف','د. عبدالله بن إبراهيم الزاهد',66],
+ ['تاريخ وتراجم','الجامع لحياة العلامة ابن عثيمين: عرض ومراجعة','د. إبراهيم بن محمد التميمي',68],
+ ['عقيدة','منهج أهل السنة في تقرير مسائل الصفات','د. عبدالله بن محمد الغامدي',35]
+].map(r=>({subject:r[0],title:r[1],author:r[2],issue:r[3]}));
+
+const CRITERIA = [
+ ['أن يكون البحث في مجالات المجلة','العلوم الشرعية، والعربية، والتربوية، والإنسانية.'],
+ ['الأصالة والجدّة','أن يتسم البحث بالأصالة والجدة والإضافة العلمية.'],
+ ['سلامة اللغة وصحة التوثيق','العناية بسلامة اللغة العربية ودقة التوثيق العلمي.'],
+ ['مقدمة وافية','تتضمن: موضوع البحث، وأهميته، وأهدافه، ومنهجه، والدراسات السابقة.'],
+ ['خاتمة','تتضمن أهم النتائج والتوصيات.'],
+ ['الخط والتنسيق','خط Lotus Linotype: المتن 16، الحواشي 14، العناوين الرئيسة 20 غامق، الفرعية 18 غامق.'],
+ ['الحد الأدنى للصفحات','ألا يقل البحث عن 20 صفحة.'],
+ ['عدم سبق النشر','ألا يكون البحث قد سبق تحكيمه أو نشره.'],
+ ['نسختان من البحث','إرسال نسخة Word ونسخة PDF.'],
+ ['السيرة الذاتية','إرفاق سيرة ذاتية مختصرة للباحث.'],
+ ['تحقيق المخطوطات','إرفاق صور الصفحة الأولى والثانية والأخيرة من المخطوط.'],
+ ['البحوث لا تُعاد','لا تُعاد البحوث لأصحابها، ولا يُنشر البحث في جهة أخرى إلا بعد 6 أشهر من خطاب التحكيم.'],
+ ['المسؤولية القانونية','يتحمل الباحث المسؤولية القانونية عن حقوق الملكية الفكرية.'],
+ ['ترتيب المراجع','ترتيب المراجع هجائياً، وتأتي المراجع غير العربية بعد العربية.'],
+ ['الموافقة للعقيدة','ألا يخالف البحث عقيدة أهل السنة والجماعة.']
+];
+
+const COMMITTEE = [['أ.د. حكمت بشير ياسين','جامعة الملك عبدالعزيز — جدة'],['أ.د. ناصر بن عبدالله القفاري','جامعة القصيم'],['أ.د. محمد إسحاق محمد آل إبراهيم','جامعة الإمام محمد بن سعود الإسلامية — الرياض'],['أ.د. أحمد خالد شكري','الجامعة الأردنية — عمّان']];
+
+/* ========================= UTILS ========================= */
+const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s=>String(s).toLowerCase().replace(/[ً-ْـ]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const arDate = d=>{ try{ return new Intl.DateTimeFormat('ar-SA-u-ca-gregory-nu-latn',{day:'numeric',month:'long',year:'numeric'}).format(new Date(d)); }catch(e){ return d; } };
+const AR_DIGITS = n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+
+function toast(type,title,msg){
+  const t=document.createElement('div');
+  const ok=type==='success';
+  t.className=`flex items-start gap-3 p-4 rounded-md border shadow-leaf ${ok?'bg-ok-soft border-ok/30':'bg-bad-soft border-bad/30'} text-ink`;
+  t.innerHTML=`<span class="w-8 h-8 shrink-0 rounded-full grid place-items-center ${ok?'bg-ok':'bg-bad'} text-white"><svg class="w-4 h-4" aria-hidden="true"><use href="#${ok?'i-check':'i-x'}"/></svg></span>
+    <div class="flex-1"><p class="font-semibold">${esc(title)}</p>${msg?`<p class="text-sm text-ink-700">${esc(msg)}</p>`:''}</div>
+    <button class="icon-btn -m-2" aria-label="إغلاق التنبيه"><svg class="w-4 h-4" aria-hidden="true"><use href="#i-x"/></svg></button>`;
+  t.querySelector('button').onclick=()=>t.remove();
+  const box=$('#toasts'); const od=$('dialog[open]'); (od||document.body).appendChild(box); box.appendChild(t);
+  if(!reduce && window.gsap) gsap.from(t,{y:16,opacity:0,duration:.3,ease:'power2.out'});
+  setTimeout(()=>t.remove(),5000);
+}
+
+/* ========================= DATA TABLE ========================= */
+function DataTable(el,{data,columns,searchKeys,defaultSort,perPage=10,caption,filter,label='بحث'}){
+  const st={q:'',sort:defaultSort.key,dir:defaultSort.dir,page:1,per:perPage,filter:''};
+  const id=el.id;
+  el.innerHTML=`
+  <div class="grid grid-cols-2 md:flex md:items-end gap-3 md:gap-4 md:flex-wrap">
+    <div class="col-span-2 md:flex-1 md:min-w-[14rem]">
+      <label for="${id}-q" class="label">${label}</label>
+      <div class="relative"><svg class="w-5 h-5 absolute top-1/2 -translate-y-1/2 right-3 text-ink-500" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="${id}-q" type="search" class="input pe-3 ps-10" placeholder="العنوان، الباحث، الموضوع…" autocomplete="off"></div>
+    </div>
+    ${filter?`<div><label for="${id}-f" class="label">${filter.label}</label><select id="${id}-f" class="input md:w-44"><option value="">الكل</option>${[...new Set(data.map(r=>r[filter.key]))].sort((a,b)=>a.localeCompare(b,'ar')).map(v=>`<option>${esc(v)}</option>`).join('')}</select></div>`:''}
+    <div class="col-span-2 md:col-span-1 flex gap-2 items-end order-last md:order-none">
+      <div class="flex-1"><label for="${id}-s" class="label">ترتيب حسب</label><select id="${id}-s" class="input md:w-40">${columns.filter(c=>c.sort!==false).map(c=>`<option value="${c.key}">${c.label}</option>`).join('')}</select></div>
+      <button id="${id}-d" class="btn-secondary !px-3 !min-w-[48px]" aria-label="عكس اتجاه الترتيب"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-sort"/></svg><span class="text-sm"></span></button>
+    </div>
+    <div class="${filter?'':'col-span-2 md:col-span-1'}"><label for="${id}-p" class="label">لكل صفحة</label><select id="${id}-p" class="input md:w-24 num"><option>5</option><option selected>10</option><option>25</option></select></div>
+  </div>
+  <div class="mt-5 md:border md:border-gold-500/40 md:rounded-sm md:bg-parchment-50 overflow-hidden">
+    <table class="rtable w-full text-start border-collapse">
+      <caption class="sr-only">${caption}</caption>
+      <thead class="bg-parchment-200/80 border-b-2 border-gold-500/50"><tr>${columns.map(c=>`<th scope="col" class="px-4 py-1 text-start text-sm ${c.thCls||''}" ${c.sort!==false?`data-k="${c.key}"`:''}>${c.sort!==false?`<button class="th-btn">${c.label}<svg class="w-4 h-4 opacity-60" aria-hidden="true"><use href="#i-sort"/></svg></button>`:`<span class="font-semibold text-ink-700">${c.label}</span>`}</th>`).join('')}</tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <p class="text-sm text-ink-600 num" aria-live="polite" id="${id}-info"></p>
+    <nav aria-label="ترقيم الصفحات"><ul class="flex flex-wrap gap-1" id="${id}-pg"></ul></nav>
+  </div>`;
+  const q=$(`#${id}-q`),s=$(`#${id}-s`),d=$(`#${id}-d`),p=$(`#${id}-p`),f=$(`#${id}-f`);
+  s.value=st.sort; p.value=String(perPage);
+  const render=()=>{
+    const nq=norm(st.q.trim());
+    let rows=data.filter(r=>(!nq||searchKeys.some(k=>norm(r[k]).includes(nq))) && (!st.filter||r[filter.key]===st.filter));
+    const col=columns.find(c=>c.key===st.sort);
+    rows.sort((a,b)=>{ const x=a[st.sort],y=b[st.sort]; const v=(typeof x==='number'&&typeof y==='number')?x-y:String(x).localeCompare(String(y),'ar'); return st.dir==='asc'?v:-v; });
+    const total=rows.length, pages=Math.max(1,Math.ceil(total/st.per)); st.page=Math.min(st.page,pages);
+    const start=(st.page-1)*st.per, slice=rows.slice(start,start+st.per);
+    const tb=$('tbody',el);
+    tb.innerHTML= slice.length? slice.map(r=>`<tr class="border-b border-gold-500/20 hover:bg-gold-100/40 transition-colors">${columns.map(c=>`<td data-label="${c.label}" class="px-4 py-3.5 align-top ${c.cls||''}">${c.render?c.render(r):esc(r[c.key])}</td>`).join('')}</tr>`).join('')
+      : `<tr><td colspan="${columns.length}" class="td-empty px-4 py-14 text-center"><svg class="w-10 h-10 mx-auto text-gold-500" aria-hidden="true"><use href="#star8"/></svg><p class="mt-3 font-display text-xl">لا توجد نتائج${st.q?` مطابقة لـ «${esc(st.q)}»`:''}</p>${(st.q||st.filter)?'<button class="btn-ghost mt-2" data-reset>مسح البحث</button>':''}</td></tr>`;
+    const rb=$('[data-reset]',tb); if(rb) rb.onclick=()=>{ q.value=''; st.q=''; if(f){f.value='';st.filter='';} st.page=1; render(); q.focus(); };
+    $(`#${id}-info`).textContent= total? `عرض ${start+1} إلى ${Math.min(start+st.per,total)} من ${total} نتيجة` : 'لا توجد نتائج';
+    $$('th[data-k]',el).forEach(th=>{ th.setAttribute('aria-sort', th.dataset.k===st.sort?(st.dir==='asc'?'ascending':'descending'):'none'); $('svg',th).style.opacity= th.dataset.k===st.sort?1:.4; });
+    $('span',d).textContent= st.dir==='asc'?'تصاعدي':'تنازلي'; d.setAttribute('aria-label',`اتجاه الترتيب: ${st.dir==='asc'?'تصاعدي':'تنازلي'}، اضغط للعكس`);
+    // pager
+    const pg=$(`#${id}-pg`); const btn=(lbl,pageN,opts={})=>`<li><button class="pg" data-pg="${pageN}" ${opts.dis?'disabled':''} ${opts.cur?'aria-current="page"':''} aria-label="${opts.aria||('الصفحة '+lbl)}">${lbl}</button></li>`;
+    let h=btn('السابق',st.page-1,{dis:st.page===1,aria:'الصفحة السابقة'});
+    const win=[]; for(let i=1;i<=pages;i++){ if(i===1||i===pages||Math.abs(i-st.page)<=1) win.push(i); else if(win[win.length-1]!=='…') win.push('…'); }
+    win.forEach(i=> h+= i==='…'?'<li class="px-1 grid place-items-center text-ink-500" aria-hidden="true">…</li>':btn(i,i,{cur:i===st.page}));
+    h+=btn('التالي',st.page+1,{dis:st.page===pages,aria:'الصفحة التالية'});
+    pg.innerHTML=h;
+  };
+  q.addEventListener('input',()=>{st.q=q.value;st.page=1;render();});
+  s.addEventListener('change',()=>{st.sort=s.value;st.page=1;render();});
+  p.addEventListener('change',()=>{st.per=+p.value;st.page=1;render();});
+  f&&f.addEventListener('change',()=>{st.filter=f.value;st.page=1;render();});
+  d.addEventListener('click',()=>{st.dir=st.dir==='asc'?'desc':'asc';render();});
+  el.addEventListener('click',e=>{
+    const th=e.target.closest('th[data-k] button'); if(th){ const k=th.parentElement.dataset.k; if(st.sort===k) st.dir=st.dir==='asc'?'desc':'asc'; else {st.sort=k; st.dir='asc';} s.value=k; render(); }
+    const pb=e.target.closest('[data-pg]'); if(pb&&!pb.disabled){ st.page=+pb.dataset.pg; render(); el.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'}); }
+  });
+  render();
+  return {render};
+}
+
+const pdfBtn = r=>`<button class="btn-ghost border border-gold-500/50 !min-h-[40px]" data-pdf="${r.no}" aria-label="عرض ملف PDF: ${esc(r.title)}"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-file"/></svg>عرض</button>`;
+
+/* ========================= BUILD CONTENT ========================= */
+// latest list
+$('#latest-list').innerHTML = EPUB.slice(0,5).map((r,i)=>`
+  <li class="reveal group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-5 gap-y-2 py-6 border-b border-gold-500/30">
+    <span class="row-span-2 sm:row-span-1 font-display text-3xl text-gold-600 num w-10 text-center" aria-hidden="true">${AR_DIGITS(i+1)}</span>
+    <div>
+      <h3 class="font-display font-bold text-xl leading-relaxed text-ink group-hover:text-maroon-800 transition-colors">${esc(r.title)}</h3>
+      <p class="mt-1 text-sm text-ink-600">${esc(r.author)} · <span class="num">${r.pages}</span> صفحة · <time datetime="${r.date}">${arDate(r.date)}</time></p>
+    </div>
+    <div class="col-start-2 sm:col-start-3 self-center">${pdfBtn(r)}</div>
+  </li>`).join('');
+
+// carousel + series grid
+const COVERS = Array.from({length:23},(_,i)=>i+1);
+$('#car-track').innerHTML = COVERS.map(n=>`
+  <figure class="snap-start shrink-0 w-[44%] sm:w-[30%] md:w-[22%] lg:w-[17%]">
+    <img src="../public/images/version/${n}.png" alt="غلاف الإصدار رقم ${n} من سلسلة إصدارات الحكمة" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-sm ring-1 ring-gold-300/40 shadow-[0_14px_30px_-12px_rgba(0,0,0,.6)] bg-ink-700">
+    <figcaption class="mt-3 text-sm text-parchment-200">الإصدار <span class="num">${n}</span></figcaption>
+  </figure>`).join('');
+$('#series-grid').innerHTML = COVERS.map(n=>`
+  <li class="reveal">
+    <figure>
+      <div class="p-2 bg-parchment-50 border border-gold-500/40 shadow-leaf"><img src="../public/images/version/${n}.png" alt="غلاف الإصدار رقم ${n} من سلسلة إصدارات الحكمة" loading="lazy" class="w-full aspect-[3/4] object-cover bg-parchment-200"></div>
+      <figcaption class="mt-3 flex items-center gap-2"><span class="w-7 h-7 grid place-items-center rotate-45 border border-gold-500 text-xs"><span class="-rotate-45 num font-semibold text-maroon-800">${n}</span></span><span class="font-display font-bold">${n===1?'منهج أبي عبيد في تفسير غريب الحديث':'الإصدار رقم '+n}</span></figcaption>
+    </figure>
+  </li>`).join('');
+const track=$('#car-track');
+$$('[data-car]').forEach(b=>b.addEventListener('click',()=>{
+  const w=track.firstElementChild.getBoundingClientRect().width+20;
+  track.scrollBy({left:(b.dataset.car==='next'?-1:1)*w*2,behavior:reduce?'auto':'smooth'});
+}));
+
+// committee (about)
+$('#about-committee').innerHTML = COMMITTEE.map((c,i)=>`<li class="reveal committee"><span class="cnum"><span>${AR_DIGITS(i+1)}</span></span><div><p class="cname">${c[0]}</p><p class="cuni">${c[1]}</p></div></li>`).join('');
+$$('#home .cnum').forEach(e=>{ e.innerHTML=`<span>${e.textContent}</span>`; });
+
+// criteria accordion
+$('#criteria').innerHTML = CRITERIA.map((c,i)=>`
+  <details class="reveal group border-b border-gold-500/30" ${i===0?'open':''}>
+    <summary class="flex items-center gap-4 min-h-[56px] py-3 cursor-pointer hover:text-maroon-800 rounded">
+      <span class="w-9 h-9 shrink-0 grid place-items-center rounded-full border border-gold-500 font-display text-maroon-800 num">${AR_DIGITS(i+1)}</span>
+      <span class="flex-1 font-semibold">${c[0]}</span>
+      <svg class="chev w-5 h-5 transition-transform text-gold-700" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <p class="pb-5 ps-[3.25rem] text-ink-700">${c[1]}</p>
+  </details>`).join('');
+
+// public tables
+const tIndex = DataTable($('#dt-index'),{data:INDEX,caption:'فهرس كشاف المجلة',searchKeys:['title','author','subject'],defaultSort:{key:'issue',dir:'desc'},filter:{key:'subject',label:'الموضوع'},label:'ابحث في الفهرس',
+  columns:[
+    {key:'subject',label:'الموضوع',render:r=>`<span class="chip !min-h-[30px] !text-xs justify-self-start">${esc(r.subject)}</span>`,thCls:'w-40'},
+    {key:'title',label:'عنوان البحث',cls:'font-display text-lg leading-relaxed'},
+    {key:'author',label:'اسم الباحث',cls:'text-sm text-ink-700'},
+    {key:'issue',label:'العدد',cls:'num font-semibold text-maroon-800',thCls:'w-24'}
+  ]});
+const tEpub = DataTable($('#dt-epub'),{data:EPUB,caption:'البحوث المنشورة إلكترونياً',searchKeys:['title','author'],defaultSort:{key:'date',dir:'desc'},label:'ابحث في البحوث المنشورة',
+  columns:[
+    {key:'no',label:'#',cls:'num text-ink-500',thCls:'w-16'},
+    {key:'title',label:'عنوان البحث',cls:'font-display text-lg leading-relaxed'},
+    {key:'author',label:'اسم الباحث',cls:'text-sm text-ink-700'},
+    {key:'pages',label:'عدد الصفحات',cls:'num',thCls:'w-28'},
+    {key:'date',label:'تاريخ النشر',cls:'text-sm whitespace-nowrap',render:r=>`<time datetime="${r.date}">${arDate(r.date)}</time>`,thCls:'w-36'},
+    {key:'pdf',label:'عرض الملف',sort:false,render:pdfBtn,thCls:'w-28'}
+  ]});
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-pdf]'); if(b) toast('success','فتح الملف','نموذج أولي: سيُفتح ملف PDF للبحث رقم '+b.dataset.pdf+' في نافذة جديدة.');
+  const c=e.target.closest('[data-copy]');
+  if(c){ const v=c.dataset.copy; const done=()=>{ toast('success','تم النسخ',v); const sp=$('span',c); if(sp){ sp.textContent='تم'; setTimeout(()=>sp.textContent='نسخ',1600);} };
+    (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(done).catch(()=>{ const t=document.createElement('textarea'); t.value=v; document.body.appendChild(t); t.select(); try{document.execCommand('copy'); done();}catch(_){ toast('error','تعذّر النسخ','انسخ الرقم يدوياً.'); } t.remove(); }); }
+});
+
+/* ========================= DASHBOARD ========================= */
+const actions = (r,kind)=>`<div class="flex gap-1"><button class="icon-btn" aria-label="تعديل: ${esc(r.title)}" data-edit><svg class="w-5 h-5" aria-hidden="true"><use href="#i-edit"/></svg></button><button class="icon-btn hover:!text-bad" aria-label="حذف: ${esc(r.title)}" data-del="${kind}" data-title="${esc(r.title)}"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-trash"/></svg></button></div>`;
+const tAdminEpub = DataTable($('#dt-admin-epub'),{data:EPUB,caption:'إدارة النشر الإلكتروني',searchKeys:['title','author'],defaultSort:{key:'no',dir:'desc'},label:'بحث',
+  columns:[
+    {key:'no',label:'الرقم',cls:'num text-ink-500',thCls:'w-20'},
+    {key:'title',label:'العنوان',cls:'font-medium'},
+    {key:'author',label:'الباحث',cls:'text-sm text-ink-700'},
+    {key:'pages',label:'الصفحات',cls:'num',thCls:'w-24'},
+    {key:'date',label:'تاريخ النشر',cls:'num text-sm whitespace-nowrap',thCls:'w-32'},
+    {key:'act',label:'إجراءات',sort:false,render:r=>actions(r,'epub'),thCls:'w-28'}
+  ]});
+const tAdminIndex = DataTable($('#dt-admin-index'),{data:INDEX,caption:'إدارة فهرس الكشاف',searchKeys:['title','author','subject'],defaultSort:{key:'issue',dir:'desc'},label:'بحث',
+  columns:[
+    {key:'subject',label:'الموضوع',cls:'text-sm'},
+    {key:'title',label:'عنوان البحث',cls:'font-medium'},
+    {key:'author',label:'اسم الباحث',cls:'text-sm text-ink-700'},
+    {key:'issue',label:'العدد',cls:'num',thCls:'w-20'},
+    {key:'act',label:'إجراءات',sort:false,render:r=>actions(r,'index'),thCls:'w-28'}
+  ]});
+$('#kpi-epub').textContent=EPUB.length;
+
+$$('.dash-tab[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+  $$('.dash-tab[data-tab]').forEach(x=>x.removeAttribute('aria-current')); b.setAttribute('aria-current','page');
+  $$('[data-dpanel]').forEach(p=>p.hidden=p.dataset.dpanel!==b.dataset.tab);
+  if(!reduce) gsap.fromTo(`[data-dpanel="${b.dataset.tab}"]`,{opacity:0,y:8},{opacity:1,y:0,duration:.3,ease:'power2.out'});
+}));
+
+// confirm dialog
+function confirmDlg(title,body,yes='تأكيد الحذف'){
+  return new Promise(res=>{
+    const d=$('#dlg-confirm'); $('#cf-title').textContent=title; $('#cf-body').textContent=body; $('#cf-yes').textContent=yes;
+    const done=v=>{ d.close(); $('#cf-yes').onclick=$('#cf-no').onclick=null; res(v); };
+    $('#cf-yes').onclick=()=>done(true); $('#cf-no').onclick=()=>done(false); d.oncancel=()=>res(false);
+    d.showModal(); $('#cf-no').focus();
+  });
+}
+document.addEventListener('click',async e=>{
+  const del=e.target.closest('[data-del]');
+  if(del){ const ok=await confirmDlg('حذف البحث',`هل تريد حذف «${del.dataset.title}»؟ لا يمكن التراجع عن هذا الإجراء.`);
+    if(ok){ const arr=del.dataset.del==='epub'?EPUB:INDEX; const i=arr.findIndex(r=>r.title===del.dataset.title); if(i>-1) arr.splice(i,1);
+      tAdminEpub.render(); tAdminIndex.render(); tEpub.render(); tIndex.render(); $('#kpi-epub').textContent=EPUB.length; toast('success','تم الحذف','حُذف البحث بنجاح.'); } }
+  if(e.target.closest('[data-edit]')) toast('success','وضع التعديل','نموذج أولي: يُفتح نموذج التعديل بالبيانات الحالية.');
+});
+
+// add research modal
+const dlg=$('#dlg-add'), form=$('#add-form');
+const openAdd=()=>{ form.reset(); $('#f-pdf-name').textContent='اختر ملفاً…'; $$('.field-err',form).forEach(x=>x.classList.add('hidden')); $$('[aria-invalid]',form).forEach(x=>x.removeAttribute('aria-invalid'));
+  $('#f-no').value=Math.max(...EPUB.map(r=>r.no))+1; $('#f-date').value=new Date().toISOString().slice(0,10); dlg.showModal(); $('#f-title').focus(); };
+$('#open-add').onclick=openAdd; $('#idx-add').onclick=openAdd;
+$$('[data-close]',dlg).forEach(b=>b.onclick=()=>dlg.close());
+$('#f-pdf').onchange=e=>{ $('#f-pdf-name').textContent=e.target.files[0]?.name||'اختر ملفاً…'; };
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  let bad=false;
+  [['f-title','f-title-err'],['f-author','f-author-err']].forEach(([i,er])=>{ const v=$('#'+i).value.trim(); $('#'+er).classList.toggle('hidden',!!v); v?$('#'+i).removeAttribute('aria-invalid'):$('#'+i).setAttribute('aria-invalid','true'); if(!v) bad=true; });
+  if(bad){ toast('error','تعذّر حفظ البحث','يُرجى تعبئة الحقول المطلوبة المشار إليها.'); $('[aria-invalid="true"]',form).focus(); return; }
+  EPUB.unshift({no:+$('#f-no').value||EPUB.length+1,title:$('#f-title').value.trim(),author:$('#f-author').value.trim(),pages:+$('#f-pages').value||0,date:$('#f-date').value||new Date().toISOString().slice(0,10)});
+  tAdminEpub.render(); tEpub.render(); $('#kpi-epub').textContent=EPUB.length; dlg.close();
+  toast('success','تمت إضافة البحث','أصبح البحث متاحاً في صفحة النشر الإلكتروني.');
+});
+
+// Excel + delete all
+$('#xls').onchange=e=>{ const f=e.target.files[0]; if(!f) return; if(!/\.(xlsx|xls|csv)$/i.test(f.name)){ toast('error','صيغة غير مدعومة','يُرجى اختيار ملف Excel (‎.xlsx‎).'); } else toast('success','تم الاستيراد',`استُورد الملف «${f.name}» (نموذج أولي، لم تُضف بيانات).`); e.target.value=''; };
+$('#idx-clear').onclick=async()=>{ if(await confirmDlg('حذف جميع بحوث الفهرس',`سيُحذف ${INDEX.length} بحثاً من فهرس الكشاف نهائياً. يُنصح بإنشاء نسخة احتياطية أولاً.`,'حذف الكل')){ INDEX.length=0; tAdminIndex.render(); tIndex.render(); toast('success','تم حذف جميع البحوث','الفهرس فارغ الآن.'); } };
+
+// backups
+const BK=[{n:'backup-2026-10-26-0900.sql',size:'4.8 م.ب',d:'2026-10-26 09:00'},{n:'backup-2026-10-19-0900.sql',size:'4.7 م.ب',d:'2026-10-19 09:00'},{n:'backup-2026-10-12-0900.sql',size:'4.6 م.ب',d:'2026-10-12 09:00'}];
+const renderBk=()=>{ $('#bk-list').innerHTML = BK.length? BK.map((b,i)=>`
+  <li class="flex flex-wrap items-center gap-4 p-4 sm:p-5 bg-parchment-50 border border-gold-500/30 rounded-md">
+    <span class="w-11 h-11 grid place-items-center rounded-md bg-parchment-200 text-gold-700"><svg class="w-6 h-6" aria-hidden="true"><use href="#i-db"/></svg></span>
+    <div class="flex-1 min-w-[12rem]"><p class="font-semibold num break-all" dir="ltr" style="text-align:right">${b.n}</p><p class="text-sm text-ink-600 num">${b.d} · ${b.size}${i===0?' · <span class="text-ok font-semibold">الأحدث</span>':''}</p></div>
+    <div class="flex gap-2"><button class="btn-secondary !min-h-[44px] !px-4" data-restore="${i}">استعادة</button><button class="icon-btn hover:!text-bad" data-bkdel="${i}" aria-label="حذف النسخة ${b.n}"><svg class="w-5 h-5" aria-hidden="true"><use href="#i-trash"/></svg></button></div>
+  </li>`).join('') : `<li class="p-10 text-center border border-dashed border-gold-500 rounded-md"><p class="font-display text-xl">لا توجد نسخ احتياطية</p><p class="text-sm text-ink-600">أنشئ أول نسخة لحماية بيانات المجلة.</p></li>`; };
+renderBk();
+$('#bk-create').onclick=()=>{ const b=$('#bk-create'); b.disabled=true; b.lastChild.textContent=' جارٍ الإنشاء…';
+  setTimeout(()=>{ const now=new Date(); const p=x=>String(x).padStart(2,'0'); const d=`${now.getFullYear()}-${p(now.getMonth()+1)}-${p(now.getDate())}`;
+    BK.unshift({n:`backup-${d}-${p(now.getHours())}${p(now.getMinutes())}.sql`,size:'4.8 م.ب',d:`${d} ${p(now.getHours())}:${p(now.getMinutes())}`}); renderBk(); b.disabled=false; b.lastChild.textContent=' إنشاء نسخة احتياطية'; toast('success','تم إنشاء النسخة الاحتياطية',BK[0].n); },900); };
+$('#bk-list').addEventListener('click',async e=>{
+  const r=e.target.closest('[data-restore]'), d=e.target.closest('[data-bkdel]');
+  if(r && await confirmDlg('استعادة النسخة',`ستُستبدل البيانات الحالية بمحتوى ${BK[r.dataset.restore].n}.`,'استعادة')) toast('success','تمت الاستعادة','أُعيدت البيانات من النسخة المحددة.');
+  if(d && await confirmDlg('حذف النسخة',`حذف ${BK[d.dataset.bkdel].n} نهائياً؟`)){ BK.splice(+d.dataset.bkdel,1); renderBk(); toast('success','تم حذف النسخة'); }
+});
+
+// login
+$('#login-form').addEventListener('submit',e=>{ e.preventDefault(); const em=$('#lg-email'); const v=em.value.trim();
+  if(v && !/^\S+@\S+\.\S+$/.test(v)){ em.setAttribute('aria-invalid','true'); $('#lg-email-err').classList.remove('hidden'); toast('error','تعذّر تسجيل الدخول','تحقق من البريد الإلكتروني.'); em.focus(); return; }
+  em.removeAttribute('aria-invalid'); $('#lg-email-err').classList.add('hidden'); location.hash='#dashboard'; toast('success','أهلاً بك','تم تسجيل الدخول إلى لوحة التحكم.'); });
+
+/* ========================= MOTION ========================= */
+let lenis=null;
+if(!reduce && window.Lenis){
+  lenis=new Lenis({duration:1.05,smoothWheel:true});
+  if(window.gsap && window.ScrollTrigger){ lenis.on('scroll',ScrollTrigger.update); gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+  else { const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)}; requestAnimationFrame(raf); }
+}
+if(window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+['dlg-add','dlg-confirm'].forEach(id=>{ const d=$('#'+id); d.addEventListener('close',()=>document.body.appendChild($('#toasts'))); new MutationObserver(()=>{ if(!lenis) return; d.open?lenis.stop():lenis.start(); }).observe(d,{attributes:true,attributeFilter:['open']}); });
+
+let pageTriggers=[];
+function setupMotion(page){
+  pageTriggers.forEach(t=>t.kill()); pageTriggers=[];
+  if(reduce || !window.ScrollTrigger) return;
+  const els=$$('.reveal',page);
+  gsap.set(els,{opacity:0,y:22});
+  pageTriggers.push(...ScrollTrigger.batch(els,{start:'top 92%',once:true,onEnter:b=>gsap.to(b,{opacity:1,y:0,duration:.7,ease:'power2.out',stagger:.07,overwrite:true})}));
+  // counters
+  $$('[data-count]',page).forEach(el=>{
+    const end=+el.dataset.count, start=end>1000?end-60:0, o={v:start}; el.textContent=start;
+    pageTriggers.push(ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)})}));
+  });
+  // gentle parallax on hero image
+  const hi=$('#hero-img',page);
+  if(hi) pageTriggers.push(gsap.to(hi,{yPercent:-6,ease:'none',scrollTrigger:{trigger:hi,start:'top top+=80',end:'bottom top',scrub:true}}).scrollTrigger);
+  ScrollTrigger.refresh();
+  // safety: if the animation ticker is stalled (throttled/background rendering), never leave content hidden
+  const f0=gsap.ticker.frame;
+  setTimeout(()=>{ if(gsap.ticker.frame-f0<3){ gsap.set(els,{opacity:1,y:0}); $$('[data-count]',page).forEach(el=>el.textContent=el.dataset.count); } },1800);
+}
+
+/* ========================= ROUTER ========================= */
+const ROUTES=['home','about','editor','series','index','epub','submit','login','dashboard'];
+const TITLES={home:'الرئيسية',about:'التعريف بالمجلة',editor:'التعريف برئيس التحرير',series:'سلسلة الإصدارات',index:'فهرس كشاف المجلة',epub:'النشر الإلكتروني',submit:'إرسال البحوث',login:'تسجيل الدخول',dashboard:'لوحة التحكم'};
+let current=null, first=true;
+function go(){
+  let r=(location.hash||'#home').slice(1); if(!ROUTES.includes(r)) r='home';
+  if(r===current) return;
+  const next=$(`[data-page="${r}"]`), prev=current?$(`[data-page="${current}"]`):null;
+  const show=()=>{
+    if(prev) prev.classList.remove('is-active');
+    next.classList.add('is-active'); document.body.dataset.route=r; current=r;
+    document.title=`${TITLES[r]} — مجلة الحكمة`;
+    $$('[data-nav]').forEach(a=>a.getAttribute('href')==='#'+r?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+    lenis?lenis.scrollTo(0,{immediate:true}):window.scrollTo(0,0);
+    closeMenu();
+    if(!first){ const h=$('h1',next); h&&h.focus({preventScroll:true}); }
+    if(!reduce && window.gsap) gsap.fromTo(next,{opacity:0,y:10},{opacity:1,y:0,duration:.45,ease:'power2.out',clearProps:'transform'});
+    setupMotion(next);
+    window.dispatchEvent(new CustomEvent('routechange',{detail:r}));
+    first=false;
+  };
+  if(prev && !reduce && window.gsap) gsap.to(prev,{opacity:0,duration:.18,ease:'power1.in',onComplete:()=>{ gsap.set(prev,{clearProps:'opacity'}); show(); }});
+  else show();
+}
+window.addEventListener('hashchange',go);
+
+/* mobile menu */
+const mb=$('#menu-btn'), mm=$('#mobile-menu');
+function closeMenu(){ mm.classList.add('hidden'); mb.setAttribute('aria-expanded','false'); mb.setAttribute('aria-label','فتح القائمة'); }
+mb.addEventListener('click',()=>{ const open=mm.classList.toggle('hidden')===false; mb.setAttribute('aria-expanded',open); mb.setAttribute('aria-label',open?'إغلاق القائمة':'فتح القائمة');
+  if(open && !reduce) gsap.from($$('li',mm),{opacity:0,x:12,duration:.25,stagger:.03}); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && !mm.classList.contains('hidden')){ closeMenu(); mb.focus(); } });
+
+go();
+</script>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+const host=document.getElementById('hero-3d'); const canvas=host.querySelector('canvas');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{ renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}); }catch(e){ host.remove(); throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.1,100); camera.position.set(0,0,16);
+const gold=0xa8843f;
+const mat=o=>new THREE.LineBasicMaterial({color:gold,transparent:true,opacity:o});
+
+// 8-point star polygon (two squares) as line segments
+function starSegs(cx,cy,r,z=0){
+  const pts=[];
+  for(const off of [0,Math.PI/4]){
+    for(let i=0;i<4;i++){ const a1=off+i*Math.PI/2, a2=off+(i+1)*Math.PI/2;
+      pts.push(cx+r*Math.cos(a1),cy+r*Math.sin(a1),z, cx+r*Math.cos(a2),cy+r*Math.sin(a2),z); }
+  }
+  return pts;
+}
+const root=new THREE.Group(); scene.add(root);
+
+// 3D stellated core: two cubes offset 45° → 8-point star silhouette with depth
+const box=new THREE.EdgesGeometry(new THREE.BoxGeometry(4.2,4.2,4.2));
+const c1=new THREE.LineSegments(box,mat(.75)); const c2=new THREE.LineSegments(box,mat(.75)); c2.rotation.z=Math.PI/4;
+const core=new THREE.Group(); core.add(c1,c2);
+const oct=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(3.6)),mat(.45)); core.add(oct);
+root.add(core);
+
+// concentric star rings
+const ringPts=[]; [5.2,6.6,8.0].forEach((r,i)=>ringPts.push(...starSegs(0,0,r,-i*.8)));
+const ringGeo=new THREE.BufferGeometry(); ringGeo.setAttribute('position',new THREE.Float32BufferAttribute(ringPts,3));
+const rings=new THREE.LineSegments(ringGeo,mat(.4)); root.add(rings);
+
+// girih lattice plane behind
+const lat=[]; const step=3.2;
+for(let x=-6;x<=6;x++) for(let y=-5;y<=5;y++) lat.push(...starSegs(x*step,y*step,1.25,0));
+const latGeo=new THREE.BufferGeometry(); latGeo.setAttribute('position',new THREE.Float32BufferAttribute(lat,3));
+const lattice=new THREE.LineSegments(latGeo,mat(.18)); lattice.position.z=-9; lattice.rotation.x=-.35; scene.add(lattice);
+
+function size(){ const w=host.clientWidth,h=host.clientHeight; if(!w||!h) return; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+new ResizeObserver(size).observe(host); size();
+
+let mx=0,my=0; addEventListener('pointermove',e=>{ mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5); },{passive:true});
+let visible=true, onHome=true;
+new IntersectionObserver(([en])=>{ visible=en.isIntersecting; }).observe(host);
+addEventListener('routechange',e=>{ onHome=e.detail==='home'; if(onHome) requestAnimationFrame(()=>{ size(); renderer.render(scene,camera); }); });
+onHome=(location.hash||'#home')==='#home' || !['#about','#editor','#series','#index','#epub','#submit','#login','#dashboard'].includes(location.hash);
+
+core.rotation.set(.5,.6,0);
+const clock=new THREE.Clock();
+function frame(){
+  requestAnimationFrame(frame);
+  if(!visible || !onHome || document.hidden) { clock.getDelta(); return; }
+  const dt=Math.min(clock.getDelta(),.05);
+  core.rotation.y+=dt*.12; core.rotation.x+=dt*.05;
+  rings.rotation.z-=dt*.03; lattice.rotation.z+=dt*.01;
+  root.rotation.y+=((mx*.25)-root.rotation.y)*.03; root.rotation.x+=((my*.15)-root.rotation.x)*.03;
+  renderer.render(scene,camera);
+}
+if(reduce) renderer.render(scene,camera); else frame();
+</script>
+</body>
+</html>

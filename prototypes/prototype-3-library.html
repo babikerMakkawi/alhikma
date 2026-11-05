@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مجلة الحكمة — مكتبة ليلية</title>
+<meta name="description" content="مجلة الحكمة: مجلة بحثية علمية شرعية ثقافية محكّمة — نموذج تصميم أولي (مكتبة ليلية).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+  // theme before paint (dark default)
+  (function(){ try{ var t=localStorage.getItem('hikma-theme'); if(t==='light'){document.documentElement.classList.remove('dark');} }catch(e){} })();
+</script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          maroon: { 50:'#fff4f4',100:'#ffe6e6',200:'#ffcaca',300:'#ffa4a6',400:'#fb7079',500:'#e2495a',600:'#c03144',700:'#9f2235',800:'#73091f',900:'#510616',950:'#140106' },
+          ink:     'rgb(var(--c-bg) / <alpha-value>)',
+          surface: 'rgb(var(--c-surface) / <alpha-value>)',
+          raised:  'rgb(var(--c-surface-2) / <alpha-value>)',
+          fg:      'rgb(var(--c-text) / <alpha-value>)',
+          muted:   'rgb(var(--c-muted) / <alpha-value>)',
+          line:    'rgb(var(--c-line) / <alpha-value>)',
+          gold:    'rgb(var(--c-gold) / <alpha-value>)',
+          accent:  'rgb(var(--c-accent) / <alpha-value>)',
+          onaccent:'rgb(var(--c-on-accent) / <alpha-value>)',
+          ok:      'rgb(var(--c-ok) / <alpha-value>)',
+          bad:     'rgb(var(--c-bad) / <alpha-value>)'
+        },
+        fontFamily: {
+          display: ['"Reem Kufi"', '"IBM Plex Sans Arabic"', 'sans-serif'],
+          body: ['"IBM Plex Sans Arabic"', 'Tahoma', 'sans-serif']
+        },
+        fontSize: {
+          'eyebrow': ['0.9375rem', { lineHeight: '1.6' }],
+          'body': ['1.0625rem', { lineHeight: '1.85' }],
+          'lead': ['1.25rem', { lineHeight: '1.85' }],
+          'h3': ['1.375rem', { lineHeight: '1.5' }],
+          'h2': ['clamp(1.875rem, 1.2rem + 2.4vw, 2.75rem)', { lineHeight: '1.3' }],
+          'h1': ['clamp(2.5rem, 1.3rem + 4.6vw, 4.75rem)', { lineHeight: '1.2' }]
+        },
+        borderRadius: { 'card': '1rem', 'panel': '1.5rem' },
+        maxWidth: { 'page': '72rem', 'prose-ar': '40rem' },
+        boxShadow: { 'glow': '0 0 0 1px rgb(var(--c-line) / .14), 0 24px 60px -24px rgb(var(--c-glow) / .35)' }
+      }
+    }
+  }
+</script>
+<style>
+  /* ---------- tokens (channel triplets so Tailwind alpha works) ---------- */
+  :root{
+    --c-bg: 250 246 239;       /* parchment */
+    --c-surface: 255 255 255;
+    --c-surface-2: 243 236 226;
+    --c-text: 36 16 18;
+    --c-muted: 102 82 78;      /* 7.2:1 on bg */
+    --c-line: 115 9 31;
+    --c-gold: 138 90 18;       /* 5.6:1 on bg */
+    --c-accent: 115 9 31;      /* brand maroon */
+    --c-on-accent: 255 255 255;
+    --c-ok: 21 110 64;
+    --c-bad: 176 32 48;
+    --c-glow: 115 9 31;
+    --focus: #73091f;
+    color-scheme: light;
+  }
+  .dark{
+    --c-bg: 20 5 10;           /* #14050a ink-aubergine */
+    --c-surface: 33 11 19;
+    --c-surface-2: 46 17 27;
+    --c-text: 243 233 222;     /* warm parchment, 16:1 */
+    --c-muted: 199 181 167;    /* 10:1 */
+    --c-line: 226 184 106;
+    --c-gold: 228 188 112;     /* 11:1 */
+    --c-accent: 228 188 112;
+    --c-on-accent: 20 5 10;
+    --c-ok: 120 214 160;
+    --c-bad: 255 140 150;
+    --c-glow: 226 184 106;
+    --focus: #f0c878;
+    color-scheme: dark;
+  }
+  html{ -webkit-text-size-adjust:100%; }
+  body{ background: rgb(var(--c-bg)); color: rgb(var(--c-text)); font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif; overflow-x:hidden; }
+  html.lenis, html.lenis body{ height:auto; }
+  .lenis.lenis-smooth{ scroll-behavior:auto !important; }
+  .lenis.lenis-stopped{ overflow:hidden; }
+
+  /* atmospheric backdrop: maroon lamp-glow + faint girih star pattern */
+  .night-sky{ position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(60rem 40rem at 85% -10%, rgb(115 9 31 / .55), transparent 60%),
+      radial-gradient(40rem 30rem at 0% 110%, rgb(115 9 31 / .35), transparent 60%),
+      rgb(var(--c-bg)); }
+  html:not(.dark) .night-sky{ background:
+      radial-gradient(60rem 40rem at 85% -10%, rgb(115 9 31 / .08), transparent 60%),
+      radial-gradient(40rem 30rem at 0% 110%, rgb(138 90 18 / .08), transparent 60%),
+      rgb(var(--c-bg)); }
+  .girih{ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23e2b86a' stroke-opacity='.07' stroke-width='1'%3E%3Cpath d='M40 8l9 23 23 9-23 9-9 23-9-23-23-9 23-9z'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E"); }
+  html:not(.dark) .girih{ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%2373091f' stroke-opacity='.06' stroke-width='1'%3E%3Cpath d='M40 8l9 23 23 9-23 9-9 23-9-23-23-9 23-9z'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E"); }
+
+  .glass{ background: linear-gradient(180deg, rgb(var(--c-surface) / .78), rgb(var(--c-surface) / .58)); backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); border:1px solid rgb(var(--c-line) / .14); }
+  html:not(.dark) .glass{ background: rgb(var(--c-surface) / .9); border-color: rgb(var(--c-line) / .12); box-shadow: 0 1px 2px rgb(36 16 18 / .04), 0 12px 32px -18px rgb(36 16 18 / .18); }
+  .hairline{ height:1px; background: linear-gradient(90deg, transparent, rgb(var(--c-gold) / .55), transparent); }
+
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:3px; border-radius:.5rem; }
+  ::selection{ background: rgb(var(--c-gold) / .35); }
+
+  /* responsive data tables -> cards under md */
+  @media (max-width: 767px){
+    .rtable thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .rtable, .rtable tbody, .rtable tr, .rtable td{ display:block; width:100%; }
+    .rtable tr{ border:1px solid rgb(var(--c-line) / .14); border-radius:1rem; padding:.75rem 1rem; margin-bottom:.75rem; background: rgb(var(--c-surface) / .6); }
+    .rtable td{ padding:.35rem 0 !important; border:0 !important; display:flex; gap:.75rem; justify-content:space-between; align-items:flex-start; text-align:start; }
+    .rtable td::before{ content:attr(data-label); flex:none; color: rgb(var(--c-muted)); font-size:.875rem; min-width:5.5rem; }
+    .rtable td[data-primary]{ display:block; font-weight:600; font-size:1.0625rem; }
+    .rtable td[data-primary]::before{ display:none; }
+  }
+
+  .page{ display:none; }
+  .page.is-active{ display:block; }
+
+  @keyframes toast-in{ from{ opacity:0; transform: translateY(12px);} to{opacity:1; transform:none;} }
+  .toast{ animation: toast-in .25s ease-out both; }
+  @keyframes floaty{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} }
+
+  #hero-3d canvas{ display:block; width:100% !important; height:100% !important; }
+  .shelf-cover{ box-shadow: 0 30px 50px -28px rgb(0 0 0 / .8), 0 0 0 1px rgb(var(--c-line) / .18); }
+
+  details > summary{ list-style:none; }
+  details > summary::-webkit-details-marker{ display:none; }
+  details[open] .chev{ transform: rotate(180deg); }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body class="font-body text-body antialiased min-h-screen">
+<div class="night-sky" aria-hidden="true"></div>
+<div class="fixed inset-0 -z-10 girih pointer-events-none" aria-hidden="true"></div>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:right-3 focus:z-[100] focus:bg-accent focus:text-onaccent focus:px-4 focus:py-3 focus:rounded-xl">تخطَّ إلى المحتوى</a>
+
+<!-- ======================= HEADER ======================= -->
+<header id="site-header" class="sticky top-0 z-50 border-b border-line/10 bg-ink/75 backdrop-blur-xl">
+  <div class="mx-auto max-w-page px-4 sm:px-6 h-[72px] flex items-center gap-3">
+    <a href="#home" class="flex items-center gap-3 shrink-0 rounded-xl" aria-label="مجلة الحكمة — الرئيسية">
+      <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" width="44" height="47" class="h-11 w-auto drop-shadow">
+      <span class="leading-tight">
+        <span class="block font-display text-[1.375rem] font-semibold text-fg">الحكمة</span>
+        <span class="block text-[0.75rem] text-muted">مجلة علمية محكّمة</span>
+      </span>
+    </a>
+    <nav aria-label="التنقل الرئيسي" class="hidden xl:flex items-center gap-1 ms-6">
+      <a data-nav href="#home" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">الرئيسية</a>
+      <a data-nav href="#about" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">التعريف بالمجلة</a>
+      <a data-nav href="#editor" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">رئيس التحرير</a>
+      <a data-nav href="#series" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">سلسلة الإصدارات</a>
+      <a data-nav href="#index" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">فهرس الكشاف</a>
+      <a data-nav href="#epub" class="nav-link px-3 py-2.5 rounded-lg text-[0.9375rem] text-muted hover:text-fg transition-colors">النشر الإلكتروني</a>
+    </nav>
+    <div class="ms-auto flex items-center gap-2">
+      <button id="theme-toggle" type="button" class="h-11 w-11 grid place-items-center rounded-xl border border-line/15 text-gold hover:bg-raised transition-colors" aria-label="تبديل الوضع الفاتح/الداكن">
+        <svg class="icon-sun hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="#login" data-nav class="hidden sm:inline-flex h-11 items-center gap-2 px-4 rounded-xl border border-line/15 text-[0.9375rem] text-fg hover:bg-raised transition-colors">دخول</a>
+      <a href="#submit" data-nav class="hidden sm:inline-flex h-11 items-center px-5 rounded-xl bg-accent text-onaccent font-semibold text-[0.9375rem] hover:brightness-110 transition">أرسل بحثك</a>
+      <button id="menu-btn" type="button" class="xl:hidden h-11 w-11 grid place-items-center rounded-xl border border-line/15 text-fg" aria-expanded="false" aria-controls="mobile-menu" aria-label="فتح القائمة">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- mobile menu -->
+  <div id="mobile-menu" class="xl:hidden hidden border-t border-line/10 bg-ink/95 backdrop-blur-xl" data-lenis-prevent>
+    <nav aria-label="قائمة الجوال" class="mx-auto max-w-page px-4 sm:px-6 py-4 grid gap-1">
+      <a data-nav href="#home" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">الرئيسية</a>
+      <a data-nav href="#about" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">التعريف بالمجلة</a>
+      <a data-nav href="#editor" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">التعريف برئيس التحرير</a>
+      <a data-nav href="#series" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">سلسلة الإصدارات</a>
+      <a data-nav href="#index" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">فهرس كشاف المجلة</a>
+      <a data-nav href="#epub" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">النشر الإلكتروني</a>
+      <a data-nav href="#submit" class="nav-link min-h-[48px] flex items-center px-4 rounded-xl text-fg hover:bg-raised">إرسال البحوث</a>
+      <div class="grid grid-cols-2 gap-2 pt-3 mt-2 border-t border-line/10">
+        <a data-nav href="#login" class="min-h-[48px] grid place-items-center rounded-xl border border-line/15 text-fg">تسجيل الدخول</a>
+        <a data-nav href="#submit" class="min-h-[48px] grid place-items-center rounded-xl bg-accent text-onaccent font-semibold">أرسل بحثك</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="outline-none">
+
+<!-- ======================= HOME ======================= -->
+<section class="page" data-page="home" aria-labelledby="hero-title">
+  <!-- Hero -->
+  <div class="relative overflow-hidden">
+    <div class="mx-auto max-w-page px-4 sm:px-6 pt-12 pb-16 md:pt-20 md:pb-24 grid md:grid-cols-[1.05fr_1fr] items-center gap-6 md:gap-10">
+      <div class="relative z-10">
+        <p class="text-eyebrow font-semibold text-gold flex items-center gap-3" data-hero>
+          <span class="inline-block h-px w-10 bg-gold/60" aria-hidden="true"></span>
+          منذ 1414هـ · المدينة المنورة
+        </p>
+        <h1 id="hero-title" class="mt-5 font-display font-bold text-h1 text-fg" data-hero>
+          مجلة <span class="text-gold">الحكمة</span>
+        </h1>
+        <p class="mt-4 text-lead text-fg/90 max-w-prose-ar" data-hero>أكثر مجلات البحوث الإسلامية انتشاراً في العالم</p>
+        <p class="mt-3 text-body text-muted max-w-prose-ar" data-hero>مجلة بحثية علمية شرعية ثقافية محكّمة، تصدر من المدينة المنورة وتصل إلى قرّائها في نحو سبعين دولة.</p>
+        <div class="mt-8 flex flex-wrap gap-3" data-hero>
+          <a href="#index" class="inline-flex min-h-[48px] items-center gap-2 px-6 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">
+            تصفح الفهرس
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </a>
+          <a href="#submit" class="inline-flex min-h-[48px] items-center gap-2 px-6 rounded-xl border border-line/30 text-fg hover:bg-raised transition-colors">أرسل بحثك</a>
+        </div>
+        <dl class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[0.9375rem]" data-hero>
+          <div class="flex gap-2"><dt class="text-muted">ISSN (UK)</dt><dd class="text-fg font-semibold tabular-nums" dir="ltr">2754-7906</dd></div>
+          <div class="flex gap-2"><dt class="text-muted">العدد الأحدث</dt><dd class="text-fg font-semibold">69 · 1447هـ</dd></div>
+        </dl>
+      </div>
+      <div class="relative h-[340px] sm:h-[420px] md:h-[540px]" aria-hidden="false">
+        <div class="absolute inset-0 rounded-full blur-3xl opacity-60 dark:opacity-80" style="background: radial-gradient(closest-side, rgb(var(--c-gold) / .18), transparent)" aria-hidden="true"></div>
+        <div id="hero-3d" class="absolute inset-0" role="img" aria-label="مجسّم ثلاثي الأبعاد لمجلد مجلة الحكمة يطفو بهدوء"></div>
+        <img id="hero-fallback" hidden src="../public/images/mock-up.png" alt="مجلد من إصدارات الحكمة" class="absolute inset-0 m-auto max-h-full w-auto rounded-panel">
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="mx-auto max-w-page px-4 sm:px-6">
+    <div class="hairline" aria-hidden="true"></div>
+    <dl class="grid grid-cols-2 md:grid-cols-4">
+      <div class="py-8 md:py-10 px-2 text-center border-line/10 border-l md:border-l" data-reveal>
+        <dt class="text-muted text-[0.9375rem] order-2">عدداً صدر</dt>
+        <dd class="font-display text-[2.75rem] md:text-[3.25rem] text-gold leading-none mt-2 tabular-nums"><span data-count="69">69</span></dd>
+      </div>
+      <div class="py-8 md:py-10 px-2 text-center border-line/10 md:border-l" data-reveal>
+        <dt class="text-muted text-[0.9375rem]">بحثاً مفهرساً</dt>
+        <dd class="font-display text-[2.75rem] md:text-[3.25rem] text-gold leading-none mt-2 tabular-nums"><span data-count="673">673</span></dd>
+      </div>
+      <div class="py-8 md:py-10 px-2 text-center border-line/10 border-l border-t md:border-t-0" data-reveal>
+        <dt class="text-muted text-[0.9375rem]">دولة يصلها العدد</dt>
+        <dd class="font-display text-[2.75rem] md:text-[3.25rem] text-gold leading-none mt-2 tabular-nums"><span data-count="70">70</span></dd>
+      </div>
+      <div class="py-8 md:py-10 px-2 text-center border-line/10 border-t md:border-t-0" data-reveal>
+        <dt class="text-muted text-[0.9375rem]">سنة التأسيس</dt>
+        <dd class="font-display text-[2.75rem] md:text-[3.25rem] text-gold leading-none mt-2 tabular-nums"><span data-count="1414">1414</span><span class="text-[1.5rem]">هـ</span></dd>
+      </div>
+    </dl>
+    <div class="hairline" aria-hidden="true"></div>
+  </div>
+
+  <!-- About teaser -->
+  <section class="mx-auto max-w-page px-4 sm:px-6 py-20 md:py-28 grid md:grid-cols-12 gap-10 items-center" aria-labelledby="about-teaser">
+    <div class="md:col-span-7" data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">عن المجلة</p>
+      <h2 id="about-teaser" class="mt-3 font-display text-h2 text-fg">ثلاثون عاماً من البحث المحكّم</h2>
+      <p class="mt-5 text-body text-muted max-w-prose-ar">أسّسها الشيخ د. وليد بن أحمد الحسين في 1/5/1414هـ (16/10/1993م) بتشجيعٍ من العلامة محمد بن صالح العثيمين رحمه الله، الذي أسهم في عددها الأول بـ«منظومة في أصول الفقه» في 102 بيت. ومنذ العدد العشرين (شوال 1420هـ) صارت بحوثها تخضع للتحكيم العلمي.</p>
+      <ul class="mt-8 grid sm:grid-cols-3 gap-3">
+        <li class="glass rounded-card p-4"><span class="block font-display text-[1.5rem] text-fg">6,000</span><span class="text-[0.9375rem] text-muted">نسخة مطبوعة للعدد</span></li>
+        <li class="glass rounded-card p-4"><span class="block font-display text-[1.5rem] text-fg">300–500+</span><span class="text-[0.9375rem] text-muted">صفحة في كل عدد</span></li>
+        <li class="glass rounded-card p-4"><span class="block font-display text-[1.5rem] text-fg">العدد 20</span><span class="text-[0.9375rem] text-muted">بداية التحكيم</span></li>
+      </ul>
+      <a href="#about" class="mt-8 inline-flex min-h-[44px] items-center gap-2 text-gold font-semibold underline-offset-8 hover:underline">اقرأ قصة المجلة
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+    </div>
+    <figure class="md:col-span-5 relative" data-reveal>
+      <div class="rounded-panel overflow-hidden bg-[#f6f1ea] shadow-glow" data-parallax>
+        <img src="../public/images/mock-up.png" alt="مجلد مطبوع من إصدارات الحكمة بغلاف أخضر مذهّب" class="w-full h-auto" loading="lazy">
+      </div>
+      <figcaption class="mt-3 text-[0.875rem] text-muted">النصوص الكاملة للأعداد المطبوعة متاحة على «دار المنظومة».</figcaption>
+    </figure>
+  </section>
+
+  <!-- Committee -->
+  <section class="relative py-20 md:py-24 border-y border-line/10 bg-surface/30" aria-labelledby="committee-title">
+    <div class="mx-auto max-w-page px-4 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+        <div>
+          <p class="text-eyebrow font-semibold text-gold">لجنة التحكيم</p>
+          <h2 id="committee-title" class="mt-3 font-display text-h2 text-fg">أساتذة من أربع جامعات</h2>
+        </div>
+        <p class="text-muted max-w-md">تُحكَّم البحوث تحكيماً علمياً، ويحصل الباحث على خطاب تحكيم رسمي معتمد للترقيات العلمية.</p>
+      </div>
+      <ul class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="committee-list"></ul>
+    </div>
+  </section>
+
+  <!-- Latest e-published -->
+  <section class="mx-auto max-w-page px-4 sm:px-6 py-20 md:py-28" aria-labelledby="latest-title">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <div>
+        <p class="text-eyebrow font-semibold text-gold">النشر الإلكتروني</p>
+        <h2 id="latest-title" class="mt-3 font-display text-h2 text-fg">أحدث البحوث المنشورة</h2>
+      </div>
+      <a href="#epub" class="inline-flex min-h-[44px] items-center gap-2 px-4 rounded-xl border border-line/20 text-fg hover:bg-raised transition-colors">جميع البحوث</a>
+    </div>
+    <ol id="latest-list" class="mt-10 grid gap-3"></ol>
+  </section>
+
+  <!-- Series shelf (pinned horizontal) -->
+  <section id="shelf" class="relative border-y border-line/10 bg-surface/30 overflow-hidden" aria-labelledby="shelf-title">
+    <div class="mx-auto max-w-page px-4 sm:px-6 pt-20 md:pt-24">
+      <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+        <div>
+          <p class="text-eyebrow font-semibold text-gold">سلسلة الإصدارات</p>
+          <h2 id="shelf-title" class="mt-3 font-display text-h2 text-fg">رفٌّ مستقل منذ 1420هـ</h2>
+          <p class="mt-3 text-muted max-w-prose-ar">ثلاثة وعشرون كتاباً في التحقيق والتراجم والدراسات، مستقلة عن المجلة، ويمكن الحصول عليها بالتواصل معنا.</p>
+        </div>
+        <a href="#series" class="inline-flex min-h-[44px] items-center gap-2 px-4 rounded-xl border border-line/20 text-fg hover:bg-raised transition-colors">كل الإصدارات</a>
+      </div>
+    </div>
+    <div id="shelf-viewport" class="mt-10 pb-20 md:pb-24 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none" data-lenis-prevent-wheel>
+      <ul id="shelf-track" class="flex gap-6 px-4 sm:px-6 md:pe-[8vw] md:ps-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] w-max"></ul>
+    </div>
+  </section>
+
+  <!-- How to submit -->
+  <section class="mx-auto max-w-page px-4 sm:px-6 py-20 md:py-28" aria-labelledby="how-title">
+    <div data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">إرسال البحوث</p>
+      <h2 id="how-title" class="mt-3 font-display text-h2 text-fg">من الإرسال إلى خطاب التحكيم</h2>
+    </div>
+    <ol class="mt-10 grid md:grid-cols-4 gap-4" id="home-steps"></ol>
+    <div class="mt-8 grid sm:grid-cols-2 gap-4">
+      <div class="glass rounded-panel p-6 flex items-center justify-between gap-4" data-reveal>
+        <div><p class="text-muted">رسوم التحكيم</p><p class="text-[0.9375rem] text-muted">تقريباً 200 دولار</p></div>
+        <p class="font-display text-[2.25rem] text-gold leading-none">750 <span class="text-[1rem] text-muted">ر.س</span></p>
+      </div>
+      <div class="glass rounded-panel p-6 flex items-center justify-between gap-4" data-reveal>
+        <div><p class="text-muted">رسوم النشر الإلكتروني</p><p class="text-[0.9375rem] text-muted">سنة كاملة، قابلة للتجديد</p></div>
+        <p class="font-display text-[2.25rem] text-gold leading-none">800 <span class="text-[1rem] text-muted">ر.س</span></p>
+      </div>
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3" data-reveal>
+      <a href="#submit" class="inline-flex min-h-[48px] items-center px-6 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">شروط النشر كاملة</a>
+    </div>
+  </section>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="page" data-page="about" aria-labelledby="about-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24">
+    <header class="max-w-3xl" data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">التعريف بالمجلة</p>
+      <h1 id="about-title" class="mt-3 font-display text-h1 text-fg">مجلة الحكمة</h1>
+      <p class="mt-5 text-lead text-muted">مجلة بحثية علمية شرعية ثقافية محكّمة، تُعنى بالدراسات الشرعية والعربية والتربوية والإنسانية، وتصدر من المدينة المنورة.</p>
+    </header>
+    <div class="mt-14 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7">
+        <h2 class="font-display text-h3 text-fg" data-reveal>محطات</h2>
+        <ol class="mt-6 relative border-s border-line/20 ps-6 grid gap-8" id="about-timeline"></ol>
+      </div>
+      <aside class="lg:col-span-5 grid gap-4 content-start">
+        <div class="glass rounded-panel p-6" data-reveal>
+          <h2 class="font-display text-h3 text-fg">بطاقة المجلة</h2>
+          <dl class="mt-4 grid gap-3 text-[0.9375rem]">
+            <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">ISSN (المملكة المتحدة)</dt><dd class="font-semibold tabular-nums" dir="ltr">2754-7906</dd></div>
+            <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">تاريخ التأسيس</dt><dd class="font-semibold">1/5/1414هـ</dd></div>
+            <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">المقر</dt><dd class="font-semibold">المدينة المنورة</dd></div>
+            <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">الأعداد الصادرة</dt><dd class="font-semibold">69 عدداً</dd></div>
+            <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">النسخ المطبوعة</dt><dd class="font-semibold">حتى 6,000 نسخة</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-muted">الانتشار</dt><dd class="font-semibold">نحو 70 دولة</dd></div>
+          </dl>
+        </div>
+        <div class="glass rounded-panel p-6" data-reveal>
+          <h2 class="font-display text-h3 text-fg">النصوص الكاملة</h2>
+          <p class="mt-3 text-muted">النصوص الكاملة لبحوث الأعداد المطبوعة متاحة على قاعدة «دار المنظومة».</p>
+          <a href="https://www.mandumah.com" target="_blank" rel="noopener" class="mt-4 inline-flex min-h-[44px] items-center gap-2 px-4 rounded-xl border border-line/20 hover:bg-raised transition-colors"><span dir="ltr">www.mandumah.com</span></a>
+        </div>
+      </aside>
+    </div>
+    <section class="mt-20" aria-labelledby="about-committee">
+      <h2 id="about-committee" class="font-display text-h2 text-fg" data-reveal>لجنة التحكيم</h2>
+      <ul class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4" data-committee></ul>
+    </section>
+  </div>
+</section>
+
+<!-- ======================= EDITOR ======================= -->
+<section class="page" data-page="editor" aria-labelledby="editor-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24 grid lg:grid-cols-12 gap-10">
+    <aside class="lg:col-span-4" data-reveal>
+      <div class="glass rounded-panel p-6 lg:sticky lg:top-24">
+        <div class="h-20 w-20 rounded-2xl grid place-items-center bg-maroon-800 text-[#f3e9de] font-display text-[2rem]" aria-hidden="true">و</div>
+        <p class="mt-5 text-eyebrow font-semibold text-gold">رئيس التحرير</p>
+        <h1 id="editor-title" class="mt-2 font-display text-[1.875rem] leading-snug text-fg">د. وليد بن أحمد بن صالح الحسين</h1>
+        <p class="mt-1 text-muted">أبو عبدالله التميمي</p>
+        <dl class="mt-6 grid gap-3 text-[0.9375rem]">
+          <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">المولد</dt><dd>الزبير، العراق · 1384هـ/1964م</dd></div>
+          <div class="flex justify-between gap-4 border-b border-line/10 pb-3"><dt class="text-muted">الإقامة</dt><dd>المدينة المنورة منذ 1415هـ</dd></div>
+          <div class="flex justify-between gap-4"><dt class="text-muted">الملازمة</dt><dd>13 سنة لابن عثيمين</dd></div>
+        </dl>
+      </div>
+    </aside>
+    <div class="lg:col-span-8">
+      <section aria-labelledby="ed-path">
+        <h2 id="ed-path" class="font-display text-h2 text-fg" data-reveal>المسيرة العلمية</h2>
+        <ol class="mt-8 relative border-s border-line/20 ps-6 grid gap-8" id="editor-timeline"></ol>
+      </section>
+      <section class="mt-16" aria-labelledby="ed-works">
+        <h2 id="ed-works" class="font-display text-h2 text-fg" data-reveal>من مؤلفاته وتحقيقاته</h2>
+        <ul class="mt-8 grid sm:grid-cols-2 gap-4" id="editor-works"></ul>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SERIES ======================= -->
+<section class="page" data-page="series" aria-labelledby="series-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24">
+    <header class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div class="max-w-2xl">
+        <p class="text-eyebrow font-semibold text-gold">سلسلة الإصدارات</p>
+        <h1 id="series-title" class="mt-3 font-display text-h1 text-fg">إصدارات الحكمة</h1>
+        <p class="mt-4 text-lead text-muted">سلسلة كتب مستقلة عن المجلة بدأت عام 1420هـ، تضم 23 إصداراً. للحصول على أيٍّ منها تواصل معنا.</p>
+      </div>
+      <a href="https://wa.me/966505751684" target="_blank" rel="noopener" class="inline-flex min-h-[48px] items-center gap-2 px-6 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">اطلب إصداراً عبر واتساب</a>
+    </header>
+    <ul id="series-grid" class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-10"></ul>
+  </div>
+</section>
+
+<!-- ======================= INDEX ======================= -->
+<section class="page" data-page="index" aria-labelledby="index-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24">
+    <header class="max-w-3xl" data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">فهرس كشاف المجلة</p>
+      <h1 id="index-title" class="mt-3 font-display text-h1 text-fg">كشّاف البحوث المطبوعة</h1>
+      <p class="mt-4 text-lead text-muted">ابحث في بحوث الأعداد المطبوعة بالموضوع أو العنوان أو اسم الباحث.</p>
+    </header>
+    <div class="mt-10" id="index-table"></div>
+  </div>
+</section>
+
+<!-- ======================= EPUB ======================= -->
+<section class="page" data-page="epub" aria-labelledby="epub-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24">
+    <header class="max-w-3xl" data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">النشر الإلكتروني</p>
+      <h1 id="epub-title" class="mt-3 font-display text-h1 text-fg">البحوث المنشورة إلكترونياً</h1>
+    </header>
+    <div class="mt-8 rounded-card border border-gold/40 bg-gold/10 p-5 flex gap-4 items-start" role="note" data-reveal>
+      <svg class="h-6 w-6 shrink-0 text-gold mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+      <p class="text-fg"><strong class="font-semibold">تنبيه مدة النشر:</strong> يُنشر البحث لمدة عام ابتداءً من تاريخ نشره، وبعد ذلك يُحذف ما لم يقم الباحث بتجديد النشر مقابل رسوم.</p>
+    </div>
+    <div class="mt-10" id="epub-table"></div>
+  </div>
+</section>
+
+<!-- ======================= SUBMIT ======================= -->
+<section class="page" data-page="submit" aria-labelledby="submit-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 pt-14 md:pt-20 pb-24">
+    <header class="max-w-3xl" data-reveal>
+      <p class="text-eyebrow font-semibold text-gold">إرسال البحوث</p>
+      <h1 id="submit-title" class="mt-3 font-display text-h1 text-fg">انشر بحثك في الحكمة</h1>
+      <p class="mt-4 text-lead text-muted">يستغرق التحكيم من شهر إلى شهرين، ويحصل الباحث بعده على خطاب تحكيم رسمي يُعتمد في الترقيات العلمية.</p>
+    </header>
+
+    <section class="mt-14" aria-labelledby="steps-h">
+      <h2 id="steps-h" class="font-display text-h2 text-fg" data-reveal>الخطوات</h2>
+      <ol class="mt-8 grid md:grid-cols-4 gap-4" id="submit-steps"></ol>
+    </section>
+
+    <section class="mt-16 grid md:grid-cols-2 gap-4" aria-label="الرسوم">
+      <article class="glass rounded-panel p-7 relative overflow-hidden" data-reveal>
+        <p class="text-eyebrow font-semibold text-gold">رسوم التحكيم</p>
+        <p class="mt-3 font-display text-[3.5rem] leading-none text-fg">750 <span class="text-[1.25rem] text-muted">ريال سعودي</span></p>
+        <p class="mt-2 text-muted">ما يعادل 200 دولار تقريباً</p>
+        <ul class="mt-6 grid gap-2 text-[0.9375rem]">
+          <li class="flex gap-2"><span class="text-gold" aria-hidden="true">✓</span> تحكيم علمي خلال 1–2 شهر</li>
+          <li class="flex gap-2"><span class="text-gold" aria-hidden="true">✓</span> خطاب تحكيم رسمي للترقية</li>
+          <li class="flex gap-2"><span class="text-gold" aria-hidden="true">✓</span> تحويل بنكي أو ويسترن يونيون خارج المملكة</li>
+        </ul>
+      </article>
+      <article class="rounded-panel p-7 relative overflow-hidden bg-maroon-800 text-[#f6ece1] shadow-glow" data-reveal>
+        <p class="text-eyebrow font-semibold text-[#f0cf8f]">رسوم النشر الإلكتروني</p>
+        <p class="mt-3 font-display text-[3.5rem] leading-none">800 <span class="text-[1.25rem] text-[#e6d3c2]">ريال سعودي</span></p>
+        <p class="mt-2 text-[#e6d3c2]">يُنشر فور انتهاء التحكيم</p>
+        <ul class="mt-6 grid gap-2 text-[0.9375rem]">
+          <li class="flex gap-2"><span class="text-[#f0cf8f]" aria-hidden="true">✓</span> صلاحية النشر سنة كاملة</li>
+          <li class="flex gap-2"><span class="text-[#f0cf8f]" aria-hidden="true">✓</span> قابل للتجديد برسوم</li>
+          <li class="flex gap-2"><span class="text-[#f0cf8f]" aria-hidden="true">✓</span> ملف PDF متاح للقرّاء</li>
+        </ul>
+      </article>
+    </section>
+
+    <div class="mt-16 grid lg:grid-cols-12 gap-10">
+      <section class="lg:col-span-7" aria-labelledby="criteria-h">
+        <h2 id="criteria-h" class="font-display text-h2 text-fg" data-reveal>شروط النشر (15)</h2>
+        <div class="mt-8 grid gap-2" id="criteria"></div>
+      </section>
+      <aside class="lg:col-span-5 grid gap-4 content-start">
+        <section class="glass rounded-panel p-6" aria-labelledby="send-h" data-reveal>
+          <h2 id="send-h" class="font-display text-h3 text-fg">أرسل نسختين من البحث</h2>
+          <p class="mt-2 text-muted text-[0.9375rem]">ستصلك رسالة تأكيد بالاستلام، وإن لم تصلك فأعد الإرسال.</p>
+          <div class="mt-5 grid gap-3">
+            <a href="mailto:Alhikma1964@hotmail.com" class="min-h-[48px] flex items-center justify-between gap-3 px-4 rounded-xl border border-line/20 hover:bg-raised transition-colors">
+              <span class="flex items-center gap-3"><svg class="h-5 w-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>البريد الإلكتروني</span>
+              <span dir="ltr" class="text-[0.875rem] text-muted break-all">Alhikma1964@hotmail.com</span>
+            </a>
+            <a href="https://wa.me/966505751684" target="_blank" rel="noopener" class="min-h-[48px] flex items-center justify-between gap-3 px-4 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">
+              <span class="flex items-center gap-3"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1-1.2 2 .8"/></svg>واتساب</span>
+              <span dir="ltr" class="text-[0.875rem]">+966 50 575 1684</span>
+            </a>
+          </div>
+        </section>
+        <section class="glass rounded-panel p-6" aria-labelledby="bank-h" data-reveal>
+          <h2 id="bank-h" class="font-display text-h3 text-fg">بيانات التحويل</h2>
+          <dl class="mt-4 grid gap-3 text-[0.9375rem]">
+            <div><dt class="text-muted">البنك</dt><dd class="font-semibold">مصرف الراجحي</dd></div>
+            <div><dt class="text-muted">اسم المستفيد</dt><dd class="font-semibold">وليد بن أحمد بن صالح الحسين</dd></div>
+            <div>
+              <dt class="text-muted">رقم الحساب</dt>
+              <dd class="mt-1 flex items-center justify-between gap-3 rounded-xl bg-raised px-4 py-2">
+                <span dir="ltr" class="font-semibold tabular-nums text-[1.0625rem] tracking-wide" id="acct">198608010097451</span>
+                <button type="button" data-copy="198608010097451" class="min-h-[44px] inline-flex items-center gap-2 px-3 rounded-lg text-gold hover:bg-surface transition-colors">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>نسخ
+                </button>
+              </dd>
+            </div>
+            <div class="pt-3 border-t border-line/10"><dt class="text-muted">خارج المملكة (ويسترن يونيون)</dt><dd class="mt-1 flex items-center justify-between gap-3"><span dir="ltr" class="font-semibold">waleed ahmed al Husain</span>
+              <button type="button" data-copy="waleed ahmed al Husain" class="min-h-[44px] inline-flex items-center gap-2 px-3 rounded-lg text-gold hover:bg-raised transition-colors">نسخ</button></dd>
+              <dd class="text-muted text-[0.875rem]">المدينة المنورة</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= LOGIN ======================= -->
+<section class="page" data-page="login" aria-labelledby="login-title">
+  <div class="mx-auto max-w-page px-4 sm:px-6 py-16 md:py-24 grid place-items-center min-h-[calc(100vh-72px)]">
+    <div class="w-full max-w-md glass rounded-panel p-7 sm:p-9 shadow-glow" data-reveal>
+      <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="h-16 w-auto mx-auto">
+      <h1 id="login-title" class="mt-5 text-center font-display text-[2rem] text-fg">لوحة الإدارة</h1>
+      <p class="mt-1 text-center text-muted">سجّل الدخول لإدارة النشر والفهرس</p>
+      <form id="login-form" class="mt-8 grid gap-5" novalidate>
+        <div>
+          <label for="l-email" class="block mb-2 text-[0.9375rem] font-medium">البريد الإلكتروني</label>
+          <input id="l-email" type="email" autocomplete="username" dir="ltr" class="field w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 text-fg placeholder:text-muted/70 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40" placeholder="admin@alhikma59.com">
+          <p class="err hidden mt-2 text-[0.875rem] text-bad" id="l-email-err">أدخل بريداً إلكترونياً صحيحاً.</p>
+        </div>
+        <div>
+          <label for="l-pass" class="block mb-2 text-[0.9375rem] font-medium">كلمة المرور</label>
+          <input id="l-pass" type="password" autocomplete="current-password" class="field w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 text-fg focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+          <p class="err hidden mt-2 text-[0.875rem] text-bad" id="l-pass-err">كلمة المرور مطلوبة.</p>
+        </div>
+        <label class="flex items-center gap-3 min-h-[44px] cursor-pointer"><input type="checkbox" class="h-5 w-5 accent-[rgb(var(--c-accent))]"> تذكّرني</label>
+        <button type="submit" class="min-h-[52px] rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">تسجيل الدخول</button>
+        <p class="text-center text-[0.875rem] text-muted">نموذج تصميمي — أي بيانات تنقلك إلى لوحة التحكم.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DASHBOARD ======================= -->
+<section class="page" data-page="dashboard" aria-labelledby="dash-title">
+  <div class="mx-auto max-w-[90rem] px-4 sm:px-6 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-6">
+    <aside class="lg:sticky lg:top-24 self-start min-w-0" aria-label="أقسام لوحة التحكم">
+      <div class="glass rounded-panel p-3">
+        <p class="px-3 pt-2 pb-3 text-[0.875rem] text-muted hidden lg:block">لوحة التحكم</p>
+        <nav class="flex lg:flex-col gap-1 overflow-x-auto" role="tablist" aria-orientation="vertical">
+          <button role="tab" data-dtab="d-epub" aria-selected="true" class="dtab shrink-0 min-h-[48px] flex items-center gap-3 px-4 rounded-xl text-start">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg>النشر الإلكتروني</button>
+          <button role="tab" data-dtab="d-index" aria-selected="false" class="dtab shrink-0 min-h-[48px] flex items-center gap-3 px-4 rounded-xl text-start">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/></svg>فهرس الكشاف</button>
+          <button role="tab" data-dtab="d-backup" aria-selected="false" class="dtab shrink-0 min-h-[48px] flex items-center gap-3 px-4 rounded-xl text-start">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>النسخ الاحتياطية</button>
+        </nav>
+        <div class="hidden lg:block mt-4 pt-4 border-t border-line/10 px-3 pb-2">
+          <p class="text-[0.875rem] text-muted">مسجّل باسم</p>
+          <p class="font-semibold">مدير الموقع</p>
+          <a href="#home" class="mt-3 inline-flex min-h-[44px] items-center text-gold text-[0.9375rem]">تسجيل الخروج</a>
+        </div>
+      </div>
+    </aside>
+    <div class="min-w-0">
+      <h1 id="dash-title" class="sr-only">لوحة التحكم</h1>
+      <!-- epub admin -->
+      <section id="d-epub" role="tabpanel" class="dpanel" aria-labelledby="d-epub-h">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div><h2 id="d-epub-h" class="font-display text-[1.875rem] text-fg">إدارة النشر الإلكتروني</h2><p class="text-muted">البحوث المنشورة وملفاتها</p></div>
+          <button type="button" id="open-add" class="min-h-[48px] inline-flex items-center gap-2 px-5 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>إضافة بحث</button>
+        </div>
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="glass rounded-card p-4"><p class="text-muted text-[0.875rem]">منشور حالياً</p><p class="font-display text-[1.75rem]" id="d-epub-count">—</p></div>
+          <div class="glass rounded-card p-4"><p class="text-muted text-[0.875rem]">ينتهي خلال 30 يوماً</p><p class="font-display text-[1.75rem] text-gold">3</p></div>
+          <div class="glass rounded-card p-4"><p class="text-muted text-[0.875rem]">أُضيف هذا الشهر</p><p class="font-display text-[1.75rem]">5</p></div>
+          <div class="glass rounded-card p-4"><p class="text-muted text-[0.875rem]">آخر نسخة احتياطية</p><p class="font-display text-[1.25rem] pt-1">2026-10-25</p></div>
+        </div>
+        <div class="mt-6" id="d-epub-table"></div>
+      </section>
+      <!-- index admin -->
+      <section id="d-index" role="tabpanel" class="dpanel hidden" aria-labelledby="d-index-h">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div><h2 id="d-index-h" class="font-display text-[1.875rem] text-fg">إدارة فهرس الكشاف</h2><p class="text-muted">بحوث الأعداد المطبوعة</p></div>
+          <div class="flex flex-wrap gap-2">
+            <label class="min-h-[48px] inline-flex items-center gap-2 px-4 rounded-xl border border-line/20 hover:bg-raised transition-colors cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-[var(--focus)]">
+              <svg class="h-5 w-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>استيراد Excel
+              <input type="file" accept=".xlsx,.xls,.csv" class="sr-only" id="xls-input">
+            </label>
+            <button type="button" id="add-index" class="min-h-[48px] inline-flex items-center gap-2 px-4 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">إضافة سجل</button>
+            <button type="button" id="delete-all" class="min-h-[48px] inline-flex items-center gap-2 px-4 rounded-xl border border-bad/50 text-bad hover:bg-bad/10 transition-colors">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>حذف الكل</button>
+          </div>
+        </div>
+        <div class="mt-6" id="d-index-table"></div>
+      </section>
+      <!-- backups -->
+      <section id="d-backup" role="tabpanel" class="dpanel hidden" aria-labelledby="d-backup-h">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div><h2 id="d-backup-h" class="font-display text-[1.875rem] text-fg">النسخ الاحتياطية</h2><p class="text-muted">لقطات قاعدة البيانات والملفات</p></div>
+          <button type="button" id="create-backup" class="min-h-[48px] inline-flex items-center gap-2 px-5 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">إنشاء نسخة الآن</button>
+        </div>
+        <ul class="mt-6 grid gap-3" id="backup-list"></ul>
+      </section>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer id="site-footer" class="border-t border-line/10 bg-surface/40">
+  <div class="mx-auto max-w-page px-4 sm:px-6 py-14 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-3">
+        <img src="../public/images/logo.png" alt="شعار مجلة الحكمة" class="h-12 w-auto" loading="lazy">
+        <p class="font-display text-[1.5rem]">مجلة الحكمة</p>
+      </div>
+      <p class="mt-4 text-muted max-w-sm">أكثر مجلات البحوث الإسلامية انتشاراً في العالم. ISSN <span dir="ltr">2754-7906</span></p>
+    </div>
+    <nav class="md:col-span-3" aria-label="روابط التذييل">
+      <h2 class="font-semibold text-fg">روابط</h2>
+      <ul class="mt-3 grid gap-1 text-muted">
+        <li><a href="#about" class="inline-flex min-h-[40px] items-center hover:text-fg">التعريف بالمجلة</a></li>
+        <li><a href="#index" class="inline-flex min-h-[40px] items-center hover:text-fg">فهرس كشاف المجلة</a></li>
+        <li><a href="#epub" class="inline-flex min-h-[40px] items-center hover:text-fg">النشر الإلكتروني</a></li>
+        <li><a href="#submit" class="inline-flex min-h-[40px] items-center hover:text-fg">إرسال البحوث</a></li>
+      </ul>
+    </nav>
+    <address class="md:col-span-4 not-italic">
+      <h2 class="font-semibold text-fg">تواصل</h2>
+      <ul class="mt-3 grid gap-1 text-muted">
+        <li class="min-h-[40px] flex items-center">المدينة المنورة، المملكة العربية السعودية</li>
+        <li><a href="tel:+966505751684" class="inline-flex min-h-[40px] items-center hover:text-fg" dir="ltr">+966 50 575 1684</a></li>
+        <li><a href="mailto:Alhikma1964@hotmail.com" class="inline-flex min-h-[40px] items-center hover:text-fg break-all" dir="ltr">Alhikma1964@hotmail.com</a></li>
+      </ul>
+    </address>
+  </div>
+  <div class="border-t border-line/10"><p class="mx-auto max-w-page px-4 sm:px-6 py-5 text-[0.875rem] text-muted">© مجلة الحكمة 1414–1447هـ. نموذج تصميم أولي.</p></div>
+</footer>
+
+<!-- ======================= MODAL: add research ======================= -->
+<div id="add-modal" class="fixed inset-0 z-[80] hidden" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close></div>
+  <div role="dialog" aria-modal="true" aria-labelledby="add-h" class="relative mx-auto mt-[6vh] w-[calc(100%-2rem)] max-w-xl max-h-[88vh] overflow-y-auto rounded-panel bg-surface border border-line/20 shadow-glow p-6 sm:p-8" data-lenis-prevent>
+    <div class="flex items-start justify-between gap-4">
+      <div><h2 id="add-h" class="font-display text-[1.75rem] text-fg">إضافة بحث</h2><p class="text-muted text-[0.9375rem]">يُنشر البحث لمدة عام من تاريخ النشر.</p></div>
+      <button type="button" data-close class="h-11 w-11 grid place-items-center rounded-xl hover:bg-raised" aria-label="إغلاق"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <form id="add-form" class="mt-6 grid sm:grid-cols-2 gap-4" novalidate>
+      <div><label for="f-no" class="block mb-2 text-[0.9375rem] font-medium">الرقم</label>
+        <input id="f-no" type="number" inputmode="numeric" class="w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"></div>
+      <div><label for="f-pages" class="block mb-2 text-[0.9375rem] font-medium">عدد الصفحات</label>
+        <input id="f-pages" type="number" inputmode="numeric" class="w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"></div>
+      <div class="sm:col-span-2"><label for="f-title" class="block mb-2 text-[0.9375rem] font-medium">العنوان <span class="text-bad">*</span></label>
+        <input id="f-title" type="text" required aria-describedby="f-title-err" class="w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+        <p id="f-title-err" class="hidden mt-2 text-[0.875rem] text-bad">عنوان البحث مطلوب.</p></div>
+      <div class="sm:col-span-2"><label for="f-author" class="block mb-2 text-[0.9375rem] font-medium">الباحث <span class="text-bad">*</span></label>
+        <input id="f-author" type="text" required aria-describedby="f-author-err" class="w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+        <p id="f-author-err" class="hidden mt-2 text-[0.875rem] text-bad">اسم الباحث مطلوب.</p></div>
+      <div><label for="f-date" class="block mb-2 text-[0.9375rem] font-medium">تاريخ النشر</label>
+        <input id="f-date" type="date" class="w-full min-h-[48px] rounded-xl bg-raised/70 border border-line/20 px-4 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40"></div>
+      <div><span class="block mb-2 text-[0.9375rem] font-medium">ملف PDF</span>
+        <label class="min-h-[48px] flex items-center gap-2 px-4 rounded-xl border border-dashed border-line/40 hover:bg-raised cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-[var(--focus)]">
+          <svg class="h-5 w-5 text-gold shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
+          <span id="f-file-name" class="truncate text-muted">اختر ملفاً…</span>
+          <input id="f-file" type="file" accept="application/pdf" class="sr-only"></label></div>
+      <div class="sm:col-span-2 flex flex-wrap justify-end gap-3 pt-2">
+        <button type="button" data-close class="min-h-[48px] px-5 rounded-xl border border-line/20 hover:bg-raised">إلغاء</button>
+        <button type="submit" class="min-h-[48px] px-6 rounded-xl bg-accent text-onaccent font-semibold hover:brightness-110 transition">حفظ البحث</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- confirm dialog -->
+<div id="confirm" class="fixed inset-0 z-[90] hidden" aria-hidden="true">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-cclose></div>
+  <div role="alertdialog" aria-modal="true" aria-labelledby="c-h" aria-describedby="c-p" class="relative mx-auto mt-[20vh] w-[calc(100%-2rem)] max-w-md rounded-panel bg-surface border border-bad/40 p-6 sm:p-7">
+    <h2 id="c-h" class="font-display text-[1.5rem] text-fg">حذف جميع السجلات؟</h2>
+    <p id="c-p" class="mt-2 text-muted">سيُحذف كامل فهرس الكشاف. يُنصح بإنشاء نسخة احتياطية أولاً. لا يمكن التراجع عن هذا الإجراء.</p>
+    <div class="mt-6 flex flex-wrap justify-end gap-3">
+      <button type="button" data-cclose class="min-h-[48px] px-5 rounded-xl border border-line/20 hover:bg-raised">إلغاء</button>
+      <button type="button" id="c-ok" class="min-h-[48px] px-5 rounded-xl bg-[#b02030] text-white font-semibold hover:brightness-110">نعم، احذف الكل</button>
+    </div>
+  </div>
+</div>
+
+<!-- toasts -->
+<div id="toasts" class="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:left-6 sm:bottom-6 z-[100] grid gap-2 sm:w-96" role="status" aria-live="polite"></div>
+
+<!-- ======================= LIBS ======================= -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+
+<script>
+/* ============================================================
+   DATA (real samples from the brief + clearly-marked demo rows)
+   ============================================================ */
+const COMMITTEE = [
+  ['أ.د. حكمت بشير ياسين','جامعة الملك عبدالعزيز','جدة'],
+  ['أ.د. ناصر بن عبدالله القفاري','جامعة القصيم','القصيم'],
+  ['أ.د. محمد إسحاق محمد آل إبراهيم','جامعة الإمام محمد بن سعود الإسلامية','الرياض'],
+  ['أ.د. أحمد خالد شكري','الجامعة الأردنية','عمّان'],
+];
+
+const EPUB_REAL = [
+  [50,'قانون الامتثال الضريبي (فاتكا) وأثره على سيادة الدول','روان عبد الرحمن محمد بافقيه',24,'2026-10-26'],
+  [49,'أثر اللغة الإنجليزية في ترويج السلع عبر وسائل التواصل الاجتماعي (دراسة تحليلية للتواصل العالمي)','رحاب طارق الرفاعي',20,'2026-10-26'],
+  [48,'العدالة التنبؤية وأثرها على القضاء التجاري السعودي (دراسة استشرافية في ضوء رؤية 2030)','نجوى عايض ساير الجعيد',33,'2026-10-20'],
+  [47,'بساطة التصرف في القروض الحكومية وأولوية استيفائها (دراسة فقهية مقارنة في النظام السعودي)','جويرية عبدالكريم الغضية',31,'2026-10-20'],
+  [46,'القانون البيئي لمكة المكرمة (دراسة قانونية مقارنة بأحكام الشريعة الإسلامية)','عبدالله باسم عمر قاضي',39,'2026-10-18'],
+  [45,'أسباب النزول الواردة في سورة الأعلى (دراسة وتحليل وترجيح)','د. بسمة بنت علي حسن حلواني',39,'2026-07-19'],
+  [44,'أثر تعريف البيان على مراتبه عند الأصوليين','أم هاني المرضي الشيخ علي',31,'2026-06-25'],
+  [42,'التعويض عن تفويت الفرصة في القضاء السعودي بعد صدور نظام المعاملات المدنية (دراسة تحليلية)','أحمد حايف نمش الظفيري',86,'2026-05-24'],
+  [41,'الفروق النفسية للمترادفات القرآنية وتطبيقاتها السلوكية في الخطاب النبوي','ماجد بن غزاي بن جمل الحريص',59,'2026-05-18'],
+  [40,'سرقات أبي تمام بين الانحياز والموضوعية','د. نهاية بنت محمد العطوي',29,'2026-05-13'],
+];
+const EPUB_DEMO_TITLES = ['المقاصد الشرعية في أحكام الوقف الحديثة (دراسة تأصيلية)','الحماية الجنائية للبيانات الشخصية في النظام السعودي','أثر السياق في توجيه المعنى عند ابن عاشور','التحكيم التجاري الإلكتروني وضوابطه الشرعية','الإعجاز البياني في فواصل سورة الرحمن','أحكام العقود الذكية في الفقه الإسلامي (دراسة مقارنة)','منهج الإمام البخاري في التراجم الفقهية لكتاب البيوع','المسؤولية المدنية عن أضرار الذكاء الاصطناعي في نظام المعاملات المدنية','الاستدلال بالقراءات الشاذة عند النحاة','حجية الإجماع السكوتي عند الأصوليين','التنمر الإلكتروني وأثره على طلاب المرحلة الثانوية (دراسة ميدانية)','الوصية الواجبة بين الفقه والقانون','دلالات الألوان في الشعر الأندلسي','الرقابة الشرعية على المصارف الإسلامية','أحكام الجنين المشوّه في الفقه الإسلامي','التناص القرآني في شعر حافظ إبراهيم','حماية المستهلك في التجارة الإلكترونية (دراسة فقهية نظامية)','القواعد الفقهية المتعلقة بالضرر وتطبيقاتها المعاصرة','الأحاديث الواردة في فضل المدينة المنورة (جمع ودراسة)','أثر الحوكمة في استدامة الأوقاف التعليمية','الاستشراق وموقفه من السنة النبوية','التعليل بالحكمة عند الأصوليين','الإثبات بالقرائن الرقمية أمام المحاكم السعودية','أساليب التربية النبوية في تعليم الصغار','المصطلح النقدي عند ابن رشيق القيرواني','زكاة الأسهم والصناديق الاستثمارية (دراسة تطبيقية)'];
+const DEMO_PEOPLE = ['د. سارة بنت محمد القحطاني','عبدالرحمن صالح الشهري','د. منيرة بنت عبدالله العتيبي','خالد بن فهد الدوسري','د. هند بنت سعد الغامدي','محمد عبدالعزيز الزهراني','د. فاطمة أحمد باعشن','يوسف علي المطيري','د. عائشة بنت حمد الحربي','إبراهيم ناصر السبيعي','د. لطيفة بنت خالد الشمري','عمر حسن بخاري','د. نورة بنت إبراهيم الجهني'];
+const EPUB = EPUB_REAL.map(r=>({no:r[0],title:r[1],author:r[2],pages:r[3],date:r[4],real:true}));
+EPUB_DEMO_TITLES.forEach((t,i)=>{
+  const d = new Date(Date.UTC(2026, 4, 10) - i * 9 * 864e5); // every ~9 days back from 2026-05-10
+  EPUB.push({no: 39 - i, title:t, author:DEMO_PEOPLE[i%DEMO_PEOPLE.length], pages: 18 + (i*13)%57, date: d.toISOString().slice(0,10), real:false});
+});
+
+const INDEX_REAL = [
+  ['أصول فقه','سكوت النبي ﷺ ودلالته على الحكم الشرعي','يونس يزدان پرست',44],
+  ['فقه','التأمين التكافلي من خلال الوقف','د. يوسف بن عبدالله الشبيلي',38],
+  ['مخطوطات','رفع السنّة في نصب الزنة للإمام السيوطي','تحقيق: د. يوسف بن خلف العيساوي',35],
+  ['حديث','أجوبة على مسائل سألها النووي في ألفاظ من الحديث لابن مالك','تحقيق: د. يوسف بن خلف العيساوي',30],
+  ['تربية إسلامية','الدلالات التربوية للبكاء والحزن من منظور إسلامي','د. يوسف أحمد حسن المشعري عسيري',62],
+  ['أدب إسلامي','التوبة ـ قصيدة لأبي إسحاق الإلبيري','-',1],
+  ['فقه','أحكام المرأة الحامل','يحيى بن عبدالرحمن الخطيب',11],
+  ['اقتصاد إسلامي','بيع المرابحة في البنوك الإسلامية بين الحل والتحريم','يحيى إسماعيل عيد',6],
+  ['أصول فقه','التأويل الفاسد: مفهومه، أسبابه، مراتبه، تطبيقاته','د. ياسر بن محمد هوساوي',49],
+  ['رسائل جامعية','دليل الرسائل الجامعية في الجامعات السودانية','د. ياسر بن إسماعيل راضي',30],
+];
+const INDEX_DEMO = [
+  ['تفسير','منهج الإمام القرطبي في آيات الأحكام'],['تفسير','القراءات وأثرها في التفسير والأحكام'],['عقيدة','مسائل الإيمان عند شيخ الإسلام ابن تيمية'],['عقيدة','الرد على شبهات المعطلة في صفة العلو'],['حديث','زوائد سنن ابن ماجه على الكتب الخمسة في كتاب الطهارة'],['حديث','الأحاديث المعلّة في كتاب الصيام'],['فقه','أحكام النوازل في الحج والعمرة'],['فقه','زكاة الديون الاستثمارية'],['أصول فقه','دلالة الأمر المجرد عن القرائن'],['أصول فقه','تخصيص العام بالمصلحة'],['لغة ونحو','الخلاف النحوي بين البصريين والكوفيين في باب الإضافة'],['لغة ونحو','أثر المعنى في الإعراب عند ابن هشام'],['مخطوطات','رسالة في الفرق بين النبي والرسول (تحقيق)'],['مخطوطات','شرح منظومة الآداب لابن عبد القوي (تحقيق ودراسة)'],['تاريخ وتراجم','علماء الزبير في القرن الرابع عشر الهجري'],['تاريخ وتراجم','الحياة العلمية في المدينة المنورة في العصر المملوكي'],['تربية إسلامية','القيم التربوية في سورة لقمان'],['تربية إسلامية','دور المسجد في التربية المجتمعية'],['اقتصاد إسلامي','الصكوك الإسلامية ودورها في التنمية'],['اقتصاد إسلامي','التورق المصرفي المنظم: دراسة نقدية'],['أدب إسلامي','المديح النبوي في الشعر المغربي'],['أدب إسلامي','صورة المدينة المنورة في شعر الرحلات'],['رسائل جامعية','دليل الرسائل الجامعية في الدراسات القرآنية بالجامعات الأردنية'],['رسائل جامعية','الرسائل الجامعية في السنة النبوية بجامعة أم القرى'],['تفسير','الوجوه والنظائر في القرآن الكريم'],['فقه','أحكام الأطعمة المعدّلة وراثياً'],['عقيدة','مفهوم البدعة وضوابطها عند الشاطبي'],['حديث','منهج الإمام الدارقطني في العلل'],['لغة ونحو','الأفعال المتعدية بحرف الجر في القرآن الكريم'],['أصول فقه','سد الذرائع وتطبيقاته في المعاملات المالية']
+];
+const INDEX = INDEX_REAL.map(r=>({subject:r[0],title:r[1],author:r[2],issue:r[3],real:true}))
+  .concat(INDEX_DEMO.map((r,i)=>({subject:r[0],title:r[1],author:DEMO_PEOPLE[(i*5)%DEMO_PEOPLE.length],issue: 2 + (i*17)%67,real:false})));
+
+const STEPS = [
+  ['أرسل نسختين','أرسل البحث بصيغتي Word وPDF إلى البريد الإلكتروني وإلى واتساب، مع سيرة ذاتية مختصرة.'],
+  ['سدّد رسوم التحكيم','750 ريالاً بتحويل بنكي إلى مصرف الراجحي، أو عبر ويسترن يونيون من خارج المملكة.'],
+  ['التحكيم العلمي','يستغرق التحكيم من شهر إلى شهرين لدى محكّمين متخصصين.'],
+  ['خطاب التحكيم والنشر','تتسلّم خطاب تحكيم رسمياً، ويمكنك النشر الإلكتروني فوراً برسوم 800 ريال.'],
+];
+
+const CRITERIA = [
+  ['ضمن مجالات المجلة','أن يكون البحث في المجالات الشرعية أو العربية أو التربوية أو الإنسانية.'],
+  ['الأصالة','أن يتسم البحث بالأصالة والجدة والإضافة العلمية.'],
+  ['سلامة اللغة والتوثيق','سلامة اللغة العربية ودقة التوثيق العلمي للمصادر.'],
+  ['المقدمة','تتضمن: موضوع البحث، وأهميته، وأهدافه، ومنهجه، والدراسات السابقة.'],
+  ['الخاتمة','تتضمن أهم النتائج والتوصيات.'],
+  ['الخط والتنسيق','خط Lotus Linotype: المتن 16، الحواشي 14، العناوين الرئيسة 20 غامق، والفرعية 18 غامق.'],
+  ['الحد الأدنى للحجم','ألا يقل البحث عن 20 صفحة.'],
+  ['عدم النشر السابق','ألا يكون البحث قد سبق تحكيمه أو نشره.'],
+  ['نسختان','إرسال نسخة Word ونسخة PDF من البحث.'],
+  ['السيرة الذاتية','إرفاق سيرة ذاتية مختصرة للباحث.'],
+  ['تحقيق المخطوطات','إرفاق صور الصفحات الأولى والثانية والأخيرة من المخطوط.'],
+  ['حقوق النشر','البحوث لا تُعاد، ولا يُنشر البحث في جهة أخرى إلا بعد ستة أشهر من خطاب التحكيم.'],
+  ['المسؤولية القانونية','يتحمّل الباحث المسؤولية القانونية عن حقوق الملكية الفكرية.'],
+  ['ترتيب المراجع','ترتيب المراجع ألفبائياً، والمراجع غير العربية بعد العربية.'],
+  ['السلامة العقدية','ألا يخالف البحث عقيدة أهل السنة والجماعة.'],
+];
+
+const ABOUT_TL = [
+  ['1414هـ','التأسيس','صدر العدد الأول في 1/5/1414هـ (16/10/1993م) بتأسيس الشيخ د. وليد بن أحمد الحسين، وبتشجيع العلامة محمد بن صالح العثيمين رحمه الله الذي أسهم بـ«منظومة في أصول الفقه» (102 بيت).'],
+  ['1420هـ','بداية التحكيم','منذ العدد العشرين (شوال 1420هـ) تخضع البحوث للتحكيم العلمي، وفي العام نفسه انطلقت سلسلة إصدارات الحكمة.'],
+  ['انتشار','نحو 70 دولة','تُطبع حتى 6,000 نسخة من العدد الواحد، وتراوح صفحات العدد بين 300 و500 صفحة وأكثر.'],
+  ['ISSN','ترقيم دولي','حصلت المجلة على الترقيم الدولي من المملكة المتحدة: 2754-7906.'],
+  ['1447هـ','العدد 69','صدر العدد التاسع والستون، ويضم الكشاف نحو 673 بحثاً مفهرساً.'],
+];
+const EDITOR_TL = [
+  ['1384هـ','المولد','وُلد في الزبير بالعراق عام 1384هـ/1964م.'],
+  ['13 عاماً','الطلب في عنيزة','لازم العلامة محمد بن صالح العثيمين ثلاث عشرة سنة.'],
+  ['1414هـ','البكالوريوس','كلية اللغة العربية بجامعة الإمام محمد بن سعود الإسلامية.'],
+  ['الماجستير','تحقيق «درج الدرر»','تحقيق «درج الدرر في تفسير الآي والسور» للجرجاني في أربعة مجلدات.'],
+  ['الدكتوراه','تحقيق «الدرر السنية»','تحقيق «الدرر السنية على شرح الألفية» لزكريا الأنصاري.'],
+  ['1415هـ','المدينة المنورة','يقيم في المدينة المنورة منذ عام 1415هـ.'],
+];
+const WORKS = [
+  ['منهج أبي عبيد في تفسير غريب الحديث','دراسة'],
+  ['الكشف والتنبيه على الوصف والتشبيه للصفدي','تحقيق'],
+  ['موسوعة الحافظ ابن حجر الحديثية','6 مجلدات'],
+  ['الموسوعة الميسرة في تراجم أئمة التفسير والنحو واللغة','3 مجلدات'],
+  ['الجامع لحياة العلامة ابن عثيمين','سيرة'],
+  ['الجامع للرسائل والأطاريح في الجامعات العراقية','17,499 رسالة'],
+];
+let BACKUPS = [
+  {name:'backup-2026-10-25-0300.zip',size:'48.2 MB',date:'2026-10-25 03:00',auto:true},
+  {name:'backup-2026-10-18-0300.zip',size:'47.9 MB',date:'2026-10-18 03:00',auto:true},
+  {name:'before-import-2026-10-12.zip',size:'47.1 MB',date:'2026-10-12 21:14',auto:false},
+];
+</script>
+
+<script>
+/* ============================================================
+   APP
+   ============================================================ */
+(() => {
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasGSAP = typeof gsap !== 'undefined';
+if (hasGSAP && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- theme ---------- */
+const root = document.documentElement;
+function syncThemeIcon(){ const d = root.classList.contains('dark'); $('.icon-sun').classList.toggle('hidden', !d); $('.icon-moon').classList.toggle('hidden', d); }
+syncThemeIcon();
+$('#theme-toggle').addEventListener('click', () => {
+  root.classList.toggle('dark');
+  try { localStorage.setItem('hikma-theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch(e){}
+  syncThemeIcon();
+  window.dispatchEvent(new CustomEvent('themechange'));
+});
+
+/* ---------- Lenis ---------- */
+let lenis = null;
+if (!reduceMotion && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+  if (hasGSAP) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
+  else { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+}
+window.__lenis = lenis;
+
+/* ---------- toasts ---------- */
+function toast(msg, type='ok'){
+  const ok = type === 'ok';
+  const el = document.createElement('div');
+  el.className = 'toast glass rounded-card px-4 py-3 flex items-start gap-3 shadow-glow ' + (ok ? 'border-ok/40' : 'border-bad/50');
+  el.innerHTML = `<span class="mt-0.5 h-6 w-6 shrink-0 grid place-items-center rounded-full ${ok?'bg-ok/15 text-ok':'bg-bad/15 text-bad'}" aria-hidden="true">${ok?'✓':'!'}</span>
+    <p class="text-[0.9375rem] text-fg flex-1"><strong class="font-semibold">${ok?'تم':'خطأ'}:</strong> ${esc(msg)}</p>
+    <button type="button" class="h-8 w-8 -m-1 grid place-items-center rounded-lg text-muted hover:text-fg" aria-label="إغلاق التنبيه">×</button>`;
+  el.querySelector('button').onclick = () => el.remove();
+  $('#toasts').appendChild(el);
+  setTimeout(() => el.remove(), 4500);
+}
+window.toast = toast;
+
+/* ---------- copy ---------- */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]'); if (!b) return;
+  const text = b.dataset.copy;
+  try { await navigator.clipboard.writeText(text); toast('نُسخ: ' + text); }
+  catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); toast('نُسخ: ' + text); } catch { toast('تعذّر النسخ، انسخ يدوياً.', 'err'); } t.remove(); }
+});
+
+/* ---------- static renders ---------- */
+function committeeHTML(){
+  return COMMITTEE.map(([n,u,c],i)=>`<li class="glass rounded-panel p-6 h-full" data-reveal>
+    <span class="font-display text-[1.25rem] text-gold/80" aria-hidden="true">0${i+1}</span>
+    <p class="mt-3 font-display text-[1.25rem] leading-snug text-fg">${n}</p>
+    <p class="mt-2 text-muted text-[0.9375rem]">${u}</p><p class="text-muted text-[0.875rem]">${c}</p></li>`).join('');
+}
+$('#committee-list').innerHTML = committeeHTML();
+$('[data-committee]').innerHTML = committeeHTML();
+
+$('#latest-list').innerHTML = EPUB.slice(0,5).map(r=>`<li data-reveal>
+  <article class="group glass rounded-card p-5 sm:p-6 grid sm:grid-cols-[auto_1fr_auto] gap-x-6 gap-y-3 items-center hover:border-gold/40 transition-colors">
+    <span class="font-display text-[1.5rem] text-gold tabular-nums w-12">${r.no}</span>
+    <div class="min-w-0"><h3 class="text-[1.125rem] font-semibold text-fg leading-relaxed">${esc(r.title)}</h3>
+      <p class="mt-1 text-[0.9375rem] text-muted">${esc(r.author)} · ${r.pages} صفحة · <time datetime="${r.date}">${r.date}</time></p></div>
+    <a href="#epub" class="justify-self-start sm:justify-self-end min-h-[44px] inline-flex items-center gap-2 px-4 rounded-xl border border-line/20 text-fg group-hover:bg-raised transition-colors" aria-label="عرض ملف بحث: ${esc(r.title)}">
+      <svg class="h-5 w-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg>عرض PDF</a>
+  </article></li>`).join('');
+
+const COVERS = Array.from({length:23},(_,i)=>i+1);
+$('#shelf-track').innerHTML = COVERS.slice(0,12).map(n=>`<li class="snap-start shrink-0 w-[62vw] sm:w-[15rem] md:w-[16rem]">
+  <a href="#series" class="block rounded-xl">
+    <img src="../public/images/version/${n}.png" alt="غلاف الإصدار رقم ${n} من سلسلة إصدارات الحكمة" loading="lazy" width="540" height="765" class="shelf-cover w-full h-auto rounded-xl bg-raised">
+    <span class="mt-3 block text-[0.9375rem] text-muted">الإصدار <span class="text-fg font-semibold">${n}</span></span></a></li>`).join('');
+
+$('#series-grid').innerHTML = COVERS.map(n=>`<li data-reveal>
+  <figure class="group">
+    <div class="rounded-xl overflow-hidden shelf-cover bg-raised transition-transform duration-300 group-hover:-translate-y-1.5">
+      <img src="../public/images/version/${n}.png" alt="غلاف الإصدار رقم ${n} من سلسلة إصدارات الحكمة" loading="lazy" width="540" height="765" class="w-full h-auto"></div>
+    <figcaption class="mt-3 flex items-center justify-between gap-2"><span class="text-muted text-[0.9375rem]">الإصدار ${n}</span>
+      <a href="https://wa.me/966505751684" target="_blank" rel="noopener" class="min-h-[44px] inline-flex items-center px-3 rounded-lg text-gold text-[0.9375rem] hover:bg-raised" aria-label="اطلب الإصدار رقم ${n} عبر واتساب">اطلبه</a></figcaption>
+  </figure></li>`).join('');
+
+const stepsHTML = STEPS.map(([t,d],i)=>`<li class="glass rounded-panel p-6 relative" data-reveal>
+  <span class="h-11 w-11 grid place-items-center rounded-full border border-gold/50 text-gold font-display text-[1.25rem]" aria-hidden="true">${i+1}</span>
+  <h3 class="mt-4 font-display text-h3 text-fg">${t}</h3><p class="mt-2 text-muted text-[0.9375rem]">${d}</p></li>`).join('');
+$('#home-steps').innerHTML = stepsHTML; $('#submit-steps').innerHTML = stepsHTML;
+
+$('#criteria').innerHTML = CRITERIA.map(([t,d],i)=>`<details class="glass rounded-card group" data-reveal ${i===0?'open':''}>
+  <summary class="min-h-[56px] flex items-center gap-4 px-5 cursor-pointer rounded-card">
+    <span class="w-8 text-gold font-display tabular-nums" aria-hidden="true">${String(i+1).padStart(2,'0')}</span>
+    <span class="flex-1 font-semibold text-fg">${t}</span>
+    <svg class="chev h-5 w-5 text-muted transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary><p class="px-5 pb-5 ps-[4.25rem] text-muted">${d}</p></details>`).join('');
+
+const tl = arr => arr.map(([k,t,d])=>`<li class="relative" data-reveal>
+  <span class="absolute -start-[1.95rem] top-1.5 h-3.5 w-3.5 rounded-full bg-gold ring-4 ring-ink" aria-hidden="true"></span>
+  <p class="text-gold font-semibold text-[0.9375rem]">${k}</p><h3 class="mt-1 font-display text-h3 text-fg">${t}</h3><p class="mt-2 text-muted max-w-prose-ar">${d}</p></li>`).join('');
+$('#about-timeline').innerHTML = tl(ABOUT_TL);
+$('#editor-timeline').innerHTML = tl(EDITOR_TL);
+$('#editor-works').innerHTML = WORKS.map(([t,m])=>`<li class="glass rounded-card p-5 flex gap-4" data-reveal>
+  <span class="h-10 w-1 rounded-full bg-gold/70 shrink-0 mt-1" aria-hidden="true"></span>
+  <div><p class="font-semibold text-fg leading-relaxed">${t}</p><p class="text-muted text-[0.9375rem] mt-1">${m}</p></div></li>`).join('');
+
+/* ============================================================
+   DATA TABLE (search, sort, asc/desc, pagination)
+   ============================================================ */
+const norm = s => String(s).toLowerCase()
+  .replace(/[ً-ْـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي');
+
+function DataTable(host, opts){
+  const st = { q:'', sort: opts.sort || opts.cols[0].key, dir: opts.dir || 'asc', page:1, size: opts.size || 10, rows: opts.rows };
+  const uid = host.id;
+  host.innerHTML = `
+  <div class="flex flex-col md:flex-row md:items-end gap-3">
+    <div class="flex-1 relative">
+      <label for="${uid}-q" class="block mb-2 text-[0.9375rem] font-medium">بحث</label>
+      <svg class="pointer-events-none absolute start-4 bottom-3.5 h-5 w-5 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="${uid}-q" type="search" placeholder="${opts.placeholder}" class="w-full min-h-[50px] rounded-xl bg-surface/70 border border-line/20 ps-12 pe-4 text-fg placeholder:text-muted/80 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40">
+    </div>
+    <div class="grid grid-cols-[1fr_auto_auto] gap-2">
+      <div><label for="${uid}-sort" class="block mb-2 text-[0.9375rem] font-medium">ترتيب حسب</label>
+        <select id="${uid}-sort" class="w-full min-h-[50px] rounded-xl bg-surface/70 border border-line/20 px-3 text-fg focus:border-gold focus:outline-none">
+          ${opts.cols.filter(c=>c.sortable!==false).map(c=>`<option value="${c.key}">${c.label}</option>`).join('')}</select></div>
+      <div><span class="block mb-2 text-[0.9375rem] font-medium" id="${uid}-dirl">الاتجاه</span>
+        <button type="button" id="${uid}-dir" aria-labelledby="${uid}-dirl ${uid}-dir" class="min-h-[50px] px-4 rounded-xl bg-surface/70 border border-line/20 text-fg hover:border-gold/60 inline-flex items-center gap-2"></button></div>
+      <div><label for="${uid}-size" class="block mb-2 text-[0.9375rem] font-medium">لكل صفحة</label>
+        <select id="${uid}-size" class="min-h-[50px] rounded-xl bg-surface/70 border border-line/20 px-3 text-fg focus:border-gold focus:outline-none">
+          <option>10</option><option>25</option><option>50</option></select></div>
+    </div>
+  </div>
+  <div class="mt-6 md:glass md:rounded-panel md:overflow-hidden">
+    <table class="rtable w-full text-start border-collapse">
+      <caption class="sr-only">${opts.caption}</caption>
+      <thead class="bg-raised/60"><tr>${opts.cols.map(c=>`<th scope="col" class="px-4 py-3 text-start text-[0.875rem] font-semibold text-muted whitespace-nowrap ${c.thClass||''}" ${c.sortable===false?'':`aria-sort="none" data-k="${c.key}"`}>
+        ${c.sortable===false ? c.label : `<button type="button" class="min-h-[40px] inline-flex items-center gap-1.5 hover:text-fg rounded">${c.label}<span class="sort-ind text-gold" aria-hidden="true"></span></button>`}</th>`).join('')}</tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="mt-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-muted text-[0.9375rem]" aria-live="polite" id="${uid}-info"></p>
+    <nav aria-label="ترقيم الصفحات" class="flex flex-wrap items-center gap-1" id="${uid}-pg"></nav>
+  </div>
+  ${opts.note ? `<p class="mt-4 text-[0.8125rem] text-muted">${opts.note}</p>`:''}`;
+
+  const q = $(`#${uid}-q`), sortSel = $(`#${uid}-sort`), dirBtn = $(`#${uid}-dir`), sizeSel = $(`#${uid}-size`);
+  const tbody = $('tbody', host), info = $(`#${uid}-info`), pg = $(`#${uid}-pg`);
+  sortSel.value = st.sort; sizeSel.value = String(st.size);
+
+  function filtered(){
+    const n = norm(st.q.trim());
+    let rows = !n ? st.rows.slice() : st.rows.filter(r => opts.cols.some(c => c.search!==false && norm(r[c.key] ?? '').includes(n)));
+    const col = opts.cols.find(c=>c.key===st.sort);
+    rows.sort((a,b)=>{ const x=a[st.sort], y=b[st.sort];
+      const v = col && col.num ? (x - y) : String(x).localeCompare(String(y),'ar');
+      return st.dir==='asc' ? v : -v; });
+    return rows;
+  }
+  function render(){
+    const rows = filtered(); const total = rows.length; const pages = Math.max(1, Math.ceil(total / st.size));
+    st.page = Math.min(st.page, pages);
+    const start = (st.page - 1) * st.size; const slice = rows.slice(start, start + st.size);
+    tbody.innerHTML = slice.length ? slice.map(r=>`<tr class="border-t border-line/10 hover:bg-raised/40 transition-colors">${opts.cols.map(c=>
+      `<td data-label="${c.label}" ${c.primary?'data-primary':''} class="px-4 py-3.5 align-top ${c.tdClass||''}">${c.render ? c.render(r) : esc(r[c.key])}</td>`).join('')}</tr>`).join('')
+      : `<tr><td colspan="${opts.cols.length}" class="px-4 py-14 text-center text-muted" data-primary>لا توجد نتائج مطابقة لـ«${esc(st.q)}». جرّب كلمة أخرى أو امسح البحث.</td></tr>`;
+    info.textContent = total ? `عرض ${start+1} إلى ${Math.min(start+st.size,total)} من ${total} نتيجة` : 'لا توجد نتائج';
+    dirBtn.innerHTML = st.dir==='asc' ? '<span>تصاعدي</span><span aria-hidden="true">↑</span>' : '<span>تنازلي</span><span aria-hidden="true">↓</span>';
+    $$('th[data-k]', host).forEach(th => { const on = th.dataset.k===st.sort;
+      th.setAttribute('aria-sort', on ? (st.dir==='asc'?'ascending':'descending') : 'none');
+      th.querySelector('.sort-ind').textContent = on ? (st.dir==='asc'?'↑':'↓') : ''; });
+    // pagination
+    const btn = (label, page, {cur=false, dis=false, aria=''}={}) => `<button type="button" data-p="${page}" ${dis?'disabled':''} ${cur?'aria-current="page"':''} ${aria?`aria-label="${aria}"`:''}
+      class="min-h-[44px] min-w-[44px] px-3 rounded-xl tabular-nums ${cur?'bg-accent text-onaccent font-semibold':'text-fg hover:bg-raised'} disabled:opacity-40 disabled:cursor-not-allowed">${label}</button>`;
+    let h = btn('السابق', st.page-1, {dis: st.page===1});
+    const set = new Set([1, pages, st.page-1, st.page, st.page+1].filter(p=>p>=1&&p<=pages));
+    let last = 0; [...set].sort((a,b)=>a-b).forEach(p=>{ if(p-last>1) h += '<span class="px-1 text-muted" aria-hidden="true">…</span>'; h += btn(p, p, {cur:p===st.page, aria:`الصفحة ${p}`}); last = p; });
+    h += btn('التالي', st.page+1, {dis: st.page===pages});
+    pg.innerHTML = h;
+    if (opts.onRender) opts.onRender(total);
+  }
+  let t; q.addEventListener('input', () => { clearTimeout(t); t = setTimeout(()=>{ st.q = q.value; st.page = 1; render(); }, 120); });
+  sortSel.addEventListener('change', () => { st.sort = sortSel.value; st.page = 1; render(); });
+  sizeSel.addEventListener('change', () => { st.size = +sizeSel.value; st.page = 1; render(); });
+  dirBtn.addEventListener('click', () => { st.dir = st.dir==='asc'?'desc':'asc'; render(); });
+  host.addEventListener('click', e => {
+    const th = e.target.closest('th[data-k] button');
+    if (th) { const k = th.parentElement.dataset.k; if (st.sort===k) st.dir = st.dir==='asc'?'desc':'asc'; else { st.sort = k; st.dir='asc'; } sortSel.value = k; render(); return; }
+    const p = e.target.closest('[data-p]'); if (p && !p.disabled) { st.page = +p.dataset.p; render(); host.scrollIntoView({block:'start'}); }
+  });
+  render();
+  return { render, state: st, setRows(r){ st.rows = r; st.page = 1; render(); } };
+}
+
+const pdfBtn = r => `<button type="button" data-pdf="${r.no}" class="min-h-[44px] inline-flex items-center gap-2 px-3 rounded-xl border border-line/20 text-fg hover:bg-raised hover:border-gold/50 transition-colors whitespace-nowrap" aria-label="عرض ملف PDF لبحث: ${esc(r.title)}">
+  <svg class="h-5 w-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg>عرض</button>`;
+const demoNote = 'الصفوف الأولى مأخوذة من الموقع الحالي؛ بقية الصفوف بيانات تجريبية لإظهار الترقيم والفرز.';
+
+DataTable($('#index-table'), {
+  rows: INDEX, sort:'subject', caption:'فهرس كشاف المجلة', placeholder:'ابحث بالموضوع أو العنوان أو الباحث…', note: demoNote,
+  cols: [
+    {key:'subject', label:'الموضوع', render:r=>`<span class="inline-block whitespace-nowrap rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[0.875rem] text-fg">${esc(r.subject)}</span>`},
+    {key:'title', label:'عنوان البحث', primary:true, tdClass:'font-medium text-fg leading-relaxed'},
+    {key:'author', label:'اسم الباحث', tdClass:'text-muted'},
+    {key:'issue', label:'العدد', num:true, tdClass:'tabular-nums font-semibold'},
+  ]
+});
+DataTable($('#epub-table'), {
+  rows: EPUB, sort:'no', dir:'desc', caption:'البحوث المنشورة إلكترونياً', placeholder:'ابحث بعنوان البحث أو اسم الباحث…', note: demoNote,
+  cols: [
+    {key:'no', label:'#', num:true, tdClass:'tabular-nums text-gold font-display text-[1.125rem]'},
+    {key:'title', label:'عنوان البحث', primary:true, tdClass:'font-medium text-fg leading-relaxed'},
+    {key:'author', label:'اسم الباحث', tdClass:'text-muted'},
+    {key:'pages', label:'عدد الصفحات', num:true, tdClass:'tabular-nums'},
+    {key:'date', label:'تاريخ النشر', tdClass:'tabular-nums whitespace-nowrap', render:r=>`<time datetime="${r.date}">${r.date}</time>`},
+    {key:'file', label:'عرض الملف', sortable:false, search:false, render: pdfBtn},
+  ]
+});
+document.addEventListener('click', e => { const b = e.target.closest('[data-pdf]'); if (b) toast('في الموقع الفعلي يُفتح ملف PDF للبحث رقم ' + b.dataset.pdf + ' في نافذة جديدة.'); });
+
+/* ---------- dashboard tables ---------- */
+const rowActions = label => `<div class="flex gap-1">
+  <button type="button" class="min-h-[44px] min-w-[44px] grid place-items-center rounded-lg hover:bg-raised text-fg" aria-label="تعديل ${esc(label)}" data-edit><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+  <button type="button" class="min-h-[44px] min-w-[44px] grid place-items-center rounded-lg hover:bg-bad/10 text-bad" aria-label="حذف ${esc(label)}" data-del><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></div>`;
+let dEpubRows = EPUB.slice();
+const dEpub = DataTable($('#d-epub-table'), {
+  rows: dEpubRows, sort:'no', dir:'desc', size:10, caption:'إدارة النشر الإلكتروني', placeholder:'بحث في البحوث المنشورة…',
+  onRender: n => { const el = $('#d-epub-count'); if (el) el.textContent = n; },
+  cols: [
+    {key:'no', label:'الرقم', num:true, tdClass:'tabular-nums text-gold font-semibold'},
+    {key:'title', label:'العنوان', primary:true, tdClass:'font-medium text-fg'},
+    {key:'author', label:'الباحث', tdClass:'text-muted'},
+    {key:'pages', label:'الصفحات', num:true, tdClass:'tabular-nums'},
+    {key:'date', label:'تاريخ النشر', tdClass:'tabular-nums whitespace-nowrap'},
+    {key:'act', label:'إجراءات', sortable:false, search:false, render: r => rowActions(r.title)},
+  ]
+});
+let dIndexRows = INDEX.slice();
+const dIndex = DataTable($('#d-index-table'), {
+  rows: dIndexRows, sort:'subject', caption:'إدارة فهرس الكشاف', placeholder:'بحث في الفهرس…',
+  cols: [
+    {key:'subject', label:'الموضوع'},
+    {key:'title', label:'عنوان البحث', primary:true, tdClass:'font-medium text-fg'},
+    {key:'author', label:'اسم الباحث', tdClass:'text-muted'},
+    {key:'issue', label:'العدد', num:true, tdClass:'tabular-nums'},
+    {key:'act', label:'إجراءات', sortable:false, search:false, render: r => rowActions(r.title)},
+  ]
+});
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-del]')) toast('حُذف السجل (عرض تجريبي).');
+  if (e.target.closest('[data-edit]')) toast('يُفتح نموذج التعديل في النسخة الفعلية.');
+});
+
+/* dashboard tabs */
+$$('.dtab').forEach(b => b.addEventListener('click', () => {
+  $$('.dtab').forEach(x => x.setAttribute('aria-selected', x===b ? 'true':'false'));
+  $$('.dpanel').forEach(p => p.classList.toggle('hidden', p.id !== b.dataset.dtab));
+  styleTabs();
+}));
+function styleTabs(){ $$('.dtab').forEach(x => { const on = x.getAttribute('aria-selected')==='true';
+  x.classList.toggle('bg-accent', on); x.classList.toggle('text-onaccent', on); x.classList.toggle('font-semibold', on);
+  x.classList.toggle('text-fg', !on); x.classList.toggle('hover:bg-raised', !on); }); }
+styleTabs();
+
+/* backups */
+function renderBackups(){
+  $('#backup-list').innerHTML = BACKUPS.length ? BACKUPS.map((b,i)=>`<li class="glass rounded-card p-4 sm:p-5 flex flex-wrap items-center gap-4">
+    <span class="h-11 w-11 grid place-items-center rounded-xl bg-gold/10 text-gold" aria-hidden="true"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></span>
+    <div class="flex-1 min-w-[12rem]"><p class="font-semibold text-fg break-all" dir="ltr" style="text-align:right">${b.name}</p>
+      <p class="text-muted text-[0.875rem]">${b.date} · ${b.size} · ${b.auto?'تلقائية':'يدوية'}</p></div>
+    <div class="flex gap-2">
+      <button type="button" data-restore="${i}" class="min-h-[44px] px-4 rounded-xl border border-line/20 hover:bg-raised">استعادة</button>
+      <button type="button" data-bdel="${i}" class="min-h-[44px] px-4 rounded-xl text-bad hover:bg-bad/10">حذف</button></div></li>`).join('')
+    : `<li class="glass rounded-card p-10 text-center text-muted">لا توجد نسخ احتياطية بعد. أنشئ أول نسخة الآن.</li>`;
+}
+renderBackups();
+$('#create-backup').addEventListener('click', e => {
+  const b = e.currentTarget; b.disabled = true; b.classList.add('opacity-70'); const old = b.textContent; b.textContent = 'جارٍ الإنشاء…';
+  setTimeout(() => { BACKUPS.unshift({name:'backup-2026-10-26-manual.zip', size:'48.3 MB', date:'2026-10-26 '+new Date().toTimeString().slice(0,5), auto:false});
+    renderBackups(); b.disabled = false; b.classList.remove('opacity-70'); b.textContent = old; toast('أُنشئت نسخة احتياطية جديدة.'); }, 900);
+});
+$('#backup-list').addEventListener('click', e => {
+  const r = e.target.closest('[data-restore]'); const d = e.target.closest('[data-bdel]');
+  if (r) toast('بدأت استعادة النسخة ' + BACKUPS[+r.dataset.restore].name);
+  if (d) { BACKUPS.splice(+d.dataset.bdel,1); renderBackups(); toast('حُذفت النسخة الاحتياطية.'); }
+});
+
+/* excel import + delete all */
+$('#xls-input').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  if (!/\.(xlsx|xls|csv)$/i.test(f.name)) { toast('صيغة الملف غير مدعومة. استخدم ‎.xlsx أو ‎.csv', 'err'); }
+  else toast(`تم استيراد «${f.name}» — 124 سجلاً جديداً (عرض تجريبي).`);
+  e.target.value = '';
+});
+$('#add-index').addEventListener('click', () => toast('نموذج إضافة سجل للفهرس يماثل نموذج «إضافة بحث».'));
+
+/* ---------- modal helpers ---------- */
+let lastFocus = null;
+function openLayer(el, focusSel){
+  lastFocus = document.activeElement; el.classList.remove('hidden'); el.setAttribute('aria-hidden','false');
+  if (lenis) lenis.stop(); document.body.style.overflow = 'hidden';
+  const f = el.querySelector(focusSel) || el.querySelector('button, input'); f && f.focus();
+  if (hasGSAP && !reduceMotion) gsap.fromTo(el.querySelector('[role]'), {y:16, opacity:0}, {y:0, opacity:1, duration:.28, ease:'power2.out'});
+}
+function closeLayer(el){ el.classList.add('hidden'); el.setAttribute('aria-hidden','true'); if (lenis) lenis.start(); document.body.style.overflow=''; lastFocus && lastFocus.focus(); }
+function trap(el){ el.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLayer(el);
+  if (e.key !== 'Tab') return;
+  const f = $$('button:not([disabled]), input, select, a[href]', el).filter(x=>x.offsetParent!==null || x.type==='file');
+  const vis = f.filter(x=>x.type!=='file' || true); const first = vis[0], last = vis[vis.length-1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}); }
+const modal = $('#add-modal'), confirmEl = $('#confirm');
+trap(modal); trap(confirmEl);
+$('#open-add').addEventListener('click', () => { $('#f-no').value = Math.max(...dEpubRows.map(r=>r.no)) + 1; $('#f-date').value = '2026-10-26'; openLayer(modal, '#f-title'); });
+modal.addEventListener('click', e => { if (e.target.closest('[data-close]')) closeLayer(modal); });
+$('#f-file').addEventListener('change', e => { $('#f-file-name').textContent = e.target.files[0] ? e.target.files[0].name : 'اختر ملفاً…'; });
+$('#add-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const title = $('#f-title'), author = $('#f-author'); let ok = true;
+  [[title,'#f-title-err'],[author,'#f-author-err']].forEach(([inp,err]) => {
+    const bad = !inp.value.trim(); $(err).classList.toggle('hidden', !bad); inp.setAttribute('aria-invalid', bad ? 'true':'false');
+    inp.classList.toggle('border-bad', bad); if (bad) ok = false; });
+  if (!ok) { toast('تعذّر الحفظ: أكمل الحقول المطلوبة.', 'err'); (title.value.trim()? author : title).focus(); return; }
+  dEpubRows.unshift({no:+$('#f-no').value || dEpubRows.length+1, title:title.value.trim(), author:author.value.trim(), pages:+$('#f-pages').value || 0, date:$('#f-date').value || '2026-10-26'});
+  dEpub.setRows(dEpubRows); e.target.reset(); $('#f-file-name').textContent = 'اختر ملفاً…';
+  closeLayer(modal); toast('أُضيف البحث ونُشر لمدة عام.');
+});
+$('#delete-all').addEventListener('click', () => openLayer(confirmEl, '[data-cclose]'));
+confirmEl.addEventListener('click', e => { if (e.target.closest('[data-cclose]')) closeLayer(confirmEl); });
+$('#c-ok').addEventListener('click', () => { dIndexRows = []; dIndex.setRows(dIndexRows); closeLayer(confirmEl); toast('حُذفت جميع سجلات الفهرس.'); });
+
+/* ---------- login ---------- */
+$('#login-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const em = $('#l-email'), pw = $('#l-pass');
+  const emBad = !/^\S+@\S+\.\S+$/.test(em.value), pwBad = !pw.value;
+  $('#l-email-err').classList.toggle('hidden', !emBad); $('#l-pass-err').classList.toggle('hidden', !pwBad);
+  em.setAttribute('aria-invalid', emBad); pw.setAttribute('aria-invalid', pwBad);
+  if (emBad || pwBad) { toast('بيانات الدخول غير مكتملة.', 'err'); (emBad?em:pw).focus(); return; }
+  toast('مرحباً بك في لوحة التحكم.'); location.hash = '#dashboard';
+});
+
+/* ---------- mobile menu ---------- */
+const menuBtn = $('#menu-btn'), menu = $('#mobile-menu');
+function setMenu(open){ menu.classList.toggle('hidden', !open); menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open?'إغلاق القائمة':'فتح القائمة'); }
+menuBtn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
+document.addEventListener('keydown', e => { if (e.key==='Escape' && !menu.classList.contains('hidden')) { setMenu(false); menuBtn.focus(); } });
+
+/* ============================================================
+   ROUTER + MOTION
+   ============================================================ */
+const PAGES = ['home','about','editor','series','index','epub','submit','login','dashboard'];
+const TITLES = {home:'الرئيسية',about:'التعريف بالمجلة',editor:'التعريف برئيس التحرير',series:'سلسلة الإصدارات',index:'فهرس كشاف المجلة',epub:'النشر الإلكتروني',submit:'إرسال البحوث',login:'تسجيل الدخول',dashboard:'لوحة التحكم'};
+let current = null; let pageTriggers = []; let routeToken = 0;
+
+function killPageMotion(){ pageTriggers.forEach(t => t.kill()); pageTriggers = []; if (window.__mm) { window.__mm.revert(); window.__mm = null; } }
+
+function initPageMotion(page){
+  if (!hasGSAP || reduceMotion) return;
+  const items = $$('[data-reveal]', page);
+  items.forEach(el => {
+    gsap.set(el, {opacity:0, y:22});
+    pageTriggers.push(ScrollTrigger.create({ trigger: el, start:'top 92%', once:true,
+      onEnter: () => gsap.to(el, {opacity:1, y:0, duration:.7, ease:'power2.out'}) }));
+  });
+  // counters
+  $$('[data-count]', page).forEach(el => {
+    const to = +el.dataset.count; el.textContent = '0';
+    pageTriggers.push(ScrollTrigger.create({ trigger: el, start:'top 95%', once:true, onEnter: () => {
+      if (typeof anime !== 'undefined') { const o = {v:0}; anime({targets:o, v:to, round:1, duration: 1600, easing:'easeOutExpo', update:()=> el.textContent = o.v}); }
+      else gsap.to({v:0}, {v:to, duration:1.6, ease:'expo.out', onUpdate(){ el.textContent = Math.round(this.targets()[0].v); }});
+    }}));
+  });
+  // gentle parallax
+  $$('[data-parallax]', page).forEach(el => {
+    const tw = gsap.fromTo(el, {y:30}, {y:-30, ease:'none', scrollTrigger:{trigger:el, start:'top bottom', end:'bottom top', scrub:.6}});
+    pageTriggers.push(tw.scrollTrigger);
+  });
+  // hero intro
+  if (page.dataset.page === 'home') {
+    gsap.from($$('[data-hero]', page), {opacity:0, y:18, duration:.8, stagger:.08, ease:'power2.out', delay:.05});
+    // pinned shelf on md+
+    const mm = gsap.matchMedia(); window.__mm = mm;
+    mm.add('(min-width: 768px)', () => {
+      const track = $('#shelf-track'), vp = $('#shelf-viewport');
+      const dist = () => Math.max(0, track.scrollWidth - vp.clientWidth);
+      const tw = gsap.to(track, { x: () => dist(), ease:'none',
+        scrollTrigger:{ trigger:'#shelf', start:'top top', end: () => '+=' + dist(), pin:true, scrub:.8, invalidateOnRefresh:true, anticipatePin:1 } });
+      return () => { tw.scrollTrigger && tw.scrollTrigger.kill(); tw.kill(); gsap.set(track, {clearProps:'x'}); };
+    });
+  }
+}
+
+function route(){
+  let id = (location.hash || '#home').slice(1);
+  if (!PAGES.includes(id)) id = 'home';
+  if (id === current) return;
+  const next = $(`.page[data-page="${id}"]`); const prev = current && $(`.page[data-page="${current}"]`);
+  setMenu(false);
+  $$('.nav-link').forEach(a => { const on = a.getAttribute('href') === '#'+id;
+    a.toggleAttribute('aria-current', on); if (on) a.setAttribute('aria-current','page');
+    const desktop = a.closest('nav.hidden') !== null;
+    a.classList.toggle('text-gold', on); a.classList.toggle(desktop ? 'text-muted' : 'text-fg', !on);
+    a.classList.toggle('bg-raised', on && !desktop); });
+  document.title = TITLES[id] + ' — مجلة الحكمة';
+  const token = ++routeToken;
+  const swap = () => {
+    if (token !== routeToken) return; // superseded by a newer navigation
+    $$('.page.is-active').forEach(p => p !== next && p.classList.remove('is-active'));
+    killPageMotion();
+    if (prev) prev.classList.remove('is-active');
+    next.classList.add('is-active');
+    $('#site-footer').classList.toggle('hidden', id === 'dashboard' || id === 'login');
+    if (lenis) lenis.scrollTo(0, {immediate:true}); else window.scrollTo(0,0);
+    initPageMotion(next);
+    if (hasGSAP) ScrollTrigger.refresh();
+    window.dispatchEvent(new CustomEvent('pagechange', {detail:id}));
+    if (current !== null) $('#main').focus({preventScroll:true});
+    current = id;
+    if (hasGSAP && !reduceMotion) gsap.fromTo(next, {opacity:0, y:10}, {opacity:1, y:0, duration:.45, ease:'power2.out', clearProps:'transform'});
+  };
+  if (prev && hasGSAP && !reduceMotion) {
+    // fade out with GSAP, but swap on a timer so routing never depends on rAF (background tabs)
+    gsap.to(prev, {opacity:0, y:-6, duration:.18, ease:'power1.in'});
+    setTimeout(() => { gsap.killTweensOf(prev); gsap.set(prev,{clearProps:'opacity,transform'}); swap(); }, 190);
+  } else swap();
+}
+window.addEventListener('hashchange', route);
+route();
+window.addEventListener('load', () => hasGSAP && ScrollTrigger.refresh());
+})();
+</script>
+
+<!-- ============================================================
+     THREE.JS HERO — the journal volume as a floating book
+     ============================================================ -->
+<script type="module">
+import * as THREE from 'three';
+
+const host = document.getElementById('hero-3d');
+const fallback = document.getElementById('hero-fallback');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function webglOK(){ try { const c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch(e){ return false; } }
+if (!host || !webglOK()) { if (fallback) fallback.hidden = false; }
+else start().catch(err => { console.warn('hero 3D fallback:', err); fallback.hidden = false; host.innerHTML = ''; });
+
+function loadImg(src){ return new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; }); }
+function canUseImage(img){ // file:// images taint canvases -> WebGL would refuse them
+  if (!img) return false;
+  try { const c = document.createElement('canvas'); c.width = c.height = 2; const x = c.getContext('2d'); x.drawImage(img,0,0,2,2); x.getImageData(0,0,1,1); return true; } catch(e){ return false; }
+}
+
+function star(ctx, cx, cy, r, inner){ ctx.beginPath(); for (let i=0;i<16;i++){ const a = i*Math.PI/8 - Math.PI/2; const rr = i%2? inner : r; ctx.lineTo(cx+Math.cos(a)*rr, cy+Math.sin(a)*rr); } ctx.closePath(); }
+
+function drawCover(logo){
+  const W = 1024, H = 1440, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  // leather
+  const g = x.createLinearGradient(0,0,W,H); g.addColorStop(0,'#7d0d24'); g.addColorStop(.55,'#5c0718'); g.addColorStop(1,'#3a0410'); x.fillStyle = g; x.fillRect(0,0,W,H);
+  for (let i=0;i<9000;i++){ x.fillStyle = `rgba(0,0,0,${Math.random()*.06})`; x.fillRect(Math.random()*W, Math.random()*H, 2, 2); }
+  const gold = x.createLinearGradient(0,0,W,0); gold.addColorStop(0,'#b88a3e'); gold.addColorStop(.5,'#f3d58f'); gold.addColorStop(1,'#b88a3e');
+  x.strokeStyle = gold; x.lineWidth = 6; x.strokeRect(56,56,W-112,H-112); x.lineWidth = 2; x.strokeRect(78,78,W-156,H-156);
+  // corner stars
+  x.fillStyle = gold; [[78,78],[W-78,78],[78,H-78],[W-78,H-78]].forEach(([a,b]) => { star(x,a,b,22,10); x.fill(); });
+  // central medallion
+  x.save(); x.translate(W/2, 470);
+  x.strokeStyle = gold; x.lineWidth = 3; star(x,0,0,210,165); x.stroke(); star(x,0,0,180,140); x.globalAlpha = .12; x.fillStyle = '#f3d58f'; x.fill(); x.globalAlpha = 1;
+  x.beginPath(); x.arc(0,0,128,0,Math.PI*2); x.lineWidth = 2; x.stroke();
+  if (logo) { x.save(); x.beginPath(); x.arc(0,0,118,0,Math.PI*2); x.clip(); x.drawImage(logo,-118,-126,236,252); x.restore(); }
+  else { x.fillStyle = gold; x.font = '700 120px "Reem Kufi", serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.direction = 'rtl'; x.fillText('ح', 0, 6); }
+  x.restore();
+  // title
+  x.direction = 'rtl'; x.textAlign = 'center'; x.fillStyle = gold;
+  x.font = '600 64px "Reem Kufi", serif'; x.fillText('مجلة', W/2, 800);
+  x.font = '700 190px "Reem Kufi", serif'; x.fillText('الحكمة', W/2, 990);
+  x.fillStyle = '#ead6b8'; x.font = '500 40px "IBM Plex Sans Arabic", sans-serif'; x.fillText('مجلة بحثية علمية شرعية ثقافية محكّمة', W/2, 1090);
+  x.strokeStyle = gold; x.lineWidth = 2; x.beginPath(); x.moveTo(W/2-180,1150); x.lineTo(W/2+180,1150); x.stroke();
+  x.fillStyle = gold; x.font = '600 46px "Reem Kufi", serif'; x.fillText('العدد 69 · 1447هـ', W/2, 1230);
+  x.fillStyle = '#d9c2a2'; x.font = '500 30px "IBM Plex Sans Arabic", sans-serif'; x.direction = 'ltr'; x.fillText('ISSN 2754-7906', W/2, 1300);
+  return c;
+}
+function drawSpine(){
+  const W = 256, H = 1440, c = document.createElement('canvas'); c.width = W; c.height = H; const x = c.getContext('2d');
+  const g = x.createLinearGradient(0,0,W,0); g.addColorStop(0,'#3e0511'); g.addColorStop(.5,'#6d0b21'); g.addColorStop(1,'#3e0511'); x.fillStyle = g; x.fillRect(0,0,W,H);
+  x.fillStyle = '#e6c27a'; [150, 190, H-190, H-150].forEach(y => x.fillRect(20, y, W-40, 5));
+  x.save(); x.translate(W/2, H/2); x.rotate(Math.PI/2); x.direction = 'rtl'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.font = '700 92px "Reem Kufi", serif'; x.fillText('مجلة الحكمة', 0, 0); x.restore();
+  x.textAlign = 'center'; x.font = '600 54px "Reem Kufi", serif'; x.fillText('69', W/2, 300);
+  return c;
+}
+function drawPages(horizontal){
+  const c = document.createElement('canvas'); c.width = horizontal ? 512 : 64; c.height = horizontal ? 64 : 512; const x = c.getContext('2d');
+  x.fillStyle = '#efe4cf'; x.fillRect(0,0,c.width,c.height);
+  for (let i=0;i<140;i++){ x.fillStyle = `rgba(120,90,60,${.05+Math.random()*.08})`; if (horizontal) x.fillRect(0, Math.random()*64, 512, 1); else x.fillRect(Math.random()*64, 0, 1, 512); }
+  return c;
+}
+function glowSprite(){
+  const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
+  const g = x.createRadialGradient(32,32,0,32,32,32); g.addColorStop(0,'rgba(255,240,200,1)'); g.addColorStop(.35,'rgba(240,200,120,.5)'); g.addColorStop(1,'rgba(240,200,120,0)');
+  x.fillStyle = g; x.fillRect(0,0,64,64); return c;
+}
+
+async function start(){
+  try { await Promise.all([document.fonts.load('700 120px "Reem Kufi"'), document.fonts.load('500 40px "IBM Plex Sans Arabic"')]); } catch(e){}
+  const logoImg = await loadImg('../public/images/logo.png');
+  const logo = canUseImage(logoImg) ? logoImg : null;
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'low-power' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  host.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 50); camera.position.set(0, 0, 6);
+
+  const tex = (canvas) => { const t = new THREE.CanvasTexture(canvas); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); return t; };
+  const coverTex = tex(drawCover(logo)), spineTex = tex(drawSpine()), pagesV = tex(drawPages(false)), pagesH = tex(drawPages(true));
+  const leather = new THREE.MeshStandardMaterial({ color:'#4a0614', roughness:.7, metalness:.05 });
+  const mats = [
+    new THREE.MeshStandardMaterial({ map: spineTex, roughness:.55, metalness:.15 }),   // +x spine (right side, Arabic binding)
+    new THREE.MeshStandardMaterial({ map: pagesV, roughness:.9 }),                      // -x fore-edge
+    new THREE.MeshStandardMaterial({ map: pagesH, roughness:.9 }),                      // +y top
+    new THREE.MeshStandardMaterial({ map: pagesH, roughness:.9 }),                      // -y bottom
+    new THREE.MeshStandardMaterial({ map: coverTex, roughness:.5, metalness:.18 }),     // +z front
+    leather,                                                                            // -z back
+  ];
+  const book = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.1, .36), mats);
+  const group = new THREE.Group(); group.add(book); scene.add(group);
+
+  // soft floor shadow
+  const sh = document.createElement('canvas'); sh.width = sh.height = 128; const sx = sh.getContext('2d');
+  const sg = sx.createRadialGradient(64,64,0,64,64,64); sg.addColorStop(0,'rgba(0,0,0,.55)'); sg.addColorStop(1,'rgba(0,0,0,0)'); sx.fillStyle = sg; sx.fillRect(0,0,128,128);
+  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.6, .7), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(sh), transparent:true, depthWrite:false }));
+  shadow.position.set(0, -1.55, -.2); shadow.rotation.x = -Math.PI/2.4; scene.add(shadow);
+
+  // lights: warm lamp key, cool fill, gold rim
+  scene.add(new THREE.AmbientLight('#ffe9d0', .55));
+  const key = new THREE.DirectionalLight('#ffe2b0', 2.1); key.position.set(-2.5, 3, 4); scene.add(key);
+  const rim = new THREE.PointLight('#f2c46d', 14, 10, 2); rim.position.set(2.2, 1.2, -1.5); scene.add(rim);
+  const fill = new THREE.DirectionalLight('#9a6a8a', .5); fill.position.set(3, -1, 2); scene.add(fill);
+
+  // dust motes
+  const N = 220, pos = new Float32Array(N*3), speed = new Float32Array(N);
+  for (let i=0;i<N;i++){ pos[i*3] = (Math.random()-.5)*6; pos[i*3+1] = (Math.random()-.5)*4; pos[i*3+2] = (Math.random()-.5)*3 - .4; speed[i] = .02 + Math.random()*.05; }
+  const pgeo = new THREE.BufferGeometry(); pgeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const pmat = new THREE.PointsMaterial({ size:.06, map: new THREE.CanvasTexture(glowSprite()), transparent:true, depthWrite:false, blending: THREE.AdditiveBlending, opacity:.75, color:'#f4cf86' });
+  const dust = new THREE.Points(pgeo, pmat); scene.add(dust);
+
+  function applyTheme(){
+    const dark = document.documentElement.classList.contains('dark');
+    pmat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending;
+    pmat.color.set(dark ? '#f4cf86' : '#8a5a12'); pmat.opacity = dark ? .75 : .35; pmat.needsUpdate = true;
+    shadow.material.opacity = dark ? 1 : .45;
+    if (!running) renderer.render(scene, camera);
+  }
+
+  function resize(){
+    const w = host.clientWidth || 1, h = host.clientHeight || 1;
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    camera.position.z = w / h < .9 ? 7.4 : 6; camera.updateProjectionMatrix();
+    if (!running) renderer.render(scene, camera);
+  }
+
+  const mouse = { x:0, y:0, tx:0, ty:0 };
+  window.addEventListener('pointermove', e => { if (e.pointerType !== 'mouse') return; mouse.tx = (e.clientX / innerWidth) * 2 - 1; mouse.ty = (e.clientY / innerHeight) * 2 - 1; }, { passive:true });
+
+  const baseY = -0.5, clock = new THREE.Clock();
+  group.rotation.set(.08, baseY, .03);
+  let running = false, visible = true, onHome = true, raf = 0;
+
+  function frame(){
+    raf = requestAnimationFrame(frame);
+    const t = clock.getElapsedTime(), dt = Math.min(clock.getDelta(), .05);
+    mouse.x += (mouse.tx - mouse.x) * .04; mouse.y += (mouse.ty - mouse.y) * .04;
+    group.position.y = Math.sin(t * .6) * .07;
+    group.rotation.y = baseY + Math.sin(t * .25) * .06 - mouse.x * .22;
+    group.rotation.x = .08 + mouse.y * .09;
+    group.rotation.z = .03 + Math.sin(t * .4) * .012;
+    shadow.scale.setScalar(1 - group.position.y * .6);
+    const p = pgeo.attributes.position.array;
+    for (let i=0;i<N;i++){ p[i*3+1] += speed[i] * .016; p[i*3] += Math.sin(t*.3 + i) * .0006; if (p[i*3+1] > 2.1) p[i*3+1] = -2.1; }
+    pgeo.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+  function play(){ if (reduce || running) return; running = true; clock.getDelta(); frame(); }
+  function pause(){ running = false; cancelAnimationFrame(raf); }
+  function update(){ (visible && onHome && !document.hidden) ? play() : pause(); }
+
+  new ResizeObserver(resize).observe(host);
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; update(); }, { threshold: 0 }).observe(host);
+  document.addEventListener('visibilitychange', update);
+  window.addEventListener('pagechange', e => { onHome = e.detail === 'home'; if (onHome) resize(); update(); });
+  window.addEventListener('themechange', applyTheme);
+  resize(); applyTheme();
+  renderer.render(scene, camera);
+  if (reduce) { group.rotation.y = baseY; renderer.render(scene, camera); }
+  if (!reduce && window.gsap) gsap.from(group.position, { y: -.6, duration: 1.6, ease: 'power3.out' });
+  update();
+}
+</script>
+</body>
+</html>
